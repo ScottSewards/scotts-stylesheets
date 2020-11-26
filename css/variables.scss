@@ -55,7 +55,7 @@
 }
 ::-webkit-scrollbar-thumb {
   background: var(--col-white);
-  border-left: 0.1rem solid black;
+  border-left: 0.1rem solid var(--col-black);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--col-theme);

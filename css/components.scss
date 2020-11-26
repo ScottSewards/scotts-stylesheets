@@ -1,35 +1,3 @@
-column-box, .column {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-grid-box, .grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--pad);
-}
-@media(min-width: 30rem) {
-  grid-box, .grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media(min-width: 60rem) {
-  grid-box, .grid {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-.carousel {
-  text-align: center;
-  display: flex;
-  width: auto;
-  overflow: hidden;
-}
-
-:matches(slide-box, .slideshow) img {
-  display: none;
-}
-
-
 .accordion {
   filter: drop-shadow(var(--shadow));
   > p {
@@ -50,6 +18,11 @@ grid-box, .grid {
       display: none;
     }
   }
+}
+
+ss-slideshow {
+  display: block;
+  margin: var(--space) 0;
 }
 
 .tabs {
@@ -91,14 +64,6 @@ grid-box, .grid {
   }
 }
 
-code-comment {
-  color: green;
-  font-weight: bold;
-  text-transform: uppercase !important;
-}
-comment-value {
-  color: orange;
-}
 
 
 

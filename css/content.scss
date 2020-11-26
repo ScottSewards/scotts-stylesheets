@@ -25,7 +25,10 @@ source { }
 ///////////
 // FORMS //
 ///////////
-form:not(.formless) {
+form {
+  margin: var(--space) auto;
+}
+form:not(.less) {
   color: var(--col-const-white);
   background: var(--col-theme);
   padding: var(--space);
@@ -120,6 +123,9 @@ input[type='range'] {
     height: 3rem;
     width: var(--space);
   }
+  &.colour-picker {
+    background: -webkit-linear-gradient(left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%);
+  }
 }
 
 optgroup { background: var(--col-black); color: var(--col-white); }
@@ -189,13 +195,9 @@ img {
   user-select: none;
   display: block;
   border-radius: var(--border-radius);
-  margin: auto;
+  margin: var(--space) auto;
   width: 100%;
   max-width: var(--content-width);
-  transition: transform 0.1s;
-  &:hover {
-    transform: scale(3);
-  }
 }
 
 map { }
@@ -221,9 +223,12 @@ video {
 //////////////
 address { }
 
-article { display: block; }
+article {
+  display: block;
+  margin: var(--space) 0;
+}
 article + article {
-  margin-top: var(--space);
+
 }
 
 aside { display: block; }
@@ -235,19 +240,14 @@ footer {
   text-align: center;
 }
 
-h1, h2, h2, h3, h4, h5, h6 {
-  //font-weight: bold;
-  text-align: center;
-}
-h1 { font-size: 125%; }
-h2 { font-size: 120%; }
-h3 { font-size: 115%; }
-h4 { font-size: 110%; }
-h5 { font-size: 105%; }
+h1, h2, h2, h3, h4, h5, h6 { text-align: center; }
+h1 { font-size: 130%; }
+h2 { font-size: 124%; }
+h3 { font-size: 118%; }
+h4 { font-size: 112%; }
+h5 { font-size: 106%; }
 h6 { font-size: 100%; }
-h1, h2, h3, h4, h5, h6, p {
-  margin: var(--space) auto;
-}
+h1, h2, h3, h4, h5, h6, p { margin: var(--space) auto; }
 header { }
 hgroup { }
 
@@ -256,17 +256,13 @@ nav { display: block; }
 section {
   display: block;
   padding: 0;
-  margin: auto;
+  margin: var(--space) auto;
   width: 100%;
   &[class*='fill'] {
-    background: var(--col-theme) !important;
-    color: var(--col-const-white) !important;
+    background: var(--col-theme);
+    color: var(--col-const-white);
+    padding: 1px var(--space);
   }
-  &[class*='tall'] { min-height: 100vh !important; }
-  &[class*='wide'] { max-width: 100% !important; }
-}
-section + section {
-  margin-top: var(--space);
 }
 
 ////////////

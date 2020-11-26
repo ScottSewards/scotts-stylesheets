@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="">
+<html lang='en' dir='ltr' class=''>
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width = device-width, initial-scale = 1.0'>
@@ -8,38 +8,187 @@
     <link rel='stylesheet' href='css/layouts.min.css'>
     <link rel='stylesheet' href='css/content.min.css'>
     <link rel='stylesheet' href='css/components.min.css'>
-    <script type='text/javascript' src='js/simple.js'></script>
-    <script type='text/javascript'>
-    var hue = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
-    setInterval(function() {
-      hue = parseInt(hue) + 1;
-      document.documentElement.style.setProperty('--col-theme-hue', hue + '');
-      setCookie('themeColourHue', hue, false);
-    }, 100);
-    </script>
+    <script type='text/javascript' src='js/super-simple.js'></script>
+    <script type='text/javascript' src='js/ss-components.js'></script>
   </head>
   <body>
     <nav>
       <div>
-        <a href="#">Test Link</a>
-        <a href="#">Test Link</a>
-        <a href="#">Test Link</a>
-        <a href="#">Test Link</a>
+        <a href='#'>Test Link</a>
+        <a href='#'>Test Link</a>
+        <a href='#'>Test Link</a>
       </div>
     </nav>
     <main>
-      <section>
-        <h1>Simple</h1>
-        <article>
-          <h2>About</h2>
-          <p>Simple is a modern, mobile-first framework for modern browsers. It implements the latest HTML, CSS and JavaScript features. It is accessible and easy-to-use and deploy.</p>
-          <p class='hide'>The layout and content are seperated. Hence you can deploy layout or content features.</p>
+      <h1>Super Simple</h1>
+      <section id='about'>
+        <h2>About</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </section>
+      <hr>
+      <section id='variables'>
+        <h2>Variables</h2>
+        <article id='colour-scheme'>
+          <h3>Colour Scheme</h3>
+          <p>I have used a black and white colour scheme with a theme colour determined by a hue variable.</p>
+          <h4>Theme Colour</h4>
+          <form class='less'>
+            <div class='inline'>
+              <label for='colour-scheme-picker'>Colour</label>
+              <input id='colour-scheme-picker' class='colour-picker' type='range' min='0' max='359'>
+              <output id='colour-scheme-hue'></output>
+            </div>
+          </form>
+          <script type='text/javascript' src='js/theme-colour-picker.js'></script>
         </article>
+
+        <article id='light-mode'>
+          <h3>Light Mode</h3>
+        </article>
+      </section>
+      <hr>
+      <section id='layout'>
+        <h2>Layout</h2>
+      </section>
+      <hr>
+      <section id='content'>
+        <h2>Content</h2>
+        <article id='images'>
+          <h3>Images</h3>
+          <p>
+            <code>picture</code>
+            <code>figure</code>
+            <code>figcaption</code>
+            <code>img</code>
+          </p>
+          <img src='images/placeholder.png' alt=''>
+        </article>
+
+        <article id='forms'>
+          <h3>Forms</h3>
+          <p>
+            <code>form</code>
+            <code>form.less</code>
+            <code>fieldset</code>
+            <code>legend</code>
+            <code>label</code>
+            <code>input</code>
+            <code>button</code>
+            <code>button.centre</code>
+            <code>datalist</code>
+            <code>select</code>
+            <code>optgroup</code>
+            <code>option</code>
+            <code>textarea</code>
+            <code>output</code>
+          </p>
+          <form>
+            <div class='inline'>
+              <label for='checkbox'>Checkbox</label>
+              <input id='checkbox' type='checkbox' name='checkbox' value='on'/>
+            </div>
+            <div class='inline'>
+              <label for='list'>List</label>
+              <input id='list' name='list' list='list-items' placeholder='List Item A'/>
+            </div>
+            <datalist id='list-items'>
+              <option value='List Item A'/>
+              <option value='List Item B'/>
+              <option value='List Item C'/>
+            </datalist>
+            <div class='inline'>
+              <label for='password'>Password</label>
+              <input id='password' type='password' name='password' value='password'>
+              <input type='button' name='show-password' value='Show'>
+            </div>
+            <div class='inline'>
+              <label for='select'>Select</label>
+              <select id='select' name='select'>
+                <optgroup label='A'>
+                  <option value='1'>Option A1</option>
+                  <option value='1'>Option A2</option>
+                </optgroup>
+                <optgroup label='B'>
+                  <option value='1'>Option B1</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class='inline'>
+              <label for='text'>Text</label>
+              <input id='text' type='text' name='text'/>
+            </div>
+            <div>
+              <label for='textarea'>Textarea</label>
+              <textarea id='textarea' name='textarea'></textarea>
+            </div>
+          </form>
+        </article>
+
+        <article id='tables'>
+          <h3>Tables</h3>
+          <p>
+            <code>table</code>
+            <code>caption</code>
+            <code>thead</code>
+            <code>tbody</code>
+            <code>tfoot</code>
+            <code>tr</code>
+            <code>th</code>
+            <code>td</code>
+          </p>
+          <table>
+            <caption>Table caption</caption>
+            <thead>
+              <tr>
+                <th>Table Head Cell A</th>
+                <th>Table Head Cell B</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Table data A</td>
+                <td>Table data B</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Table data A</td>
+                <td>Table data B</td>
+              </tr>
+            </tfoot>
+          </table>
+        </article>
+      </section>
+      <hr>
+      <section id='components'>
+        <h2>Components</h2>
+        <article id='ss-accordion'>
+          <h3>Accordion</h3>
+          <code>ss-accordion</code>
+        </article>
+
+        <article id='ss-slideshow'>
+          <h3>Slideshow</h3>
+          <code>ss-slideshow</code>
+          <ss-slideshow timer='5000' thumbnails autoslide>
+            <img  src='images/placeholder.png' alt='Alternate Test'>
+          </ss-slideshow>
+        </article>
+
+        <article id='ss-tabs'>
+          <h3>Tabs</h3>
+          <code>ss-tabs</code>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
+
+
+
+
+      <!--section id='about'>
         <article>
-          <header>
-            <h2>Colour Scheme</h2>
-          </header>
-          <p>A white, black and user-defined colour scheme is used. The user-defined colour is manipulated by a single variable.</p>
           <p>The prefered colour scheme can be set to light, dark or automatic (system settings).</p>
           <p class='hide'>Select a colour scheme. This may not work for some browsers or devices.</p>
           <form id='change-colour-scheme' class='hide'>
@@ -83,150 +232,7 @@
           </script>
         </article>
       </section>
-      <!--section id='components' class='hide'>
-      <h2>Components</h2>
-      <p>Create Alber elements using -box suffix.</p>
-      <p>I have created custom elements to ease use of the framework. No more must you use classes to use <code class='element'>div</code> and <code class='class'>.class</code>.</p>
-      <article id='accord-box'>
-        <h3>Accordion Box</h3>
-        <accord-box>
-          <accord-item>
-            <summary>Accord Item A</summary>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </accord-item>
-          <accord-item>
-            <summary>Accord Item B</summary>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </accord-item>
-        </accord-sum>
-      </article>
-      <article id='code-box'>
-        <h3>Code Box</h3>
-        <code-box>
-          <code-comment>Lorem ipsum</code-comment>
-        </code-box>
-      </article>
-      <article id='column-box'>
-        <h3>Column Box</h3>
-        <column-box>
-          <div>
-            <h4>Col Item A</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-          <div>
-            <h4>Col Item B</h4>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-        </column-box>
-      </article>
-      <article id='grid-box'>
-        <h3>Grid Box</h3>
-        <grid-box>
-          <grid-item>
-            <h4>Grid Item A</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </grid-item>
-          <grid-item>
-            <h4>Grid Item B</h4>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </grid-item>
-        </grid-box>
-      </article>
-      <article id='slide-box'>
-        <h3>Slide Box</h3>
-        <slide-box autoslide timer='5000' thumbnails>
-          <slide-img  src='https://css-tricks.com/wp-content/uploads/2016/01/the-difference-placeholder.png' alt='fjnrwf'></slide-img>
-        </slide-box>
-      </article>
-      <article id='tab-box'>
-        <h3>Tab Box</h3>
-        <tab-box>
-          <tab-titles>
-            <tab-title for='title-a' open>Title A</tab-title>
-            <tab-title for='title-b'>Title B</tab-title>
-          </tab-titles>
-          <tab-item id='title-a'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </tab-item>
-          <tab-item id='title-b'>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </tab-item>
-          </tab-box>
-        </article>
-      </article>
-    </section-->
-      <section id='form'>
-        <h2>Form</h2>
-        <p><code>form</code>, <code>fieldset</code>, <code>input</code> and all related elements are consistently styled and functionally extended with web components.</p>
-        <form>
-          <div class='inline'>
-            <label for='checkbox'>Checkbox</label>
-            <input id='checkbox' type='checkbox' name='checkbox' value='on'/>
-          </div>
-          <div>
-            <label for='list'>List</label>
-            <input id='list' name='list' list='list-items' placeholder='List Item A'/>
-          </div>
-          <datalist id='list-items'>
-            <option value='List Item A'/>
-            <option value='List Item B'/>
-            <option value='List Item C'/>
-          </datalist>
-          <div>
-            <label for='password'>Password</label>
-            <input id='password' type='password' name='password' value='password'/>
-            <input class='hide' type="button" name="show-password" value="Show">
-          </div>
-          <div>
-            <label for='range'>Range</label>
-            <input id='range' type='range' name='range'/>
-          </div>
-          <div>
-            <label for='select'>Select</label>
-            <select id='select' name='select'>
-              <optgroup label='A'>
-                <option value='1'>Option A1</option>
-                <option value='1'>Option A2</option>
-              </optgroup>
-              <optgroup label='B'>
-                <option value='1'>Option B1</option>
-              </optgroup>
-            </select>
-          </div>
-          <div>
-            <label for='text'>Text</label>
-            <input id='text' type='text' name='text'/>
-          </div>
-          <div>
-            <label for='textarea'>Textarea</label>
-            <textarea id='textarea' name='textarea'></textarea>
-          </div>
-        </form>
-      </section>
-      <section id='tables' class=''>
-        <h2>Tables</h2>
-        <table>
-          <caption>Caption</caption>
-          <thead>
-            <tr>
-              <th>Table cell header</th>
-              <th>Table cell header</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Table data</td>
-              <td>Table data</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>Table data</td>
-              <td>Table data</td>
-            </tr>
-          </tfoot>
-        </table>
-      </section>
+
       <section id='lists' class='hide'>
         <h2>Lists</h2>
         <div>
@@ -248,7 +254,7 @@
         <div>
           <h3>Ordered List</h3>
           <ol>
-            <li><data value="000033">This is a data in a list item.</data></li>
+            <li><data value='000033'>This is a data in a list item.</data></li>
             <li>This is another list item.</li>
           </ol>
         </div>
@@ -260,9 +266,9 @@
           </ul>
         </div>
         <h2>Quotes</h2>
-        <blockquote cite="https://www.goodreads.com/quotes/144310-the-nitrogen-in-our-dna-the-calcium-in-our-teeth">The nitrogen in our DNA, the calcium in our teeth, the iron in our blood, the carbon in our apple pies were made in the interiors of collapsing stars. We are made of starstuff.</blockquote>
+        <blockquote cite='https://www.goodreads.com/quotes/144310-the-nitrogen-in-our-dna-the-calcium-in-our-teeth'>The nitrogen in our DNA, the calcium in our teeth, the iron in our blood, the carbon in our apple pies were made in the interiors of collapsing stars. We are made of starstuff.</blockquote>
         <cite>This is a citation.</cite>
-        <q cite="http://reddit.com">This is quote.</q>
+        <q cite='http://reddit.com'>This is quote.</q>
       </section>
       <section id='directions' class='hide'>
         <h2>Directions</h2>
@@ -276,13 +282,10 @@
         </div>
         <div class=''>
           <h3>Meter</h3>
-          <meter value="50" min="0" max="100"></meter>
+          <meter value='50' min='0' max='100'></meter>
         </div>
         <div class=''>
           <h3>Progress</h3>
-          <progress value="50" max="100">50%</progress>
+          <progress value='50' max='100'>50%</progress>
         </div>
-      </section>
-    </main>
-  </body>
-</html>
+      </section-->
