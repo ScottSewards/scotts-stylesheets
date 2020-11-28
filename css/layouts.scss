@@ -21,10 +21,9 @@ body {
 
 nav {
   user-select: none;
+  font-weight: bold;
   background: var(--col-white);
   color: var(--col-black);
-  border-bottom: 0.1rem solid var(--col-black);
-  font-weight: bold;
   z-index: 100;
   &.sticky {
     position: sticky;
@@ -33,13 +32,17 @@ nav {
   display: flex;
   justify-content: space-between;
   grid-area: navi;
-  padding: 0.5rem var(--space);
+  border-bottom: 0.1rem solid var(--col-black);
   width: 100%;
   div {
     position: relative;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    padding: var(--half-space);
+    margin: auto;
+    max-width: var(--content-width);
+    /*
     div {
       background: var(--col-theme);
       position: absolute;
@@ -51,18 +54,15 @@ nav {
       flex-direction: column;
       &:hover { display: flex; }
     }
+    */
   }
   a {
     color: inherit;
     display: block;
     padding: 1rem;
-    margin: 0;
-    text-decoration: none;
     white-space: nowrap;
-    &:hover + div {
-      display: flex;
-    }
     &:hover, &.active {
+      background: var(--col-theme);
     }
   }
 }

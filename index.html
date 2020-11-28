@@ -3,7 +3,7 @@
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width = device-width, initial-scale = 1.0'>
-    <title>Scott Sewards' Simple Framework</title>
+    <title>Super Simple</title>
     <link rel='stylesheet' href='css/variables.min.css'>
     <link rel='stylesheet' href='css/layouts.min.css'>
     <link rel='stylesheet' href='css/content.min.css'>
@@ -14,9 +14,9 @@
   <body>
     <nav>
       <div>
-        <a href='#'>Test Link</a>
-        <a href='#'>Test Link</a>
-        <a href='#'>Test Link</a>
+        <a href='#'>Link</a>
+        <a href='#'>Link</a>
+        <a href='#'>Link</a>
       </div>
     </nav>
     <main>
@@ -86,6 +86,16 @@
             <div class='inline'>
               <label for='checkbox'>Checkbox</label>
               <input id='checkbox' type='checkbox' name='checkbox' value='on'/>
+            </div>
+            <div class='inline'>
+              <div class='inline'>
+                <input id='radio-a' type='radio' name='radio' value='a'>
+                <label for='radio-a'>Radio A</label>
+              </div>
+              <div class='inline'>
+                <input id='radio-b' type='radio' name='radio' value='b'>
+                <label for='radio-b'>Radio B</label>
+              </div>
             </div>
             <div class='inline'>
               <label for='list'>List</label>
@@ -162,6 +172,7 @@
       <hr>
       <section id='components'>
         <h2>Components</h2>
+        <p>All web components use a <code>ss-</code> prefix.</p>
         <article id='ss-accordion'>
           <h3>Accordion</h3>
           <code>ss-accordion</code>

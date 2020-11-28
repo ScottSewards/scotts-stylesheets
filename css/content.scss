@@ -71,7 +71,7 @@ button, input, select, textarea {
   margin-top: var(--space);
   width: 100%;
   outline: 0;
-  transition: background-color 0.1s;
+  transition: background var(--transition-time), border var(--transition-time);
   &:not(:disabled):hover, &:not(:disabled):focus {
     background: var(--col-hover);
   }
@@ -89,17 +89,23 @@ input[type='checkbox'], input[type='radio'] {
   height: 2.925rem;
   width: 2.925rem;
 }
-input[type='checkbox'] {
-  border-radius: var(--border-radius);
-}
 input[type='checkbox']:checked::after {
   position: absolute;
   content: "✓";
-  padding-left: 0.3rem;
+  padding-left: 0.2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 input[type='radio'] {
-  border: calc(var(--space) / 2) solid var(--col-const-black);
+  border: var(--half-space) solid var(--col-const-black);
   border-radius: 100%;
+  &:not(:disabled):hover, &:not(:disabled):focus {
+    border: var(--half-space) solid var(--col-hover);
+    &:not(:checked) {
+      background: var(--col-hover);
+    }
+  }
 }
 input[type='radio']:checked { background: var(--col-theme); }
 
@@ -107,7 +113,7 @@ input[type='color'] {
   cursor: pointer;
   padding: calc(var(--space) / 2);
   height: 3rem;
-  &::-webkit-color-swatch-wrapper, &::-webkit-color-swatch { border: 0; border-radius: calc(var(--border-radius) / 2); }
+  &::-webkit-color-swatch-wrapper, &::-webkit-color-swatch { border: 0; }
 }
 
 input[type='range'] {
@@ -120,8 +126,12 @@ input[type='range'] {
     -webkit-appearance: none;
     cursor: pointer;
     background: var(--col-const-white);
+    border: 0.1rem solid var(--col-const-black);
     height: 3rem;
     width: var(--space);
+    &:hover {
+      background: var(--col-theme);
+    }
   }
   &.colour-picker {
     background: -webkit-linear-gradient(left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%);
@@ -132,9 +142,14 @@ optgroup { background: var(--col-black); color: var(--col-white); }
 option { }
 datalist { display: none; }
 
+select {
+  border-right: 1rem solid var(--col-const-black);
+  &:hover { border-right: 1rem solid var(--col-hover); }
+}
+
 textarea { //REMOVE COLUMN AND ROW ATTRIBUTES FROM HTML IF PRESENT
   resize: vertical;
-  min-height: 3rem;
+  min-height: 6rem;
   height: 6rem;
   max-height: 50vh;
 }
@@ -176,7 +191,6 @@ figure {
   background: var(--col-alpha-theme);
   position: relative;
   display: block;
-  border-radius: var(--border-radius);
   margin: auto;
 }
 figure img {
@@ -194,7 +208,6 @@ figcaption {
 img {
   user-select: none;
   display: block;
-  border-radius: var(--border-radius);
   margin: var(--space) auto;
   width: 100%;
   max-width: var(--content-width);
@@ -213,7 +226,6 @@ track { }
 video {
   user-select: none;
   display: block;
-  border-radius: var(--border-radius);
   margin: var(--space) auto;
   width: 100%;
 }
@@ -273,7 +285,6 @@ table {
   color: var(--col-white);
   padding: var(--space);
   border-collapse: collapse;
-  border-radius: var(--border-radius);
   margin: var(--space) auto;
   overflow: auto;
 }
@@ -335,9 +346,8 @@ code {
   font-size: 90%;
   background: var(--col-black);
   color: var(--col-white);
-  display: inline;
-  padding: var(--inline-space);
-  border-radius: var(--border-radius);
+  display: inline-block;
+  padding: 0 var(--quarter-space);
   white-space: pre;
   tab-size: 4;
 }
@@ -364,7 +374,7 @@ dialog {
 
 dl { }
 dl > dt { font-weight: bold; }
-dl > dd { margin: 0 0 var(--space) var(--list-space); }
+dl > dd { margin: 0 0 var(--space) var(--half-space); }
 
 em, .emphasise, i, .italic { font-style: italic; }
 
@@ -408,7 +418,6 @@ meter {
   &::-webkit-meter-bar {
     background: var(--col-black);
     border: 0;
-    border-radius: var(--border-radius);
   }
   &::-webkit-meter-optimum-value { background: var(--col-theme); }
 }
@@ -416,17 +425,15 @@ progress {
   appearance: none;
   &::-webkit-progress-bar {
     background: var(--col-black);
-    border-radius: var(--border-radius);
   }
   &::-webkit-progress-value {
     background: var(--col-theme);
-    border-radius: var(--border-radius);
   }
 }
 
 ol, ul {
   padding: 0;
-  margin-left: calc(var(--space) * 2);
+  margin-left: var(--half-space);
 }
 ul li { list-style-type: square; }
 
