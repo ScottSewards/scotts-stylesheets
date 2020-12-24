@@ -2,7 +2,7 @@
 <html lang='en' dir='ltr' class=''>
   <head>
     <meta charset='utf-8'>
-    <meta name='viewport' content='width = device-width, initial-scale = 1.0'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Super Simple</title>
     <link rel='stylesheet' href='css/variables.min.css'>
     <link rel='stylesheet' href='css/layouts.min.css'>
@@ -17,15 +17,16 @@
         <a href='#'>Link</a>
         <a href='#'>Link</a>
         <a href='#'>Link</a>
+        <a href='#'>Link</a>
       </div>
     </nav>
     <main>
       <h1>Super Simple</h1>
       <section id='about'>
         <h2>About</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
       </section>
-      <hr>
+
       <section id='variables'>
         <h2>Variables</h2>
         <article id='colour-scheme'>
@@ -46,11 +47,11 @@
           <h3>Light Mode</h3>
         </article>
       </section>
-      <hr>
+
       <section id='layout'>
         <h2>Layout</h2>
       </section>
-      <hr>
+
       <section id='content'>
         <h2>Content</h2>
         <article id='images'>
@@ -68,7 +69,7 @@
           <h3>Forms</h3>
           <p>
             <code>form</code>
-            <code>form.less</code>
+            <code>.less</code>
             <code>fieldset</code>
             <code>legend</code>
             <code>label</code>
@@ -84,15 +85,15 @@
           </p>
           <form>
             <div class='inline'>
-              <label for='checkbox'>Checkbox</label>
               <input id='checkbox' type='checkbox' name='checkbox' value='on'/>
+              <label for='checkbox'>Checkbox</label>
             </div>
             <div class='inline'>
-              <div class='inline'>
+              <div class='inline-no-bp'>
                 <input id='radio-a' type='radio' name='radio' value='a'>
                 <label for='radio-a'>Radio A</label>
               </div>
-              <div class='inline'>
+              <div class='inline-no-bp'>
                 <input id='radio-b' type='radio' name='radio' value='b'>
                 <label for='radio-b'>Radio B</label>
               </div>
@@ -122,14 +123,18 @@
                   <option value='1'>Option B1</option>
                 </optgroup>
               </select>
+              <input type='button' name='show-password' value='Show'>
             </div>
             <div class='inline'>
               <label for='text'>Text</label>
               <input id='text' type='text' name='text'/>
             </div>
-            <div>
+            <div class='inline'>
               <label for='textarea'>Textarea</label>
               <textarea id='textarea' name='textarea'></textarea>
+            </div>
+            <div class='inline'>
+              <button type="button" name="button">qwerty</button>
             </div>
           </form>
         </article>
@@ -169,29 +174,52 @@
           </table>
         </article>
       </section>
-      <hr>
+
       <section id='components'>
         <h2>Components</h2>
         <p>All web components use a <code>ss-</code> prefix.</p>
         <article id='ss-accordion'>
           <h3>Accordion</h3>
-          <code>ss-accordion</code>
+          <p>
+            <code>ss-accordion</code>
+            <code>ss-bellow</code>
+          </p>
+
+          <ss-accordion>
+            <ss-bellow>
+              This is a bellow.
+            </ss-bellow>
+          </ss-accordion>
         </article>
 
         <article id='ss-slideshow'>
           <h3>Slideshow</h3>
-          <code>ss-slideshow</code>
-          <ss-slideshow timer='5000' thumbnails autoslide>
+          <div class='codes'>
+            <code>ss-slideshow</code>
+            <code>ss-slide</code>
+          </div>
+          <ss-slideshow timer='1000' autoslide='false'>
             <img  src='images/placeholder.png' alt='Alternate Test'>
           </ss-slideshow>
         </article>
 
         <article id='ss-tabs'>
           <h3>Tabs</h3>
-          <code>ss-tabs</code>
+          <p>
+            <code>ss-tabs</code>
+            <code>ss-tab</code>
+          </p>
+          <ss-tabs>
+            <ss-tab>
+              This is a tab.
+            </ss-tab>
+          </ss-tabs>
         </article>
       </section>
     </main>
+    <footer>
+      Copyright (c) 2018 Copyright Holder All Rights Reserved.
+    </footer>
   </body>
 </html>
 

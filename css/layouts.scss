@@ -20,9 +20,9 @@ body {
 }
 
 nav {
+  //overflow-x: hidden;
   user-select: none;
   font-weight: bold;
-  background: var(--col-white);
   color: var(--col-black);
   z-index: 100;
   &.sticky {
@@ -32,7 +32,6 @@ nav {
   display: flex;
   justify-content: space-between;
   grid-area: navi;
-  border-bottom: 0.1rem solid var(--col-black);
   width: 100%;
   div {
     position: relative;
@@ -42,19 +41,6 @@ nav {
     padding: var(--half-space);
     margin: auto;
     max-width: var(--content-width);
-    /*
-    div {
-      background: var(--col-theme);
-      position: absolute;
-      top: 100%;
-      right: -1px;
-      display: none;
-      border: 1px solid var(--col-theme);
-      border-top: 0;
-      flex-direction: column;
-      &:hover { display: flex; }
-    }
-    */
   }
   a {
     color: inherit;
@@ -76,8 +62,6 @@ main {
 }
 
 footer {
-  background: var(--col-const-black);
-  color: var(--col-const-white);
   display: block;
   grid-area: foot;
   width: 100%;

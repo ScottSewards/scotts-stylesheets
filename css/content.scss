@@ -27,14 +27,30 @@ source { }
 ///////////
 form {
   margin: var(--space) auto;
+  div {
+    display: block;
+    //margin: var(--half-space) 0;
+    width: 100%;
+    > div { margin: 0; }
+    &.inline-no-bp {
+      display: flex;
+      button, input, select { + * { margin-left: var(--half-space); } }
+    }
+  }
 }
+
+@media(min-width: 28rem) {
+  form div.inline {
+    display: flex;
+    button, input, select { + * { margin-left: var(--space); } }
+  }
+}
+
 form:not(.less) {
-  color: var(--col-const-white);
-  background: var(--col-theme);
-  padding: var(--space);
+  color: var(--col-const-black);
   display: block;
-  padding-top: 0;
-  margin: var(--space) auto;
+  box-shadow: var(--box-shadow);
+  padding: var(--half-space) var(--space);
 }
 
 fieldset {
@@ -54,58 +70,69 @@ legend {
 }
 
 label, output {
+  color: var(--col-black);
   display: block;
-  padding: var(--space) var(--space) 0 0;
-  margin-top: var(--space);
+  padding: var(--space);
+  padding-left: 0;
+  margin: var(--half-space) 0;
   white-space: nowrap;
+}
+label {
+  padding-bottom: 0;
 }
 
 button, input, select, textarea {
-  background: var(--col-const-black);
-  color: var(--col-const-white);
+  background: var(--col-white);
+  color: var(--col-black);
   font-family: var(--font);
   font-size: var(--font-size);
+  display: block;
   padding: var(--space);
-  border: 0;
-  margin: 0;
-  margin-top: var(--space);
+  border: 0.1rem solid var(--col-black);
+  margin: var(--half-space) 0;
   width: 100%;
   outline: 0;
   transition: background var(--transition-time), border var(--transition-time);
   &:not(:disabled):hover, &:not(:disabled):focus {
-    background: var(--col-hover);
+    border: 0.1rem solid var(--col-theme);
   }
 }
 
 button, input[type='button'], input[type='reset'], input[type='submit'] {
   cursor: pointer;
+  border: 0.1rem solid var(--col-black);
   width: auto;
+  margin: var(--half-space) auto;
+  &:hover, &:focus {
+    background: var(--col-theme);
+  }
 }
 
 input[type='checkbox'], input[type='radio'] {
-  cursor: pointer;
   appearance: none;
   position: relative;
-  height: 2.925rem;
-  width: 2.925rem;
+  border: 0.1rem solid var(--col-black);
+  padding: 1.5rem;
+  width: 3.1rem;
+}
+input[type='checkbox'] {
+  cursor: pointer;
+  &:checked { background: var(--col-theme); }
+  &:hover { background: var(--col-hover); }
 }
 input[type='checkbox']:checked::after {
   position: absolute;
   content: "✓";
-  padding-left: 0.2rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 input[type='radio'] {
-  border: var(--half-space) solid var(--col-const-black);
+  background: var(--col-white);
   border-radius: 100%;
-  &:not(:disabled):hover, &:not(:disabled):focus {
-    border: var(--half-space) solid var(--col-hover);
-    &:not(:checked) {
-      background: var(--col-hover);
-    }
-  }
+  &:not(:checked) { cursor: pointer; }
+  &:not(:disabled):hover, &:not(:disabled):focus { background: var(--col-theme); }
+  &:hover:not(:checked) { background: var(--col-hover); }
 }
 input[type='radio']:checked { background: var(--col-theme); }
 
@@ -118,33 +145,38 @@ input[type='color'] {
 
 input[type='range'] {
   appearance: none;
-  padding-left: 0;
-  padding-right: 0;
-  padding: 0;
-  &::-webkit-slider-runnable-track { }
+  padding: 0.5rem 0.1rem;
+  border: 0.1rem solid var(--col-black);
+  //&::-webkit-slider-runnable-track { }
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     cursor: pointer;
-    background: var(--col-const-white);
-    border: 0.1rem solid var(--col-const-black);
-    height: 3rem;
+    background: var(--col-white);
+    border: 0.1rem solid var(--col-black);
+    height: 2rem;
     width: var(--space);
-    &:hover {
-      background: var(--col-theme);
-    }
+    transition: border 0.1s;
   }
-  &.colour-picker {
-    background: -webkit-linear-gradient(left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%);
-  }
+  &:hover::-webkit-slider-thumb { border: 0.1rem solid var(--col-theme); }
+  &.colour-picker { background: -webkit-linear-gradient(left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%); }
 }
 
-optgroup { background: var(--col-black); color: var(--col-white); }
-option { }
+optgroup {  }
+option:hover { background: var(--col-theme); }
 datalist { display: none; }
 
 select {
-  border-right: 1rem solid var(--col-const-black);
-  &:hover { border-right: 1rem solid var(--col-hover); }
+  position: relative;
+  padding-right: 2rem;
+}
+select:after {
+  position: absolute;
+  content: " ";
+  background: red;
+  height: 10px;
+  top: 0;
+  left: 0;
+  width: 100px;
 }
 
 textarea { //REMOVE COLUMN AND ROW ATTRIBUTES FROM HTML IF PRESENT
@@ -153,21 +185,6 @@ textarea { //REMOVE COLUMN AND ROW ATTRIBUTES FROM HTML IF PRESENT
   height: 6rem;
   max-height: 50vh;
 }
-
-[class*='inline'] {
-  display: flex;
-  width: 100%;
-  button, input {
-    + * { margin-left: var(--space); }
-  }
-  &[class*='equal'] * {
-    width: 100% !important;
-  }
-  figure + figure {
-    margin-left: var(--space);
-  }
-}
-.inline div { margin: 0; }
 
 ///////////
 // MEDIA //
@@ -260,6 +277,7 @@ h4 { font-size: 112%; }
 h5 { font-size: 106%; }
 h6 { font-size: 100%; }
 h1, h2, h3, h4, h5, h6, p { margin: var(--space) auto; }
+p.centre { text-align: center; }
 header { }
 hgroup { }
 
@@ -281,16 +299,12 @@ section {
 // TABLES //
 ////////////
 table {
-  background: var(--col-theme);
-  color: var(--col-white);
-  padding: var(--space);
+  box-shadow: var(--box-shadow);
   border-collapse: collapse;
   margin: var(--space) auto;
-  overflow: auto;
 }
 caption {
-  color: var(--col-black);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--half-space);
 }
 
 colgroup { }
@@ -300,14 +314,11 @@ thead { }
 tbody { }
 tfoot { }
 
-tr:hover {
-  background: var(--col-dark-theme);
-}
-th {
-  font-weight: bold;
-}
+tr:hover { background: var(--col-theme); }
+th { font-weight: bold; }
 th, td {
   padding: var(--space);
+  border: 0.1rem solid #DDD;
 }
 td { }
 
@@ -322,7 +333,7 @@ a {
   &:focus-visible {
     background-color: var(--col-marked);
     color: var(--col-const-white);
-    box-shadow: 0 0 0 0.5rem var(--col-marked);
+    box-shadow: 0 0 0 0.4rem var(--col-marked);
   }
 }
 

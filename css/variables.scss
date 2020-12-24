@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&display=swap');
 :root {
-  --col-const-white: #EEE;
+  --col-const-white: #FFF;
   --col-const-black: #111;
   --col-white: var(--col-const-white);
   --col-black: var(--col-const-black);
@@ -23,6 +23,7 @@
   --space: 1rem;
   --half-space: 0.5rem;
   --quarter-space: 0.25rem;
+  --box-shadow: 0 0 var(--quarter-space) -1px gray;
 
   --character-limit: 65ch;
   --content-width: 65rem;
@@ -34,6 +35,7 @@
 .dark {
   --col-white: var(--col-const-black);
   --col-black: var(--col-const-white);
+  --box-shadow: 0 0 0 1px white;
   ::-webkit-calendar-picker-indicator { filter: invert(0); }
 }
 
@@ -48,21 +50,15 @@
 }
 
 ::-webkit-scrollbar {
-  width: 1.2rem;
+  width: 1rem;
 }
 ::-webkit-scrollbar-track {
-  background: var(--col-black);
+  background: var(--col-const-black);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--col-white);
-  border-left: 0.1rem solid var(--col-black);
+  background: var(--col-const-white);
+  //border-left: 0.1rem solid var(--col-const-black);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--col-theme);
-}
-
-
-
-.centre {
-  text-align: center;
 }
