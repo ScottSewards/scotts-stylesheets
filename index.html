@@ -4,8 +4,8 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Super Simple</title>
-    <link rel='stylesheet' href='css/variables.min.css'>
-    <link rel='stylesheet' href='css/layouts.min.css'>
+    <link rel='stylesheet' href='css/variables.css'>
+    <link rel='stylesheet' href='css/layouts.css'>
     <link rel='stylesheet' href='css/content.min.css'>
     <link rel='stylesheet' href='css/components.min.css'>
     <script type='text/javascript' src='js/super-simple.js'></script>
@@ -22,7 +22,7 @@
     </nav>
     <main>
       <h1>Super Simple</h1>
-      <section id='about'>
+      <section>
         <h2>About</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
       </section>
@@ -42,14 +42,6 @@
           </form>
           <script type='text/javascript' src='js/theme-colour-picker.js'></script>
         </article>
-
-        <article id='light-mode'>
-          <h3>Light Mode</h3>
-        </article>
-      </section>
-
-      <section id='layout'>
-        <h2>Layout</h2>
       </section>
 
       <section id='content'>
@@ -62,7 +54,7 @@
             <code>figcaption</code>
             <code>img</code>
           </p>
-          <img src='images/placeholder.png' alt=''>
+          <img src='images/placeholder.png' alt='' class='bleed'>
         </article>
 
         <article id='forms'>
@@ -84,16 +76,16 @@
             <code>output</code>
           </p>
           <form>
-            <div class='inline'>
+            <div class='inline-nowrap'>
               <input id='checkbox' type='checkbox' name='checkbox' value='on'/>
               <label for='checkbox'>Checkbox</label>
             </div>
             <div class='inline'>
-              <div class='inline-no-bp'>
+              <div class='inline-nowrap'>
                 <input id='radio-a' type='radio' name='radio' value='a'>
                 <label for='radio-a'>Radio A</label>
               </div>
-              <div class='inline-no-bp'>
+              <div class='inline-nowrap'>
                 <input id='radio-b' type='radio' name='radio' value='b'>
                 <label for='radio-b'>Radio B</label>
               </div>
@@ -194,10 +186,10 @@
 
         <article id='ss-slideshow'>
           <h3>Slideshow</h3>
-          <div class='codes'>
+          <p>
             <code>ss-slideshow</code>
             <code>ss-slide</code>
-          </div>
+          </p>
           <ss-slideshow timer='1000' autoslide='false'>
             <img  src='images/placeholder.png' alt='Alternate Test'>
           </ss-slideshow>
@@ -217,114 +209,5 @@
         </article>
       </section>
     </main>
-    <footer>
-      Copyright (c) 2018 Copyright Holder All Rights Reserved.
-    </footer>
   </body>
 </html>
-
-
-
-
-      <!--section id='about'>
-        <article>
-          <p>The prefered colour scheme can be set to light, dark or automatic (system settings).</p>
-          <p class='hide'>Select a colour scheme. This may not work for some browsers or devices.</p>
-          <form id='change-colour-scheme' class='hide'>
-            <fieldset>
-              <legend>Change Colour Scheme</legend>
-              <p>Set colour scheme:</p>
-              <div class='inline'>
-                <div class='inline'>
-                  <input id='light-mode' type='radio' name='colour-scheme' value='0' disabled/>
-                  <label for='light-mode'>Light</label>
-                </div>
-                <div class='inline'>
-                  <input id='dark-mode' type='radio' name='colour-scheme' value='1' disabled/>
-                  <label for='dark-mode'>Dark</label>
-                </div>
-              </div>
-              <div class='inline'>
-                <input id='auto-mode' type='radio' name='colour-scheme' value='2' disabled/>
-                <label for='auto-mode'>Automatic (system settings)</label>
-              </div>
-            </fieldset>
-          </form>
-          <script type='text/javascript'>
-          const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-
-          if(prefersLight) document.getElementById('light-mode').checked = true;
-          else document.getElementById('dark-mode').checked = true;
-
-          document.getElementById('light-mode').addEventListener('change', function() {
-            if(this.checked) {
-              document.body.style.setProperty('--col-white', '#FFF');
-              document.body.style.setProperty('--col-black', '#111');
-            }
-          });
-          document.getElementById('dark-mode').addEventListener('change', function() {
-            if(this.checked) {
-              document.body.style.setProperty('--col-white', '#111');
-              document.body.style.setProperty('--col-black', '#FFF');
-            }
-          });
-          </script>
-        </article>
-      </section>
-
-      <section id='lists' class='hide'>
-        <h2>Lists</h2>
-        <div>
-          <h3>Descriptive List</h3>
-          <dl>
-            <dt>This is a descriptive term in a descriptive list.</dt>
-            <dd>This is a descriptive definition.</dd>
-            <dt>This is another descriptive term.</dt>
-            <dd>This is another descriptive definition.</dd>
-          </dl>
-        </div>
-        <div>
-          <h3>Lettered List</h3>
-          <ol type='A'>
-            <li>This is a list item.</li>
-            <li>This is another list item.</li>
-          </ol>
-        </div>
-        <div>
-          <h3>Ordered List</h3>
-          <ol>
-            <li><data value='000033'>This is a data in a list item.</data></li>
-            <li>This is another list item.</li>
-          </ol>
-        </div>
-        <div>
-          <h3>Unordered List</h3>
-          <ul>
-            <li>This is a list item.</li>
-            <li>This is another list item.</li>
-          </ul>
-        </div>
-        <h2>Quotes</h2>
-        <blockquote cite='https://www.goodreads.com/quotes/144310-the-nitrogen-in-our-dna-the-calcium-in-our-teeth'>The nitrogen in our DNA, the calcium in our teeth, the iron in our blood, the carbon in our apple pies were made in the interiors of collapsing stars. We are made of starstuff.</blockquote>
-        <cite>This is a citation.</cite>
-        <q cite='http://reddit.com'>This is quote.</q>
-      </section>
-      <section id='directions' class='hide'>
-        <h2>Directions</h2>
-        <dialog>This is a dialog.</dialog>
-        <div class='hide'>
-          <h3>Details</h3>
-          <details open>
-            <summary>This is <code>summary</code> for details, click to toggle close/open.</summary>
-            <p>This text should be shown if the details element is opened.</p>
-          </details>
-        </div>
-        <div class=''>
-          <h3>Meter</h3>
-          <meter value='50' min='0' max='100'></meter>
-        </div>
-        <div class=''>
-          <h3>Progress</h3>
-          <progress value='50' max='100'>50%</progress>
-        </div>
-      </section-->
