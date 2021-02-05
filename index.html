@@ -5,7 +5,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Super Simple</title>
     <link rel='stylesheet' href='css/variables.css'>
-    <link rel='stylesheet' href='css/layouts.css'>
+    <link rel='stylesheet' href='css/layout.css'>
     <link rel='stylesheet' href='css/content.min.css'>
     <link rel='stylesheet' href='css/components.min.css'>
     <script type='text/javascript' src='js/super-simple.js'></script>
@@ -15,8 +15,12 @@
     <nav>
       <div>
         <a href='#'>Link</a>
-        <a href='#'>Link</a>
-        <a href='#'>Link</a>
+        <div class='dropdown'>
+          <a href='#'>Link w/ Dropdown</a>
+          <ul>
+            <li><a>dfsds</a></li>
+          </ul>
+        </div>
         <a href='#'>Link</a>
       </div>
     </nav>
@@ -80,15 +84,13 @@
               <input id='checkbox' type='checkbox' name='checkbox' value='on'/>
               <label for='checkbox'>Checkbox</label>
             </div>
-            <div class='inline'>
-              <div class='inline-nowrap'>
-                <input id='radio-a' type='radio' name='radio' value='a'>
-                <label for='radio-a'>Radio A</label>
-              </div>
-              <div class='inline-nowrap'>
-                <input id='radio-b' type='radio' name='radio' value='b'>
-                <label for='radio-b'>Radio B</label>
-              </div>
+            <div class='inline-nowrap'>
+              <input id='radio-a' type='radio' name='radio' value='a'>
+              <label for='radio-a'>Radio A</label>
+            </div>
+            <div class='inline-nowrap'>
+              <input id='radio-b' type='radio' name='radio' value='b'>
+              <label for='radio-b'>Radio B</label>
             </div>
             <div class='inline'>
               <label for='list'>List</label>
@@ -147,20 +149,19 @@
             <caption>Table caption</caption>
             <thead>
               <tr>
-                <th>Table Head Cell A</th>
-                <th>Table Head Cell B</th>
+                <th>Table Head</th>
+                <th>Empty Cell</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Table data A</td>
-                <td>Table data B</td>
+                <td>Table Data</td>
+                <td></td>
               </tr>
             </tbody>
             <tfoot>
               <tr>
-                <td>Table data A</td>
-                <td>Table data B</td>
+                <td>Table Foot</td>
               </tr>
             </tfoot>
           </table>
@@ -169,8 +170,8 @@
 
       <section id='components'>
         <h2>Components</h2>
-        <p>All web components use a <code>ss-</code> prefix.</p>
-        <article id='ss-accordion'>
+        <p>Web Components for this framework use the <code>ss-</code> prefix.</p>
+        <article id='ss-accordion' class='hide'>
           <h3>Accordion</h3>
           <p>
             <code>ss-accordion</code>
@@ -183,8 +184,41 @@
             </ss-bellow>
           </ss-accordion>
         </article>
-
-        <article id='ss-slideshow'>
+        <hr>
+        <article id='ss-notes'>
+          <h3>Cards</h3>
+          <p>
+            <code>.cards</code>
+            <code>.card</code>
+          </p>
+          <div class='cards'>
+            <div class='card'>
+              <h5>Title</h5>
+            </div>
+            <div class='card'>
+              <h5>Title</h5>
+            </div>
+            <div class='card'>
+              <h5>Title</h5>
+            </div>
+          </div>
+          <p>If you exclude the <code>.cards</code> container, you will get a single card.</p>
+          <div class='card'>
+            <h5>Title</h5>
+          </div>
+        </article>
+        <hr>
+        <article id='ss-notes'>
+          <h3>Notes</h3>
+          <p>
+            <code>.note</code>
+            <code>.note-alert</code>
+          </p>
+          <p class='note'>This is a note.</p>
+          <p class='note-alert'>This is an alert.</p>
+        </article>
+        <hr class='hide'>
+        <article id='ss-slideshow' class='hide'>
           <h3>Slideshow</h3>
           <p>
             <code>ss-slideshow</code>
@@ -194,8 +228,8 @@
             <img  src='images/placeholder.png' alt='Alternate Test'>
           </ss-slideshow>
         </article>
-
-        <article id='ss-tabs'>
+        <hr class='hide'>
+        <article id='ss-tabs' class='hide'>
           <h3>Tabs</h3>
           <p>
             <code>ss-tabs</code>

@@ -27,45 +27,38 @@ source { }
 ///////////
 form {
   padding: 0;
-  margin: 0;
+  margin: var(--margin);
+  width: var(--character-limit);
   div {
     display: block;
-    width: 100%;
-    > div { margin: 0; }
+    margin: var(--space-1) auto;
     &.inline-nowrap {
       display: flex;
-      button, input, select { + * { margin-left: var(--space-1-1); } }
+      button, input, select { + * { margin-left: var(--space-1); } }
     }
   }
 }
-@media(min-width: 28rem) {
-  form div.inline {
-    display: flex;
-    button, input, select { + * { margin-left: var(--space-1-1); } }
-  }
-}
-
 fieldset {
   display: block;
-  padding: var(--space-1-1);
+  padding: var(--space-1);
   padding-top: 0;
   border: var(--border);
   min-width: 0;
 }
 legend {
   display: block;
-  padding: var(--space-1-1);
+  padding: var(--space-1);
   margin: auto;
-  margin-bottom: calc(var(--space-1-1) * -1);
+  margin-bottom: calc(var(--space-1) * -1);
   white-space: nowrap;
 }
 
 label, output {
   color: var(--col-black);
   display: block;
-  padding: var(--space-1-1);
+  padding: var(--space-1);
   padding-left: 0;
-  margin: var(--space-1-2) 0;
+  margin: 0;
   white-space: nowrap;
 }
 label { padding-bottom: 0; }
@@ -75,9 +68,10 @@ button, input, select, textarea {
   color: var(--col-black);
   font-family: var(--font);
   font-size: var(--font-size);
-  padding: var(--space-1-1);
+  padding: var(--space-1);
   border: var(--border);
-  margin: var(--space-1-2) 0;
+  border-radius: var(--border-radius);
+  margin: 0;
   width: 100%;
   outline: 0;
   transition: background var(--transition-time), border var(--transition-time);
@@ -91,8 +85,8 @@ button, input[type='button'], input[type='reset'], input[type='submit'] {
   box-sizing: border-box;
   cursor: pointer;
   border: var(--border);
-  width: auto;
-  margin: var(--space-1-2) auto;
+  margin: auto;
+  width: 100%;
   &:active {
     background: var(--col-theme-light);
   }
@@ -125,13 +119,13 @@ input[type='radio'] {
 }
 input[type='color'] {
   cursor: pointer;
-  padding: var(--space-1-2);
+  padding: var(--space-2);
   height: 3rem;
   &::-webkit-color-swatch-wrapper, &::-webkit-color-swatch { border: 0; }
 }
 input[type='range'] {
   appearance: none;
-  padding: var(--space-1-2) 0.1rem;
+  padding: var(--space-2) 0.1rem;
   border: var(--border);
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -139,7 +133,7 @@ input[type='range'] {
     background: var(--col-white);
     border: var(--border);
     height: 2rem;
-    width: var(--space-1-1);
+    width: var(--space-1);
     transition: border var(--transition-time);
   }
   &:hover::-webkit-slider-thumb { border-color: var(--col-border-hover); }
@@ -157,6 +151,31 @@ textarea { //REMOVE COL & ROW ATTRIBUTES FROM HTML
   min-height: 6rem;
   height: 6rem;
   max-height: 50vh;
+}
+
+
+@media(max-width: 28rem) {
+  form div.inline {
+    button, input, select {
+      + button, + input {
+        margin-top: var(--space-1);
+      }
+    }
+    label {
+      padding-top: 0;
+      padding-left: 1rem;
+    }
+    * + label {
+      padding-top: 1rem;
+    }
+  }
+}
+@media(min-width: 28rem) {
+  .inline {
+    display: flex;
+    button, input, select { + * { margin-left: var(--space-1); } }
+  }
+  button, input[type='button'], input[type='reset'], input[type='submit'] { width: auto; }
 }
 
 ///////////
@@ -192,7 +211,7 @@ figure img {
 }
 figcaption {
   display: block;
-  padding: var(--space-1-1);
+  padding: var(--space-1);
   text-align: center;
 }
 img {
@@ -215,7 +234,7 @@ track { }
 video {
   user-select: none;
   display: block;
-  margin: var(--space-1-1) auto;
+  margin: var(--space-1) auto;
   width: 100%;
 }
 
@@ -237,7 +256,7 @@ aside { display: block; }
 
 footer {
   display: block;
-  padding: var(--space-1-1);
+  padding: var(--space-1);
   margin: auto;
   text-align: center;
 }
@@ -261,44 +280,45 @@ section { display: block; }
 // TABLES //
 ////////////
 table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   margin: var(--margin);
   width: 100%;
   max-width: var(--content-limit);
 }
 caption {
-  margin-bottom: var(--space-1-2);
+  font-style: italic;
+  margin-bottom: var(--space-2);
 }
-
-colgroup { }
-col { }
-
-thead { }
-tbody { }
-tfoot { }
-
-tr:hover > td { background: var(--col-hover); }
-tr > td:hover { background: #DDD; }
-
-th { font-weight: bold; }
-th, td {
-  padding: var(--space-1-2);
+//colgroup { }
+//col { }
+//thead { }
+tbody tr:first-child td:first-child { border-top-left-radius: var(--border-radius); }
+tbody tr:first-child td:last-child { border-top-right-radius: var(--border-radius); }
+tbody tr:last-child td:first-child { border-bottom-left-radius: var(--border-radius); }
+tbody tr:last-child td:last-child { border-bottom-right-radius: var(--border-radius); }
+tfoot td {
+  background: none !important;
+  border: 0;
+  text-align: center;
+}
+tr td:not(:last-child) { border-right: 0; }
+tr:not(:last-child) td { border-bottom: 0; }
+th, td { padding: var(--space-2); }
+th {
+  font-weight: bold;
+  border: 0;
+}
+td {
   border: var(--border);
-  &.empty {
-    background: var(--col-border);
-    &:hover { background: var(--col-border); }
-  }
+  &:empty { background: var(--col-border); }
 }
-
-
 
 //////////
 // TEXT //
 //////////
 a {
   color: var(--col-theme);
-  font-weight: bold;
-  text-decoration: none;
   outline: 0;
   &:focus-visible {
     background-color: var(--col-marked);
@@ -327,7 +347,7 @@ code {
   background: var(--col-black);
   color: var(--col-white);
   display: inline-block;
-  padding: 1px var(--space-1-4);
+  padding: 1px var(--space-4) 0 var(--space-5);
   white-space: pre;
   tab-size: 4;
 }
@@ -347,14 +367,14 @@ dialog {
   background: var(--col-theme);
   display: block;
   position: static;
-  padding: var(--space-1-1);
+  padding: var(--space-1);
   border: var(--border);
   margin: auto;
 }
 
 dl {
   > dt { font-weight: bold; }
-  > dd { margin: 0 0 var(--space-1-1) var(--space-1-2); }
+  > dd { margin: 0 0 var(--space-1) var(--space-2); }
 }
 
 em, i { font-style: italic; }
@@ -378,7 +398,7 @@ kbd {
   background: var(--col-black);
   color: var(--col-white);
   display: inline;
-  padding: 1px var(--space-1-4);
+  padding: 1px var(--space-4);
   border-radius: 1px;
   box-shadow: 0 2px 0 0 var(--col-theme);
 }
@@ -414,7 +434,7 @@ progress {
 
 ol, ul {
   padding: 0;
-  margin-left: var(--space-1-2);
+  margin-left: var(--space-2);
   &.less {
     margin-left: 0;
     li { list-style-type: none; }

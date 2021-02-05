@@ -10,7 +10,7 @@
   --col-theme: hsl(var(--col-theme-hue), 50%, 45%);
   --col-theme-light: hsl(var(--col-theme-hue), 50%, 75%);
 
-  --col-alert: #BB2B2B;
+  --col-alert: #FF6666;
   --col-border: #CCC;
   --col-border-hover: var(--col-theme);
   --col-deleted: rgba(255, 0, 0, 0.6);
@@ -21,6 +21,8 @@
   --col-marked: var(--col-theme);
 
   --font: "Roboto Slab", sans-serif;
+  --font-family-heading: "Roboto Slab", sans-serif;
+  --font-family-content: "Verdana";
   --font-size: 14px;
   --font-size-script: 70%;
   --font-size-code: 90%;
@@ -29,17 +31,12 @@
   --space-2: 0.5rem;
   --space-4: 0.25rem;
   --space-5: 0.2rem;
-  /*LEGACY*/
-  --space-1-1: 1rem;
-  --space-1-2: 0.5rem;
-  --space-1-4: 0.25rem;
-  --space-1-5: 0.2rem;
 
   --border: var(--border-width) solid var(--col-border);
-  --border-radius: var(--space-1-5);
+  --border-radius: var(--space-2);
   --border-width: 1px;
-  --margin: var(--space-1-1) auto;
-  --box-shadow: 0 0 var(--space-1-4) -1px gray;
+  --margin: var(--space-1) auto;
+  --box-shadow: 0 0 var(--space-4) -1px gray;
 
   --character-limit: 65ch;
   --content-limit: 45rem;
@@ -70,3 +67,5 @@
 .dark ::-webkit-calendar-picker-indicator { filter: invert(0); }
 
 .hide { display: none !important; }
+.centre { text-align: center; }
+.right { text-align: right; }
