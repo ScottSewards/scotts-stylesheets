@@ -3,7 +3,7 @@
   <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Super Simple</title>
+    <title>Scott's Cascading Stylesheets</title>
     <link rel='stylesheet' href='css/variables.css'>
     <link rel='stylesheet' href='css/layout.css'>
     <link rel='stylesheet' href='css/content.min.css'>
@@ -58,7 +58,7 @@
             <code>figcaption</code>
             <code>img</code>
           </p>
-          <img src='images/placeholder.png' alt='' class='bleed'>
+          <!--img src='images/placeholder.png' alt=''-->
         </article>
 
         <article id='forms'>
@@ -133,9 +133,29 @@
           </form>
         </article>
 
+        <article id='lists'>
+          <h3>Lists</h3>
+          <p>Lettered list:</p>
+          <ol type='A'>
+            <li>List item</li>
+            <li>Another item</li>
+          </ol>
+          <p>Ordered list:</p>
+          <ol>
+            <li>List item</li>
+            <li><data value='1010'>This is a data element in a list item.</data></li>
+          </ol>
+          <p>Unordered list:</p>
+          <ul>
+            <li>List item</li>
+            <li>Another item</li>
+          </ul>
+        </article>
+
         <article id='tables'>
           <h3>Tables</h3>
           <p>
+            <code>.table-wrapper</code>
             <code>table</code>
             <code>caption</code>
             <code>thead</code>
@@ -144,33 +164,36 @@
             <code>tr</code>
             <code>th</code>
             <code>td</code>
+            <code>:empty-cell</code>
           </p>
-          <table>
-            <caption>Table caption</caption>
-            <thead>
-              <tr>
-                <th>Table Head</th>
-                <th>Empty Cell</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Table Data</td>
-                <td></td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td>Table Foot</td>
-              </tr>
-            </tfoot>
-          </table>
+          <div class='table-wrapper'>
+            <table>
+              <caption>Table caption</caption>
+              <thead>
+                <tr>
+                  <th>Table Head</th>
+                  <th>Empty Cell</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Table Data</td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td>Table Foot</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
         </article>
       </section>
 
       <section id='components'>
         <h2>Components</h2>
-        <p>Web Components for this framework use the <code>ss-</code> prefix.</p>
+        <p>My Web Components for use a <code>scs-</code> prefix.</p>
         <article id='ss-accordion' class='hide'>
           <h3>Accordion</h3>
           <p>
@@ -190,21 +213,26 @@
           <p>
             <code>.cards</code>
             <code>.card</code>
+            <code>.*-fill</code>
           </p>
           <div class='cards'>
             <div class='card'>
-              <h5>Title</h5>
+              <p>Title</p>
+              <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class='card-fill'>
+              <p>Title</p>
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
             </div>
             <div class='card'>
-              <h5>Title</h5>
-            </div>
-            <div class='card'>
-              <h5>Title</h5>
+              <p>Title</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
             </div>
           </div>
           <p>If you exclude the <code>.cards</code> container, you will get a single card.</p>
           <div class='card'>
-            <h5>Title</h5>
+            <p>Title</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
         </article>
         <hr>
@@ -213,9 +241,15 @@
           <p>
             <code>.note</code>
             <code>.note-alert</code>
+            <code>.note-theme</code>
+            <code>.*-fill</code>
           </p>
-          <p class='note'>This is a note.</p>
-          <p class='note-alert'>This is an alert.</p>
+          <p class='note'>This is a default note.</p>
+          <p class='note-fill'>This is a default note with fill.</p>
+          <p class='note-alert'>This is an alert note.</p>
+          <p class='note-alert-fill'>This is an alert note with fill.</p>
+          <p class='note-theme'>This is an theme note.</p>
+          <p class='note-theme-fill'>This is an theme note with fill.</p>
         </article>
         <hr class='hide'>
         <article id='ss-slideshow' class='hide'>

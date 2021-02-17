@@ -7,12 +7,15 @@
   --col-white: var(--col-const-white);
   --col-black: var(--col-const-black);
 
-  --col-theme-hue: 170;
-  --col-theme: hsl(var(--col-theme-hue), 50%, 45%);
+  --col-theme-hue: 330;
+  --col-theme: hsl(var(--col-theme-hue), 90%, 70%);
   --col-theme-light: hsl(var(--col-theme-hue), 50%, 75%);
 
+  --col-back-code: #EEE;
+  --col-fill: #DDD;
+
   --col-alert: #FF6666;
-  --col-border: #CCC;
+  --col-border: #DDD;
   --col-border-hover: var(--col-theme);
   --col-deleted: rgba(255, 0, 0, 0.6);
   --col-disabled: #CCC;
@@ -21,26 +24,32 @@
   --col-inserted: rgba(0, 255, 0, 0.6);
   --col-marked: var(--col-theme);
 
-  --font: sans-serif;
-  --font-family-header: "Poppins", sans-serif;
-  --font-family-content: serif;
-  --font-size: 14px;
+  --col-font-code: #414A47;
+
+  --font-family-heading: "Poppins", sans-serif;
+  --font-family-content: sans-serif;
+  --font-family-code: "Courier New";
+  --font-size: 15px;
   --font-size-script: 70%;
-  --font-size-code: 90%;
+  --font-size-code: 100%;
 
   --space-1: 1rem;
   --space-2: 0.5rem;
+  --space-3: 0.333rem;
   --space-4: 0.25rem;
   --space-5: 0.2rem;
 
   --border: var(--border-width) solid var(--col-border);
   --border-radius: var(--space-2);
   --border-width: 1px;
-  --margin: var(--space-1) auto;
   --box-shadow: 0 0 var(--space-4) -1px gray;
+  --margin: var(--space-1) auto;
 
-  --character-limit: 65ch;
-  --content-limit: 45rem;
+  --bp-mobile: 100px;
+  --bp-tablet: 200px;
+  --bp-desktop: 300px;
+
+  --content-limit: 80ch;
   --transition-time: 0.125s;
 }
 
@@ -60,6 +69,9 @@
 ::-webkit-scrollbar-thumb { background: var(--col-const-white); }
 ::-webkit-scrollbar-thumb:hover { background: var(--col-theme); }
 
+/*         */
+/*DARK MODE*/
+/*         */
 .dark {
   --col-white: var(--col-const-black);
   --col-black: var(--col-const-white);
@@ -67,6 +79,22 @@
 }
 .dark ::-webkit-calendar-picker-indicator { filter: invert(0); }
 
+/*           */
+/*PREFERENCES*/
+/*           */
+@media(prefers-reduced-motion: reduce) {
+  :root { --transition-time: 0s; }
+}
+
+/*     */
+/*OTHER*/
+/*     */
 .hide { display: none !important; }
+.no-padding { padding: 0 !important;
+}
+.no-margin {
+  display: inline;
+  margin: 0 !important;
+}
 .centre { text-align: center; }
 .right { text-align: right; }

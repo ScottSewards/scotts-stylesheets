@@ -1,15 +1,8 @@
-:root {
-  --bp-mobile: 100px;
-  --bp-tablet: 200px;
-  --bp-desktop: 300px;
-}
-
 /*
 .note::after {
   //content: "✗";
   float: right;
 }
-
 footer {
   padding-bottom: 5rem;
 }
@@ -25,3 +18,60 @@ footer:after {
   clip-path: path('100% 0%, 0% 0% , 0% 65%, 1% 64.95%, 2% 64.8%, 3% 64.6%, 4% 64.3%, 5% 63.9%, 6% 63.45%');
 }
 */
+
+side-nav {
+
+}
+
+#banner {
+  user-select: none;
+  background: #EEE;
+  position: fixed;
+  right: 0;
+  bottom: var(--space-1);
+  display: none;
+  padding: var(--space-2);
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+}
+
+td input {
+  background: none;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  width: 5rem;
+  min-width: 1px;
+}
+
+.sterling::before { content: "£"; }
+.percent::before { content: "%"; }
+
+.inline {
+  width: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/*PREFERENCES*/
+@supports(prefers-reduced-data: reduce) {
+  @media(prefers-reduced-data: reduce) {
+
+  }
+}
+
+/*PROPERTIES*/
+@supports(aspect-ratio: 1/1) {
+
+}
+@supports not(aspect-ratio: 1/1) {
+
+}
+
+/*SELECTORS*/
+@supports selector(:is(a)) {
+
+}
