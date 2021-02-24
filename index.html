@@ -8,6 +8,7 @@
     <link rel='stylesheet' href='css/layout.css'>
     <link rel='stylesheet' href='css/content.min.css'>
     <link rel='stylesheet' href='css/components.min.css'>
+    <link rel='stylesheet' href='css/test.css'>
     <script type='text/javascript' src='js/super-simple.js'></script>
     <script type='text/javascript' src='js/ss-components.js'></script>
   </head>
@@ -16,7 +17,19 @@
       <div>
         <a href='#'>Link</a>
         <div class='dropdown'>
-          <a href='#'>Link w/ Dropdown</a>
+          <a href='#'>Dropdown</a>
+          <ul>
+            <li><a>dfsds</a></li>
+          </ul>
+        </div>
+        <a href='#'>Link</a>
+      </div>
+    </nav>
+    <nav>
+      <div>
+        <a href='#'>Link</a>
+        <div class='dropdown'>
+          <a href='#'>Dropdown</a>
           <ul>
             <li><a>dfsds</a></li>
           </ul>
@@ -41,7 +54,7 @@
             <div class='inline'>
               <label for='colour-scheme-picker'>Colour</label>
               <input id='colour-scheme-picker' class='colour-picker' type='range' min='0' max='359'>
-              <output id='colour-scheme-hue'></output>
+              <!--output id='colour-scheme-hue'></output-->
             </div>
           </form>
           <script type='text/javascript' src='js/theme-colour-picker.js'></script>

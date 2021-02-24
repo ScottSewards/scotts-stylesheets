@@ -19,43 +19,6 @@ footer:after {
 }
 */
 
-side-nav {
-
-}
-
-#banner {
-  user-select: none;
-  background: #EEE;
-  position: fixed;
-  right: 0;
-  bottom: var(--space-1);
-  display: none;
-  padding: var(--space-2);
-  writing-mode: vertical-lr;
-  text-orientation: mixed;
-}
-
-td input {
-  background: none;
-  padding: 0;
-  border: 0;
-  margin: 0;
-  width: 5rem;
-  min-width: 1px;
-}
-
-.sterling::before { content: "£"; }
-.percent::before { content: "%"; }
-
-.inline {
-  width: 100%;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
-
 /*PREFERENCES*/
 @supports(prefers-reduced-data: reduce) {
   @media(prefers-reduced-data: reduce) {

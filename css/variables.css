@@ -11,23 +11,24 @@
   --col-theme: hsl(var(--col-theme-hue), 90%, 70%);
   --col-theme-light: hsl(var(--col-theme-hue), 50%, 75%);
 
-  --col-back-code: #EEE;
-  --col-fill: #DDD;
-
   --col-alert: #FF6666;
+  --col-bg-code: #EEE;
+  --col-bg-footer: #EEE;
+  --col-bg-nav: #FFF;
   --col-border: #DDD;
   --col-border-hover: var(--col-theme);
   --col-deleted: rgba(255, 0, 0, 0.6);
   --col-disabled: #CCC;
+  --col-fill: #DDD;
   --col-focus: #DDD;
+  --col-font-code: #414A47;
   --col-hover: #CCC;
   --col-inserted: rgba(0, 255, 0, 0.6);
   --col-marked: var(--col-theme);
 
-  --col-font-code: #414A47;
-
-  --font-family-heading: "Poppins", sans-serif;
-  --font-family-content: sans-serif;
+  --font-family-header: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
+  --font-family-header-weight: 500;
+  --font-family-content: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
   --font-family-code: "Courier New";
   --font-size: 15px;
   --font-size-script: 70%;
@@ -40,7 +41,7 @@
   --space-5: 0.2rem;
 
   --border: var(--border-width) solid var(--col-border);
-  --border-radius: var(--space-2);
+  --border-radius: var(--space-5);
   --border-width: 1px;
   --box-shadow: 0 0 var(--space-4) -1px gray;
   --margin: var(--space-1) auto;
@@ -64,14 +65,18 @@
 }
 
 ::-webkit-calendar-picker-indicator { filter: invert(1); }
+::-webkit-outer-spin-button, ::-webkit-inner-spin-button { -webkit-appearance: none; }
 ::-webkit-scrollbar { width: var(--space-1-1); }
 ::-webkit-scrollbar-track { background: var(--col-const-black); }
-::-webkit-scrollbar-thumb { background: var(--col-const-white); }
+::-webkit-scrollbar-thumb {
+  background: var(--col-const-white);
+  border-left: 1px solid var(--col-border);
+}
 ::-webkit-scrollbar-thumb:hover { background: var(--col-theme); }
 
-/*         */
+/*          */
 /*DARK MODE*/
-/*         */
+/*        */
 .dark {
   --col-white: var(--col-const-black);
   --col-black: var(--col-const-white);
@@ -79,22 +84,27 @@
 }
 .dark ::-webkit-calendar-picker-indicator { filter: invert(0); }
 
-/*           */
+/*            */
 /*PREFERENCES*/
-/*           */
+/*          */
 @media(prefers-reduced-motion: reduce) {
-  :root { --transition-time: 0s; }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
-/*     */
+/*      */
 /*OTHER*/
-/*     */
+/*    */
 .hide { display: none !important; }
-.no-padding { padding: 0 !important;
-}
+.no-padding { padding: 0 !important; }
 .no-margin {
   display: inline;
   margin: 0 !important;
 }
+
+.left { text-align: left; }
 .centre { text-align: center; }
 .right { text-align: right; }
+.just { text-align: justify; }

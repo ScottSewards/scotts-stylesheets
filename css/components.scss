@@ -1,6 +1,6 @@
-///////////////
+////////////////
 // ACCORDION //
-///////////////
+//////////////
 scs-accordion {
   display: block;
   padding: var(--space-1);
@@ -30,9 +30,9 @@ scs-accordion {
 }
 scs-bellow { display: block; }
 
-/////////////////
+//////////////////
 // BREADCRUMBS //
-/////////////////
+////////////////
 .breadcrumbs {
   display: flex;
   flex-direction: row;
@@ -57,9 +57,9 @@ scs-bellow { display: block; }
 }
 .crumb { border: 1px dotted red; }
 
-///////////
+////////////
 // CARDS //
-///////////
+//////////
 .cards {
   display: grid !important;
   grid-template-columns: 1fr 1fr 1fr;
@@ -85,10 +85,11 @@ scs-bellow { display: block; }
   }
 }
 .cards > [class^="card"] { margin: 0; }
+.card-fill { background: var(--col-fill); }
 
-///////////
+////////////
 // NOTES //
-///////////
+//////////
 [class^="note"] {
   color: var(--col-const-black);
   padding: var(--space-2);
@@ -98,27 +99,25 @@ scs-bellow { display: block; }
   width: 100%;
   text-align: center;
 }
-.note-alert, .note-error {
-  //background-color: var(--col-alert);
-  border-color: var(--col-alert);
-}
-.note-theme {
-  //background-color: var(--col-theme);
-  border-color: var(--col-theme);
-}
+[class*="-fill"] { border: 0 !important; }
+.note-fill { background: var(--col-fill); }
+.note-alert, .note-error { border-color: var(--col-alert); }
+.note-alert-fill, .note-error-fill { background: var(--col-alert); }
+.note-theme { border-color: var(--col-theme); }
+.note-theme-fill { background: var(--col-theme); }
 
-///////////////
+////////////////
 // SLIDESHOW //
-///////////////
+//////////////
 scs-slideshow {
   display: block;
   margin: var(--space-1) 0;
 }
 scs-slide { }
 
-//////////
+///////////
 // TABS //
-//////////
+/////////
 .tabs {
   display: block;
   padding: var(--space-1);
@@ -157,7 +156,7 @@ scs-tab { }
 
 
 
-[class*="-fill"] {
-  background: var(--col-fill) !important;
-  border: 0 !important;
+
+side-nav {
+
 }

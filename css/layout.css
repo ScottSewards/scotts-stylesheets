@@ -18,15 +18,17 @@ body {
 }
 
 nav {
-  user-select: none;
   grid-area: navigation;
+  background: var(--col-bg-nav);
   color: var(--col-black);
   z-index: 100;
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
+  border-bottom: var(--border);
   width: 100%;
   font-family: var(--font-family-heading);
-  font-weight: bold;
 }
 nav div {
   position: relative;
@@ -40,29 +42,28 @@ nav a {
   color: inherit;
   display: block;
   padding: var(--space-1);
-  font-weight: bold;
-  line-height: 1;
+  line-height: 1.1;
   text-decoration: none;
   white-space: nowrap;
 }
 nav a:hover { text-decoration: underline; }
 nav a:hover + ul, nav a + ul:hover { display: block; }
-nav ul { padding-left: 0; }
+nav ul {
+  padding-left: 0;
+  border: var(--border) ;
+}
 nav a + ul {
   background: var(--col-white);
   position: absolute;
-  top: calc(3rem - 1px);
-  left: -2rem;
-  box-shadow: 0 0 3px 1px var(--col-border);
+  top: 3rem;
+  left: -1rem;
   display: none;
   margin: 0;
-  width: calc(100% + 4rem);
+  width: calc(100% + 2rem);
   text-align: center;
 }
 nav a + ul li { list-style-type: none; }
 nav img {
-  padding: 1px;
-  margin: 0;
   height: 3rem;
   width: auto;
 }
@@ -71,6 +72,7 @@ main {
   grid-area: main;
   padding: 0 var(--space-1);
   margin: auto;
+  min-height: calc(100vh - 3rem);
   width: 100%;
   max-width: var(--content-limit);
 }
@@ -89,6 +91,7 @@ main > * {
 */
 
 footer {
+  background: var(--col-bg-footer);
   position: relative;
   display: block;
   grid-area: footer;
