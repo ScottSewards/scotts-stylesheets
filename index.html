@@ -1,69 +1,127 @@
 <!DOCTYPE html>
-<html lang='en' dir='ltr' class=''>
+<html lang="en" dir="ltr" class="">
   <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Scott's Cascading Stylesheets</title>
-    <link rel='stylesheet' href='css/variables.css'>
-    <link rel='stylesheet' href='css/layout.css'>
-    <link rel='stylesheet' href='css/content.min.css'>
-    <link rel='stylesheet' href='css/components.min.css'>
-    <link rel='stylesheet' href='css/test.css'>
-    <script type='text/javascript' src='js/super-simple.js'></script>
-    <script type='text/javascript' src='js/ss-components.js'></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scott's Stylesheets</title>
+    <link rel="stylesheet" href="css/1.0.0/variables.css">
+    <link rel="stylesheet" href="css/1.0.0/layout.min.css">
+    <link rel="stylesheet" href="css/1.0.0/content.min.css">
+    <link rel="stylesheet" href="css/1.0.0/components.min.css">
+    <link rel="stylesheet" href="css/1.0.0/classes.css">
+    <script type="text/javascript" src="js/ss-functions.js"></script>
+    <script type="text/javascript" src="js/ss-components.js"></script>
+    <script type="text/javascript">
+    window.onload = function() {
+      document.querySelectorAll("img").forEach((img, index) => img.setAttribute("style", `max-width: ${img.naturalWidth}px`));
+      //var themeColourHue = getCookie('themeColourHue');
+      //if(themeColourHue !== null) document.documentElement.style.setProperty('--col-theme-hue', themeColourHue);
+      /*
+      $('#theme-colour-hue').value = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
+      $('#theme-colour-output').value = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
+      $('#theme-colour-hue').addEventListener('change', function() {
+        document.documentElement.style.setProperty("--col-theme-hue", this.value);
+        $('#theme-colour-output').value = this.value.toUpperCase();
+        setCookie('themeColourHue', this.value);
+      });
+      $('#theme-colour-hue').addEventListener('input', function() {
+        document.documentElement.style.setProperty("--col-theme-hue", this.value);
+        $('#theme-colour-output').value = this.value.toUpperCase();
+      });
+
+      var hue = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
+      setInterval(function() {
+        hue = parseInt(hue) + 1;
+        document.documentElement.style.setProperty('--col-theme-hue', hue + '');
+        setCookie('themeColourHue', hue, false);
+      }, 100);
+      */
+    }
+    </script>
   </head>
   <body>
-    <nav>
-      <div>
-        <a href='#'>Link</a>
-        <div class='dropdown'>
-          <a href='#'>Dropdown</a>
+    <side-nav>
+      <a href="#about">About</a>
+      <a href="#variables">Variables</a>
+      <a href="#layout">Layout</a>
+      <a href="#content">Content</a>
+      <a href="#components">Components</a>
+      <a href="#classes">Classes</a>
+    </side-nav>
+    <nav class="hide">
+      <div class="container">
+        <a href="#variables">Variables</a>
+        <a href="#layout">Layout</a>
+        <a href="#content">Content</a>
+        <a href="#components">Components</a>
+        <a href="#classes">Classes</a>
+        <div class="dropdown">
+          <a href="#">Dropdown</a>
           <ul>
             <li><a>dfsds</a></li>
           </ul>
         </div>
-        <a href='#'>Link</a>
-      </div>
-    </nav>
-    <nav>
-      <div>
-        <a href='#'>Link</a>
-        <div class='dropdown'>
-          <a href='#'>Dropdown</a>
-          <ul>
-            <li><a>dfsds</a></li>
-          </ul>
-        </div>
-        <a href='#'>Link</a>
       </div>
     </nav>
     <main>
-      <h1>Super Simple</h1>
-      <section>
+      <h1>Scott's Stylesheets</h1>
+      <section id="about">
         <h2>About</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
       </section>
-
-      <section id='variables'>
+      <section id="layout">
+        <h2>Layout</h2>
+      </section>
+      <section id="variables">
         <h2>Variables</h2>
-        <article id='colour-scheme'>
+        <article id="colour-scheme">
           <h3>Colour Scheme</h3>
-          <p>I have used a black and white colour scheme with a theme colour determined by a hue variable.</p>
+          <p>I have used a simple black and white colour scheme with a user-defined theme colour set by a hue parameter stored in <code>--col-theme-hue</code>.</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Colour</th>
+                <th>Variable</th>
+                <th>Class</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Theme (Lighter)</td>
+                <td><var>--col-theme-light</var></td>
+                <td><code>.back-theme-light</code></td>
+                <td class="back-theme-light text-white">hsl(330, 85%, 75%)</td>
+              </tr>
+              <tr>
+                <td>Theme</td>
+                <td><var>--col-theme</var></td>
+                <td><code>.back-theme</code></td>
+                <td class="back-theme text-white">hsl(330, 85%, 70%)</td>
+              </tr>
+              <tr>
+                <td>Theme (Darker)</td>
+                <td><var>--col-theme-dark</var></td>
+                <td><code>.back-theme-dark</code></td>
+                <td class="back-theme-dark text-white">hsl(330, 85%, 70%)</td>
+              </tr>
+            </tbody>
+          </table>
+
           <h4>Theme Colour</h4>
-          <form class='less'>
-            <div class='inline'>
-              <label for='colour-scheme-picker'>Colour</label>
-              <input id='colour-scheme-picker' class='colour-picker' type='range' min='0' max='359'>
-              <!--output id='colour-scheme-hue'></output-->
+          <form class="less">
+            <div class="inline">
+              <label for="colour-scheme-picker">Colour</label>
+              <input id="colour-scheme-picker" class="colour-picker" type="range" min="0" max="359">
+              <!--output id="colour-scheme-hue"></output-->
             </div>
           </form>
-          <script type='text/javascript' src='js/theme-colour-picker.js'></script>
+          <script type="text/javascript" src="js/theme-colour-picker.js"></script>
         </article>
       </section>
-
-      <section id='content'>
+      <section id="content">
         <h2>Content</h2>
-        <article id='images'>
+        <article id="images">
           <h3>Images</h3>
           <p>
             <code>picture</code>
@@ -71,10 +129,10 @@
             <code>figcaption</code>
             <code>img</code>
           </p>
-          <!--img src='images/placeholder.png' alt=''-->
+          <img src="images/splhcb.webp" alt="Placeholder">
         </article>
 
-        <article id='forms'>
+        <article id="forms">
           <h3>Forms</h3>
           <p>
             <code>form</code>
@@ -93,70 +151,70 @@
             <code>output</code>
           </p>
           <form>
-            <div class='inline-nowrap'>
-              <input id='checkbox' type='checkbox' name='checkbox' value='on'/>
-              <label for='checkbox'>Checkbox</label>
+            <div class="inline-nowrap">
+              <input id="checkbox" type="checkbox" name="checkbox" value="on"/>
+              <label for="checkbox">Checkbox</label>
             </div>
-            <div class='inline-nowrap'>
-              <input id='radio-a' type='radio' name='radio' value='a'>
-              <label for='radio-a'>Radio A</label>
+            <div class="inline-nowrap">
+              <input id="radio-a" type="radio" name="radio" value="a">
+              <label for="radio-a">Radio A</label>
             </div>
-            <div class='inline-nowrap'>
-              <input id='radio-b' type='radio' name='radio' value='b'>
-              <label for='radio-b'>Radio B</label>
+            <div class="inline-nowrap">
+              <input id="radio-b" type="radio" name="radio" value="b">
+              <label for="radio-b">Radio B</label>
             </div>
-            <div class='inline'>
-              <label for='list'>List</label>
-              <input id='list' name='list' list='list-items' placeholder='List Item A'/>
+            <div class="inline">
+              <label for="list">List</label>
+              <input id="list" name="list" list="list-items" placeholder="List Item A"/>
             </div>
-            <datalist id='list-items'>
-              <option value='List Item A'/>
-              <option value='List Item B'/>
-              <option value='List Item C'/>
+            <datalist id="list-items">
+              <option value="List Item A"/>
+              <option value="List Item B"/>
+              <option value="List Item C"/>
             </datalist>
-            <div class='inline'>
-              <label for='password'>Password</label>
-              <input id='password' type='password' name='password' value='password'>
-              <input type='button' name='show-password' value='Show'>
+            <div class="inline">
+              <label for="password">Password</label>
+              <input id="password" type="password" name="password" value="password">
+              <input type="button" name="show-password" value="Show">
             </div>
-            <div class='inline'>
-              <label for='select'>Select</label>
-              <select id='select' name='select'>
-                <optgroup label='A'>
-                  <option value='1'>Option A1</option>
-                  <option value='1'>Option A2</option>
+            <div class="inline">
+              <label for="select">Select</label>
+              <select id="select" name="select">
+                <optgroup label="A">
+                  <option value="1">Option A1</option>
+                  <option value="1">Option A2</option>
                 </optgroup>
-                <optgroup label='B'>
-                  <option value='1'>Option B1</option>
+                <optgroup label="B">
+                  <option value="1">Option B1</option>
                 </optgroup>
               </select>
-              <input type='button' name='show-password' value='Show'>
+              <input type="button" name="show-password" value="Show">
             </div>
-            <div class='inline'>
-              <label for='text'>Text</label>
-              <input id='text' type='text' name='text'/>
+            <div class="inline">
+              <label for="text">Text</label>
+              <input id="text" type="text" name="text"/>
             </div>
-            <div class='inline'>
-              <label for='textarea'>Textarea</label>
-              <textarea id='textarea' name='textarea'></textarea>
+            <div class="inline">
+              <label for="textarea">Textarea</label>
+              <textarea id="textarea" name="textarea"></textarea>
             </div>
-            <div class='inline'>
+            <div class="inline">
               <button type="button" name="button">qwerty</button>
             </div>
           </form>
         </article>
 
-        <article id='lists'>
+        <article id="lists">
           <h3>Lists</h3>
           <p>Lettered list:</p>
-          <ol type='A'>
+          <ol type="A">
             <li>List item</li>
             <li>Another item</li>
           </ol>
           <p>Ordered list:</p>
           <ol>
             <li>List item</li>
-            <li><data value='1010'>This is a data element in a list item.</data></li>
+            <li><data value="1010">This is a data element in a list item.</data></li>
           </ol>
           <p>Unordered list:</p>
           <ul>
@@ -165,7 +223,7 @@
           </ul>
         </article>
 
-        <article id='tables'>
+        <article id="tables">
           <h3>Tables</h3>
           <p>
             <code>.table-wrapper</code>
@@ -179,7 +237,7 @@
             <code>td</code>
             <code>:empty-cell</code>
           </p>
-          <div class='table-wrapper'>
+          <div class="table-wrapper">
             <table>
               <caption>Table caption</caption>
               <thead>
@@ -203,90 +261,35 @@
           </div>
         </article>
       </section>
-
-      <section id='components'>
+      <section id="components">
         <h2>Components</h2>
-        <p>My Web Components for use a <code>scs-</code> prefix.</p>
-        <article id='ss-accordion' class='hide'>
-          <h3>Accordion</h3>
-          <p>
-            <code>ss-accordion</code>
-            <code>ss-bellow</code>
-          </p>
-
-          <ss-accordion>
-            <ss-bellow>
-              This is a bellow.
-            </ss-bellow>
-          </ss-accordion>
-        </article>
-        <hr>
-        <article id='ss-notes'>
-          <h3>Cards</h3>
-          <p>
-            <code>.cards</code>
-            <code>.card</code>
-            <code>.*-fill</code>
-          </p>
-          <div class='cards'>
-            <div class='card'>
-              <p>Title</p>
-              <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <div class='card-fill'>
-              <p>Title</p>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-            </div>
-            <div class='card'>
-              <p>Title</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-            </div>
-          </div>
-          <p>If you exclude the <code>.cards</code> container, you will get a single card.</p>
-          <div class='card'>
-            <p>Title</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-        </article>
-        <hr>
-        <article id='ss-notes'>
-          <h3>Notes</h3>
-          <p>
-            <code>.note</code>
-            <code>.note-alert</code>
-            <code>.note-theme</code>
-            <code>.*-fill</code>
-          </p>
-          <p class='note'>This is a default note.</p>
-          <p class='note-fill'>This is a default note with fill.</p>
-          <p class='note-alert'>This is an alert note.</p>
-          <p class='note-alert-fill'>This is an alert note with fill.</p>
-          <p class='note-theme'>This is an theme note.</p>
-          <p class='note-theme-fill'>This is an theme note with fill.</p>
-        </article>
-        <hr class='hide'>
-        <article id='ss-slideshow' class='hide'>
+        <p>My web components for use the <code>ss-</code> prefix except for <code>side-nav</code>.</p>
+        <article id="ss-slideshow">
           <h3>Slideshow</h3>
           <p>
             <code>ss-slideshow</code>
             <code>ss-slide</code>
           </p>
-          <ss-slideshow timer='1000' autoslide='false'>
-            <img  src='images/placeholder.png' alt='Alternate Test'>
+          <ss-slideshow timer="1000" autoslide="false">
+            <img src="images/placeholder.png" alt="Alternate Test">
           </ss-slideshow>
         </article>
-        <hr class='hide'>
-        <article id='ss-tabs' class='hide'>
-          <h3>Tabs</h3>
+      </section>
+      <section id="classes">
+        <h2>Classes</h2>
+        <article id="box-class">
+          <h3>Box</h3>
           <p>
-            <code>ss-tabs</code>
-            <code>ss-tab</code>
+            <code>.box</code>
           </p>
-          <ss-tabs>
-            <ss-tab>
-              This is a tab.
-            </ss-tab>
-          </ss-tabs>
+          <div class="row">
+            <div class="box">
+              <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="box back-theme text-white">
+              <p class="text-center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+            </div>
+          </div>
         </article>
       </section>
     </main>
