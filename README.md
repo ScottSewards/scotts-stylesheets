@@ -1,4 +1,4 @@
-# Scott's Cascading Stylesheets
+# Scott's Stylesheets
 A modern layout and content framework for modern browsers using the latest CSS features.
 
 <!--section id='about'>
