@@ -70,10 +70,11 @@
   color: var(--col-const-white);
 }
 
+
 ::-webkit-calendar-picker-indicator { filter: invert(1); }
 ::-webkit-outer-spin-button, ::-webkit-inner-spin-button { -webkit-appearance: none; }
 ::-webkit-scrollbar { width: var(--space-1); }
-::-webkit-scrollbar-track { background: var(--col-const-black); }
+::-webkit-scrollbar-track { background: var(--col-border); }
 ::-webkit-scrollbar-thumb { background: var(--col-const-white); }
 ::-webkit-scrollbar-thumb:hover { background: var(--col-theme); }
 

@@ -74,7 +74,6 @@ nav img {
 main {
   padding: 0 var(--space-1);
   margin: auto;
-  min-height: calc(100vh - 3rem);
   width: 100%;
   max-width: var(--content-limit);
 }
@@ -94,11 +93,16 @@ main > * {
 
 footer {
   background: var(--col-footer);
-  position: relative;
-  display: block;
+  padding: 1px var(--space-1);
+  margin: var(--margin);
+  margin-bottom: 0;
   width: 100%;
 }
-footer div {
+footer :has(#footer-wrapper) {
+  background: red;
+}
+#footer-wrapper {
+  padding: 0 var(--space-1);
   margin: auto;
   max-width: var(--content-limit);
 }

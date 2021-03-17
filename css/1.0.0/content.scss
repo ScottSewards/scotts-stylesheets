@@ -63,7 +63,6 @@ label, output {
   white-space: nowrap;
 }
 label { padding-bottom: 0; }
-
 button, input, select, textarea {
   background: var(--col-white);
   color: var(--col-black);
@@ -76,6 +75,7 @@ button, input, select, textarea {
   width: 100%;
   white-space: nowrap;
   outline: 0;
+  &:active { background: var(--col-theme); }
   &:disabled { background: var(--col-disabled); }
   &:not(:disabled):hover, &:not(:disabled):focus { border-color: var(--col-border-hover); }
   &.centre {
@@ -252,13 +252,7 @@ article, section {
 
 aside { display: block; }
 
-footer {
-  display: block;
-  padding: 0 var(--space-1);
-  border-top: var(--border);
-  margin: auto;
-  text-align: center;
-}
+footer { display: block; }
 
 header { }
 hgroup { }
@@ -279,7 +273,7 @@ h4, .h-4 { font-size: 106.25%; }
 h5, .h-5 { font-size: 102.5%; }
 h6, .h-6 { font-size: 100%; }
 
-nav { display: block; }
+nav, side-nav { display: block; }
 
 section { display: block; }
 
