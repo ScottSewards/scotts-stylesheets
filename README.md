@@ -1,6 +1,16 @@
 # Scott's Stylesheets
 A modern layout and content framework for modern browsers using the latest CSS features.
 
+## CSS
+
+### custom.css
+Create a custom.css or .scss file to override rules if not covered in variables.css.
+
+## JS
+
+### Web Components
+
+
 <!--section id='about'>
 <article>
 <p>The prefered colour scheme can be set to light, dark or automatic (system settings).</p>

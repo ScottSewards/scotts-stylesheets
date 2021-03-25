@@ -1,26 +1,22 @@
+/* jQuery INSPIRED SELECTORS */
 const $ = document.querySelector.bind(document);
 const $$ = (css, parent = document) => Array.from(parent.querySelectorAll(css));
 
+/* RUN CODE ON DOCUMENT READY */
 window.onload = function() {
-  $$("img").forEach((img, index) => img.setAttribute("style", `max-width: ${img.naturalWidth}px`));
-
+  /* ENABLE drop-list-button TO HIDE OR UNHIDE drop-list-* */
   $$(".drop-list-button").forEach((element) => {
     element.addEventListener("click", function() {
       this.classList.toggle("active");
       this.nextElementSibling.classList.toggle("hide");
     });
   });
+
+  /* APPLY img INTRINSIC WIDTH AS max-width */
+  $$("img").forEach((img, index) => img.setAttribute("style", `max-width: ${img.naturalWidth}px`));
 }
 
-function animteClasses(transitionTime = "0.1s") {
-  $$("[class*='animate-']").forEach((element, i) => {
-    if(element.classList.contains("animate-all")) element.style.setProperty("transition", `* ${transitionTime}`);
-    else {
-      element.style.setProperty("transition", `background 1s`);
-    }
-  });
-}
-
+/* COOKIE FUNCTIONS */
 var getCookie = (name) => {
   const cookie = document.cookie.split("; ").find(row => row.startsWith(`${name}=`));
   return cookie !== undefined ? cookie.split("=")[1] : null;
@@ -39,3 +35,14 @@ var printCookies = () => console.table(document.cookie);
 
 var unsetCookie = (name) => document.cookie = issetCookie(name) === true ? `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT` : null;
 //var unsetCookies = () => console.log("");
+
+
+/* CLASS FUNCTIONS */
+function transitionElements(transitionTime = "0.1s") {
+  $$("[class*='transition-']").forEach((element, i) => {
+    if(element.classList.contains("transition-all")) element.style.setProperty("transition", `* ${transitionTime}`);
+    else {
+      element.style.setProperty("transition", `background 1s`);
+    }
+  });
+}
