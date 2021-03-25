@@ -65,8 +65,8 @@ customElements.define("ss-slide", class extends Image {
   }
 }, { extends: "img" });
 
-customElements.whenDefined("ss-slideshow").then(() => console.log("ss-slideshow defined."));
-customElements.whenDefined("ss-slide").then(() => console.log("ss-slide defined."));
+//customElements.whenDefined("ss-slideshow").then(() => console.log("ss-slideshow defined."));
+//customElements.whenDefined("ss-slide").then(() => console.log("ss-slide defined."));
 
 /*
 window.onload = function() {

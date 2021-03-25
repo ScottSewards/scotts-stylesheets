@@ -1,21 +1,31 @@
+/*variables.css HANDLES VARIABLES, PREFERENCES AND SETTINGS*/
 :root {
   /* CONSTANTS */
   --col-const-white: #FFF;
   --col-const-black: #222;
-  --col-white: var(--col-const-white);
-  --col-black: var(--col-const-black);
 
   /* THEME */
-  --col-theme-hue: 355;
-  --col-theme: hsl(var(--col-theme-hue), 80%, 65%);
-  --col-theme-light: hsl(var(--col-theme-hue), 80%, 70%);
-  --col-theme-dark: hsl(var(--col-theme-hue), 80%, 60%);
+  --col-white: var(--col-const-white);
+  --col-black: var(--col-const-black);
+  --col-theme-hue: 336;
+  --col-theme: hsl(var(--col-theme-hue), 70%, 50%);
+  --col-theme-light: hsl(var(--col-theme-hue), 70%, 60%);
+  --col-theme-dark: hsl(var(--col-theme-hue), 70%, 40%);
+
+  /* FONT */
+  --font-family-header: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
+  --font-family-header-weight: 500;
+  --font-family-content: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
+  --font-family-code: "Courier New";
+  --font-size: 14px;
+  --font-size-script: 70%;
+  --font-size-code: 100%;
 
   /* MISC */
   --col-alert: #FF6666;
   --col-code: #EEE;
-  --col-footer: #EEE;
-  --col-nav: #EEE;
+  --col-footer: none;
+  --col-nav: #111;
   --col-border: #DDD;
   --col-border-hover: var(--col-theme);
   --col-deleted: rgba(255, 0, 0, 0.6);
@@ -28,15 +38,6 @@
   --col-hover: #CCC;
   --col-inserted: rgba(0, 255, 0, 0.6);
   --col-marked: var(--col-theme);
-
-  /* FONT */
-  --font-family-header: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
-  --font-family-header-weight: 500;
-  --font-family-content: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
-  --font-family-code: "Courier New";
-  --font-size: 15px;
-  --font-size-script: 70%;
-  --font-size-code: 100%;
 
   /* POSITIVE SPACING */
   --space-1: 1rem;
@@ -61,15 +62,16 @@
   --bp-tablet: 200px;
   --bp-desktop: 300px;
 
-  --content-limit: 85ch;
-  --transition-time: 0.1s;
+  --has-side-nav: 0; /* BOOLEAN / 1 = YES / 0 = NO*/
+  --side-nav-width: 10rem;
+  --content-limit: 82ch;
+  /*--transition-time: 0.1s;*/
 }
 
 ::selection {
   background: var(--col-marked);
   color: var(--col-const-white);
 }
-
 
 ::-webkit-calendar-picker-indicator { filter: invert(1); }
 ::-webkit-outer-spin-button, ::-webkit-inner-spin-button { -webkit-appearance: none; }
@@ -78,24 +80,27 @@
 ::-webkit-scrollbar-thumb { background: var(--col-const-white); }
 ::-webkit-scrollbar-thumb:hover { background: var(--col-theme); }
 
-/* DARK MODE */
-.dark {
-  --col-white: var(--col-const-black);
-  --col-black: var(--col-const-white);
-  --box-shadow: 0 0 0 1px white;
-}
-.dark ::-webkit-calendar-picker-indicator { filter: invert(1); }
-
 /* PREFERENCES */
-@media(prefers-color-scheme: dark) {
-
+@supports(prefers-color-scheme: dark) {
+  @media(prefers-color-scheme: dark) {
+    :root {
+      --col-white: var(--col-const-black);
+      --col-black: var(--col-const-white);
+    }
+  }
 }
+
+/*
 @media(prefers-reduced-data: reduce) {
 
 }
-@media(prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
+*/
+
+@supports(prefers-reduced-motion: reduce) {
+  @media(prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
   }
 }
