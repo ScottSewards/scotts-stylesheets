@@ -5,10 +5,10 @@ const $$ = (css, parent = document) => Array.from(parent.querySelectorAll(css));
 /* RUN CODE ON DOCUMENT READY */
 window.onload = function() {
   /* ENABLE drop-list-button TO HIDE OR UNHIDE drop-list-* */
-  $$(".drop-list-button").forEach((element) => {
+  $$(".drop-down-button").forEach((element) => {
     element.addEventListener("click", function() {
       this.classList.toggle("active");
-      this.nextElementSibling.classList.toggle("hide");
+      this.previousElementSibling.classList.toggle("hide");
     });
   });
 

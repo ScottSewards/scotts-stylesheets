@@ -26,6 +26,7 @@ source { }
 // FORMS //
 ///////////
 form {
+  color: var(--col-black);
   padding: 0;
   margin: var(--margin);
   width: 100%;
@@ -53,9 +54,7 @@ legend {
   margin-bottom: calc(var(--space-1) * -1);
   white-space: nowrap;
 }
-
 label, output {
-  color: var(--col-black);
   display: block;
   padding: var(--space-1);
   padding-left: 0;
@@ -254,8 +253,6 @@ h5, .h-5 { font-size: 102.5%; }
 h6, .h-6 { font-size: 100%; }
 
 //nav, side-nav {  }
-
-section { display: block; }
 
 ////////////
 // TABLES //

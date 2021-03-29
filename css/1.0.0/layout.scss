@@ -8,7 +8,7 @@ body {
   letter-spacing: 0.01rem;
   display: block;
   margin: 0;
-  margin-left: var(--side-nav-width);
+  margin-left: calc(var(--show-side-nav) * var(--side-nav-width));
 }
 
 nav, side-nav {
@@ -17,37 +17,44 @@ nav, side-nav {
   z-index: 100;
   position: relative;
   display: flex;
+  flex-direction: column;
+  width: 100%;
   font-family: var(--font-family-heading);
   p, a {
     color: inherit;
     display: block;
     padding: var(--space-1);
     margin: 0;
-    //line-height: 1.1;
     text-decoration: none;
     white-space: nowrap;
     &:hover { background: var(--col-theme-dark); }
   }
 }
-nav {
-  flex-direction: row;
-  width: 100%;
-}
 side-nav {
   position: fixed;
   top: 0;
   left: 0;
-  flex-direction: column;
   height: 100%;
-  width: var(--side-nav-width);
+  width: var(--side-nav-width) !important;
+}
+side-nav::after {
+  content: "👁"; /*U+1F441*/
+  position: absolute;
+  background: var(--col-nav);
+  bottom: var(--space-1);
+  left: var(--side-nav-width);
+  padding: var(--space-1);
+}
+@media(max-width: 40rem) {
+  :root { --show-side-nav: 0; }
+  side-nav { transform: translateX(-100%); }
+  side-nav:hover, side-nav:hover::after { transform: translateX(0); }
+}
+@media(min-width: 40rem) {
+  nav { flex-direction: row; }
+  side-nav::after { display: none; }
 }
 
-/*
-nav img {
-  height: 3rem;
-  width: auto;
-}
-*/
 
 main {
   padding: 0 var(--space-1);
