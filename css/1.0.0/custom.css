@@ -9,3 +9,5 @@ input[type="range"].colour-picker {
   left: 100%;
   padding: 1rem;
 }
+
+[id] { scroll-margin-top: var(--scroll-offset); }

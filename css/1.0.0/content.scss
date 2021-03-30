@@ -62,7 +62,7 @@ label, output {
   white-space: nowrap;
 }
 label { padding-bottom: 0; }
-button, input, select, textarea {
+button, input:not([type="hidden"]), select, textarea {
   background: var(--col-white);
   color: var(--col-black);
   display: block;
