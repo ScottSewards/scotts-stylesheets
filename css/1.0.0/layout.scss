@@ -1,4 +1,7 @@
-*, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  transition-duration: var(--at-duration);
+}
 body {
   background: var(--col-white);
   color: var(--col-black);
@@ -36,15 +39,19 @@ side-nav {
   left: 0;
   height: 100%;
   width: var(--side-nav-width) !important;
+  transition-property: transform;
 }
 side-nav::after {
   content: "👁"; /*U+1F441*/
+  opacity: 0.2;
   position: absolute;
   background: var(--col-nav);
   bottom: var(--space-1);
   left: var(--side-nav-width);
   padding: var(--space-1);
+  transition-property: opacity;
 }
+side-nav:hover::after { opacity: 1; }
 @media(max-width: 40rem) {
   :root { --show-side-nav: 0; }
   side-nav { transform: translateX(-100%); }
@@ -54,7 +61,6 @@ side-nav::after {
   nav { flex-direction: row; }
   side-nav::after { display: none; }
 }
-
 
 main {
   padding: 0 var(--space-1);
@@ -67,9 +73,7 @@ main {
   display: grid;
   grid-template-columns: 1fr min(var(--character-limit), 100%) 1fr;
 }
-main > * {
-  grid-column: 2;
-}
+main > * { grid-column: 2; }
 .bleed {
   width: 100%;
   grid-column: 1 / -1;
@@ -83,9 +87,6 @@ footer {
   margin: var(--margin);
   margin-bottom: 0;
   width: 100%;
-}
-footer :has(#footer-wrapper) {
-  background: red;
 }
 #footer-wrapper {
   padding: 0 var(--space-1);
