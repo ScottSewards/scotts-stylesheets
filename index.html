@@ -14,12 +14,15 @@
     <script type="text/javascript" src="js/ss-functions.js"></script>
     <script type="text/javascript" src="js/ss-components.js"></script>
     <script type="text/javascript">
-    /*
     window.onload = function() {
+      initScottsFunctions();
 
-      var themeColourHue = getCookie('themeColourHue');
-      if(themeColourHue !== null) document.documentElement.style.setProperty('--col-theme-hue', themeColourHue);
+      $("[name='toggle-dark-mode']").addEventListener("click", () => $("html").classList.toggle("dark"));
 
+      var themeColourHue = getCookie("themeColourHue");
+      if(themeColourHue !== null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
+
+      /*
       $('#theme-colour-picker').value = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
       $('#theme-colour-picker-output').value = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
       $('#theme-colour-picker').addEventListener('change', function() {
@@ -31,16 +34,20 @@
         document.documentElement.style.setProperty("--col-theme-hue", this.value);
         $('#theme-colour-picker-output').value = this.value.toUpperCase();
       });
+      */
 
       var hue = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
       setInterval(function() {
-        hue = parseInt(hue) + 1;
+        hue = hue >= 359 ? 0 : parseInt(hue) + 1;
+        $$("[id^='col-theme-output']").forEach((item, i) =>  item.innerHTML = hue);
         document.documentElement.style.setProperty('--col-theme-hue', hue + '');
         setCookie('themeColourHue', hue);
-      }, 125);
+      }, 250);
     }
-    */
     </script>
+    <style media="screen">
+    input[type="range"].colour-picker { background: -webkit-linear-gradient(left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%); }
+    </style>
   </head>
   <body>
     <side-nav>
@@ -51,7 +58,7 @@
       <a href="#components">Components</a>
       <a href="#classes">Classes</a>
       <div class="drop-down">
-        <div class="drop-down-inside hide">
+        <div class="drop-down-outside hide">
           <a href="#classes">Classes</a>
         </div>
         <a href="#" class="drop-down-button">Dropdown</a>
@@ -60,13 +67,16 @@
 
     <main>
       <h1>Scott's Stylesheets</h1>
+
       <section id="about">
         <h2>About</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
       </section>
+
       <section id="layout">
         <h2>Layout</h2>
       </section>
+
       <section id="variables">
         <h2>Variables</h2>
         <article id="colour-scheme">
@@ -110,14 +120,6 @@
           </table>
           <button class="block-right" type="button" name="toggle-dark-mode">Toggle Dark Mode</button>
 
-          <script type="text/javascript">
-          var root = $("html");
-          $("[name='toggle-dark-mode']").addEventListener("click", () => {
-            root.classList.toggle("dark");
-          });
-
-          </script>
-
           <h3>Colour Scheme</h3>
           <p>I have used a simple black and white colour scheme with a user-defined theme colour set by a hue parameter stored in <code>--col-theme-hue</code>.</p>
           <table>
@@ -134,32 +136,32 @@
                 <td>Theme (Lighter)</td>
                 <td><var>--col-theme-light</var></td>
                 <td><code>.back-theme-light</code></td>
-                <td class="back-theme-light text-white">hsl(200, 70%, 60%)</td>
+                <td class="back-theme-light text-white">hsl(<span id="col-theme-output-light"></span>, 70%, 60%)</td>
               </tr>
               <tr>
                 <td>Theme</td>
                 <td><var>--col-theme</var></td>
                 <td><code>.back-theme</code></td>
-                <td class="back-theme text-white">hsl(200, 70%, 50%)</td>
+                <td class="back-theme text-white">hsl(<span id="col-theme-output"></span>, 70%, 50%)</td>
               </tr>
               <tr>
                 <td>Theme (Darker)</td>
                 <td><var>--col-theme-dark</var></td>
                 <td><code>.back-theme-dark</code></td>
-                <td class="back-theme-dark text-white">hsl(200, 70%, 40%)</td>
+                <td class="back-theme-dark text-white">hsl(<span id="col-theme-output-dark"></span>, 70%, 40%)</td>
               </tr>
             </tbody>
           </table>
-          <h4>Theme Colour Hue</h4>
-          <form class="less">
+          <!--h4>Theme Colour Hue</h4>
+          <form>
             <div class="inline">
               <label for="theme-colour-picker">Colour</label>
               <input id="theme-colour-picker" class="colour-picker" type="range" min="0" max="359">
-              <output id="theme-colour-picker-output"></output>
             </div>
-          </form>
+          </form-->
         </article>
       </section>
+
       <section id="content">
         <h2>Content</h2>
         <article id="images">
@@ -301,6 +303,7 @@
           </div>
         </article>
       </section>
+
       <section id="components">
         <h2>Components</h2>
         <p>My web components for use the <code>ss-</code> prefix except for <code>side-nav</code>.</p>
@@ -315,6 +318,7 @@
           </ss-slideshow>
         </article>
       </section>
+
       <section id="classes">
         <h2>Classes</h2>
         <article id="box-class">
@@ -333,6 +337,7 @@
         </article>
       </section>
     </main>
+
     <footer>
       <div id='footer-wrapper'>
         <p>Footer</p>

@@ -38,6 +38,13 @@
 .block-left { margin-right: auto; }
 .block-centre { margin: auto; }
 .block-right { margin-left: auto; }
+.block-absolute-centre {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+}
 
 [class^="flex-"] { display: flex; }
 .flex-centre, .flex-x-centre { justify-content: center; }

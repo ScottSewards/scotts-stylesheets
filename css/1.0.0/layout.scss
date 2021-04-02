@@ -1,6 +1,6 @@
 *, *::before, *::after {
   box-sizing: border-box;
-  transition-duration: var(--at-duration);
+  //transition-duration: var(--at-duration);
 }
 body {
   background: var(--col-white);
@@ -39,7 +39,7 @@ side-nav {
   left: 0;
   height: 100%;
   width: var(--side-nav-width) !important;
-  transition-property: transform;
+  //transition-property: transform;
 }
 side-nav::after {
   content: "👁"; /*U+1F441*/
@@ -49,7 +49,7 @@ side-nav::after {
   bottom: var(--space-1);
   left: var(--side-nav-width);
   padding: var(--space-1);
-  transition-property: opacity;
+  //transition-property: opacity;
 }
 side-nav:hover::after { opacity: 1; }
 @media(max-width: 40rem) {

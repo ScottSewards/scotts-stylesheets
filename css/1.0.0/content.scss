@@ -75,7 +75,7 @@ button, input:not([type="hidden"]), select, textarea {
   font-family: var(--font);
   font-size: var(--font-size);
   white-space: nowrap;
-  &:active { background: var(--col-theme); }
+  //&:active { background: var(--col-theme); }
   &:disabled { background: var(--col-disabled); }
   &:not(:disabled):hover, &:not(:disabled):focus { border-color: var(--col-border-hover); }
 }
@@ -331,11 +331,12 @@ del {
 details { }
 
 dialog {
-  background: var(--col-theme);
-  display: block;
+  background: var(--col-black);
+  color: var(--col-white);
   position: static;
+  display: block;
   padding: var(--space-1);
-  border: var(--border);
+  border: 0;
   margin: auto;
 }
 

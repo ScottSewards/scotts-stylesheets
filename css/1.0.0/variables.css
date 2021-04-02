@@ -61,7 +61,7 @@
   --show-side-nav: 1; /* BOOLEAN / 1 = YES / 0 = NO*/
   --side-nav-width: 12rem;
   --content-limit: 82ch;
-  --at-duration: 0.2s; /* DEFAULT ANIMATION AND TRANSFORM DURATION*/
+  --at-duration: 0.1s; /* DEFAULT ANIMATION AND TRANSFORM DURATION*/
 }
 
 ::selection {

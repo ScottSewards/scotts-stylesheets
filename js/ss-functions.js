@@ -3,7 +3,8 @@ const $ = document.querySelector.bind(document);
 const $$ = (css, parent = document) => Array.from(parent.querySelectorAll(css));
 
 /* RUN CODE ON DOCUMENT READY */
-window.onload = function() {
+
+function initScottsFunctions() {
   /* ENABLE drop-list-button TO HIDE OR UNHIDE drop-list-* */
   $$(".drop-down-button").forEach((element) => {
     element.addEventListener("click", function() {
@@ -14,6 +15,10 @@ window.onload = function() {
 
   /* APPLY img INTRINSIC WIDTH AS max-width */
   $$("img").forEach((img, index) => img.setAttribute("style", `max-width: ${img.naturalWidth}px`));
+
+  $$("[type='input']").forEach((element) => {
+    element.attr("aria-label", `${element.name}`);
+  });
 }
 
 /* COOKIE FUNCTIONS */

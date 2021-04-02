@@ -2,9 +2,15 @@
 A modern layout and content framework for modern browsers using the latest CSS features.
 
 ## CSS
+variables.css
+layout.min.css
+content.min.css
+components.css
+classes.css
+custom.css
 
 ### custom.css
-Create a custom.css or .scss file to override rules if not covered in variables.css.
+The file custom.css or custom.min.css is used to override the framework so your changes are not overwritten when you update the framework.
 
 ## JS
 
