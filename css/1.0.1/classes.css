@@ -9,10 +9,14 @@
 .show { display: block !important; }
 .show-flex { display: flex !important; }
 
-.column, .row { display: flex; }
-.row { flex-direction: row; }
-.column { flex-direction: column; }
-.row > *:not(:first-child) { margin-left: var(--space-1); }
+[class^="col"], [class^="row"] {
+  display: flex;
+  margin: var(--space--1) auto;
+}
+[class^="row"] { flex-direction: row; }
+[class^="col"] { flex-direction: column; }
+[class^="row"] > *:not(:first-child) { margin-left: var(--space-1); }
+.row-wrap { flex-wrap: wrap; }
 
 /* COLOURS */
 .back-const-black { background: var(--col-const-black); }
