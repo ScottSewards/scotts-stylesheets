@@ -55,7 +55,7 @@
   --border: var(--border-width) solid var(--col-border);
   --border-radius: 7px;
   --border-width: 1px;
-  --margin: var(--space-1) auto;
+  --margin: 0 auto var(--space-1) auto;
   --scroll-offset: var(--space-1); /* SET TO --margin TOP TO SHOW ALL OF TARGET ELEMENT WITHOUT PREVIOUS SIBLING ELEMENT */
 
   --show-side-nav: 1; /* BOOLEAN / 1 = YES / 0 = NO*/

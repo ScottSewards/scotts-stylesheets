@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scott's Stylesheets</title>
     <link rel="shortcut icon" href="images/swimming-george.png">
-    <link rel="stylesheet" href="css/1.0.2/variables.css">
-    <link rel="stylesheet" href="css/1.0.2/layout.min.css">
-    <link rel="stylesheet" href="css/1.0.2/content.min.css">
-    <link rel="stylesheet" href="css/1.0.2/classes.css">
-    <link rel="stylesheet" href="css/1.0.2/custom.css">
+    <link rel="stylesheet" href="css/1.0.3/variables.css">
+    <link rel="stylesheet" href="css/1.0.3/layout.min.css">
+    <link rel="stylesheet" href="css/1.0.3/content.min.css">
+    <link rel="stylesheet" href="css/1.0.3/classes.css">
+    <link rel="stylesheet" href="css/1.0.3/custom.css">
     <script type="text/javascript" src="js/1.0.2/ss-functions.js"></script>
     <script type="text/javascript">
     window.onload = function() {
@@ -59,7 +59,7 @@
         <div class="drop-down-outside hide">
           <a href="#classes">Classes</a>
         </div>
-        <a href="#" class="drop-down-button">Dropdown</a>
+        <a class="drop-down-button">Dropdown</a>
       </div>
     </side-nav>
 
@@ -308,6 +308,7 @@
           <h3>Box</h3>
           <p>
             <code>.box</code>
+            <code>.row</code>
           </p>
           <div class="row">
             <div class="box">
@@ -321,6 +322,9 @@
 
         <article id="column-class">
           <h3>Column</h3>
+          <p>
+            <code>.column</code>
+          </p>
           <div class="column">
           </div>
         </article>
@@ -339,6 +343,11 @@
           </p>
           <div class="row-wrap">
           </div>
+        </article>
+
+        <article id="no-classes">
+          <h3>No Classes!</h3>
+          <p>No classes, prefixed with <code>no-</code> remove properties such as <code>.no-padding</code> or <code>no-border</code>.</p>
         </article>
       </section>
     </main>
