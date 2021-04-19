@@ -6,7 +6,7 @@
     <title>Scott's Stylesheets</title>
     <link rel="shortcut icon" href="images/swimming-george.png">
     <link rel="stylesheet" href="css/1.0.3/variables.css">
-    <link rel="stylesheet" href="css/1.0.3/layout.min.css">
+    <link rel="stylesheet" href="css/1.0.3/layout.css">
     <link rel="stylesheet" href="css/1.0.3/content.min.css">
     <link rel="stylesheet" href="css/1.0.3/classes.css">
     <link rel="stylesheet" href="css/1.0.3/custom.css">
@@ -304,6 +304,70 @@
 
       <section id="classes">
         <h2>Classes</h2>
+        <article id="row-classes">
+          <h3>Row</h3>
+          <p>The <code>.row</code> uses <code>display: flexbox;</code> to position children elements. Rather than use the <code>margin</code> property to seperate elements, the <code>gap</code> property is utilised.</p>
+          <div class="row">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+          </div>
+        </article>
+
+        <article id="column-classes">
+          <h3>Column</h3>
+          <p>The column and row classes does not add padding or margin.</p>
+          <div class="row-wrap">
+            <div class="col-12">
+              <p class="set-padding-3 set-border text-middle"><code>col-12</code></p>
+            </div>
+            <div class="col-6">
+              <p class="set-padding-3 set-border text-middle"><code>col-6</code></p>
+            </div>
+            <div class="col-6">
+              <p class="set-padding-3 set-border text-middle"><code>col-6</code></p>
+            </div>
+            <div class="col-4">
+              <p class="set-padding-3 set-border text-middle"><code>col-4</code></p>
+            </div>
+            <div class="col-4">
+              <p class="set-padding-3 set-border text-middle"><code>col-4</code></p>
+            </div>
+            <div class="col-4">
+              <p class="set-padding-3 set-border text-middle"><code>col-4</code></p>
+            </div>
+            <div class="col-7">
+              <p class="set-padding-3 set-border text-middle"><code>col-7</code></p>
+            </div>
+            <div class="col-3">
+              <p class="set-padding-3 set-border text-middle"><code>col-3</code></p>
+            </div>
+            <div class="col-2">
+              <p class="set-padding-3 set-border back-theme text-middle"><code>col-2</code></p>
+            </div>
+          </div>
+        </article>
+
+        <article id="alignment-classes">
+          <h3>Alignment</h3>
+          <div class="box">
+            <p class="text-start">This text is aligned left <code>.text-start</code>.</p>
+            <hr>
+            <p class="text-middle">This text is aligned middle <code>.text-middle</code>.</p>
+            <hr>
+            <p class="text-end">This text is aligned right <code>.text-end</code>.</p>
+          </div>
+        </article>
+
+        <article id="clamp-classes">
+          <h3>Line Clamp</h3>
+          <p>You can line clamp text via <code>.line-clamp</code>.</p>
+          <div class="box">
+            <p class="line-clamp-1"><i>Single-line line clamp</i>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            <hr>
+            <p class="line-clamp-2"><i>Multi-line line clamp</i>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+          </div>
+        </article>
+
         <article id="box-class">
           <h3>Box</h3>
           <p>
@@ -314,40 +378,15 @@
             <div class="box">
               <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
-            <div class="box back-theme text-const-white">
-              <p class="text-centre">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+            <div class="box back-fill">
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
             </div>
           </div>
         </article>
 
-        <article id="column-class">
-          <h3>Column</h3>
-          <p>
-            <code>.column</code>
-          </p>
-          <div class="column">
-          </div>
-        </article>
-
-        <article id="row-class">
-          <h3>Row</h3>
-          <p>
-            <code>.row</code>
-          </p>
-          <div class="row">
-          </div>
-
-          <h4>Row Wrap</h4>
-          <p>
-            <code>.row-wrap</code>
-          </p>
-          <div class="row-wrap">
-          </div>
-        </article>
-
         <article id="no-classes">
-          <h3>No Classes!</h3>
-          <p>No classes, prefixed with <code>no-</code> remove properties such as <code>.no-padding</code> or <code>no-border</code>.</p>
+          <h3>Set/Unset</h3>
+          <p>Set property values to <code>none</code> with none classes prefixed with <code>no-</code> remove properties such as <code>.no-padding</code> or <code>no-border</code>.</p>
         </article>
       </section>
     </main>

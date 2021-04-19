@@ -31,14 +31,6 @@ form {
   margin: var(--margin);
   width: 100%;
   max-width: var(--content-limit);
-  div {
-    display: block;
-    margin: var(--space-1) auto;
-    &.inline-nowrap {
-      display: flex;
-      button, input, select { + * { margin-left: var(--space-1); } }
-    }
-  }
 }
 fieldset {
   display: block;
@@ -56,8 +48,7 @@ legend {
 }
 label, output {
   display: block;
-  padding: var(--space-1);
-  padding-left: 0;
+  padding: var(--space-1) 0;
   margin: 0;
   white-space: nowrap;
 }
@@ -143,7 +134,6 @@ textarea { //REMOVE COL & ROW ATTRIBUTES FROM HTML
   height: 6rem;
   max-height: 50vh;
 }
-
 
 @media(max-width: 28rem) {
   form div.inline {
@@ -279,7 +269,6 @@ tbody tr:not(:last-child) td { border-bottom: 0; }
 tbody td:not(:last-child) { border-right: 0; }
 tbody td:empty { background: var(--col-empty); }
 th {
-  padding: 0;
   padding-bottom: var(--space-3);
   font-weight: var(--font-family-header-weight);
   white-space: nowrap;
@@ -312,7 +301,8 @@ blockquote, cite, q {
 code {
   background: var(--col-code);
   color: var(--col-text-code);
-  padding: 1px var(--space-3) 0px var(--space-5);
+  padding: 1px var(--space-3) 0px var(--space-4);
+  border-radius: var(--border-radius);
   font-family: var(--font-family-code);
   font-size: var(--font-size-code);
   tab-size: 4;
@@ -351,6 +341,7 @@ hr {
   border: 0;
   border-top: var(--border);
   margin: var(--margin);
+  width: 100%;
 }
 
 ins {
