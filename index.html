@@ -1,158 +1,160 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scott's Stylesheets</title>
-    <link rel="shortcut icon" href="images/swimming-george.png">
-    <link rel="stylesheet" href="css/1.0.3/variables.css">
-    <link rel="stylesheet" href="css/1.0.3/layout.css">
-    <link rel="stylesheet" href="css/1.0.3/content.min.css">
-    <link rel="stylesheet" href="css/1.0.3/classes.css">
-    <link rel="stylesheet" href="css/1.0.3/custom.css">
-    <script type="text/javascript" src="js/1.0.2/ss-functions.js"></script>
-    <script type="text/javascript">
-    window.onload = function() {
-      initScottsFunctions();
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scott's Stylesheets</title>
+  <link rel="shortcut icon" href="images/swimming-george.png">
+  <link rel="stylesheet" href="css/1.0.4/variables.css">
+  <link rel="stylesheet" href="css/1.0.4/layout.css">
+  <link rel="stylesheet" href="css/1.0.4/content.min.css">
+  <link rel="stylesheet" href="css/1.0.4/classes.css">
+  <link rel="stylesheet" href="css/1.0.4/custom.css">
+  <script type="text/javascript" src="js/1.0.2/ss-functions.js"></script>
 
-      $("[name='toggle-dark-mode']").addEventListener("click", () => $("html").classList.toggle("dark"));
+  <script type="text/javascript">
+  window.onload = function() {
+    initScottsFunctions();
 
-      var themeColourHue = getCookie("themeColourHue");
-      if(themeColourHue !== null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
+    $("[name='toggle-dark-mode']").addEventListener("click", () => $("html").classList.toggle("dark"));
 
-      /*
-      $('#theme-colour-picker').value = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
-      $('#theme-colour-picker-output').value = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
-      $('#theme-colour-picker').addEventListener('change', function() {
-        document.documentElement.style.setProperty("--col-theme-hue", this.value);
-        $('#theme-colour-picker-output').value = this.value.toUpperCase();
-        setCookie('themeColourHue', this.value);
-      });
-      $('#theme-colour-picker').addEventListener('input', function() {
-        document.documentElement.style.setProperty("--col-theme-hue", this.value);
-        $('#theme-colour-picker-output').value = this.value.toUpperCase();
-      });
-      */
+    var themeColourHue = getCookie("themeColourHue");
+    if(themeColourHue !== null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
 
-      var hue = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
-      setInterval(function() {
-        hue = hue >= 359 ? 0 : parseInt(hue) + 1;
-        $$("[id^='col-theme-output']").forEach((item, i) =>  item.innerHTML = hue);
-        document.documentElement.style.setProperty('--col-theme-hue', hue + '');
-        setCookie('themeColourHue', hue);
-      }, 1000);
-    }
-    </script>
-    <style media="screen">
-    input[type="range"].colour-picker { background: -webkit-linear-gradient(left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%); }
-    </style>
-  </head>
-  <body>
-    <side-nav>
-      <a href="#about">About</a>
-      <a href="#variables">Variables</a>
-      <a href="#layout">Layout</a>
-      <a href="#content">Content</a>
-      <a href="#components">Components</a>
-      <a href="#classes">Classes</a>
-      <div class="drop-down">
-        <div class="drop-down-outside hide">
-          <a href="#classes">Classes</a>
-        </div>
-        <a class="drop-down-button">Dropdown</a>
+    /*
+    $('#theme-colour-picker').value = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
+    $('#theme-colour-picker-output').value = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
+    $('#theme-colour-picker').addEventListener('change', function() {
+    document.documentElement.style.setProperty("--col-theme-hue", this.value);
+    $('#theme-colour-picker-output').value = this.value.toUpperCase();
+    setCookie('themeColourHue', this.value);
+  });
+  $('#theme-colour-picker').addEventListener('input', function() {
+  document.documentElement.style.setProperty("--col-theme-hue", this.value);
+  $('#theme-colour-picker-output').value = this.value.toUpperCase();
+});
+*/
+
+var hue = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
+setInterval(function() {
+  hue = hue >= 359 ? 0 : parseInt(hue) + 1;
+  $$("[id^='col-theme-output']").forEach((item, i) =>  item.innerHTML = hue);
+  document.documentElement.style.setProperty('--col-theme-hue', hue + '');
+  setCookie('themeColourHue', hue);
+}, 1000);
+}
+</script>
+
+<style media="screen">
+input[type="range"].colour-picker { background: -webkit-linear-gradient(left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%); }
+</style>
+</head>
+<body>
+  <side-nav>
+    <a href="#about">About</a>
+    <a href="#variables">Variables</a>
+    <a href="#layout">Layout</a>
+    <a href="#content">Content</a>
+    <a href="#components">Components</a>
+    <a href="#classes">Classes</a>
+    <div class="drop-down">
+      <div class="drop-down-outside hide">
+        <a href="#classes">Classes</a>
       </div>
-    </side-nav>
+      <a class="drop-down-button">Dropdown</a>
+    </div>
+  </side-nav>
 
-    <main>
-      <h1>Scott's Stylesheets</h1>
+  <main>
+    <h1>Scott's Stylesheets</h1>
 
-      <section id="about">
-        <h2>About</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      </section>
+    <section id="about">
+      <h2>About</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </section>
 
-      <section id="layout">
-        <h2>Layout</h2>
-      </section>
+    <section id="layout">
+      <h2>Layout</h2>
+    </section>
 
-      <section id="variables">
-        <h2>Variables</h2>
-        <article id="colour-scheme">
-          <h3>Black, White and Constants</h3>
-          <p>To implement dark mode, I have added constant values for <code>--col-black</code> and <code>--col-white</code>.</p>
-          <table>
-            <thead>
-              <tr>
-                <th>Colour</th>
-                <th>Variable</th>
-                <th>Class</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Black (Constant)</td>
-                <td><var>--col-const-black</var></td>
-                <td><code>.back-const-black</code></td>
-                <td class="back-const-black text-const-white">#111</td>
-              </tr>
-              <tr>
-                <td>White (Constant)</td>
-                <td><var>--col-const-white</var></td>
-                <td><code>.back-const-white</code></td>
-                <td class="back-const-white text-const-black">#FFF</td>
-              </tr>
-              <tr>
-                <td>Black</td>
-                <td><var>--col-black</var></td>
-                <td><code>.back-black</code></td>
-                <td class="back-black text-white">#111</td>
-              </tr>
-              <tr>
-                <td>White</td>
-                <td><var>--col-white</var></td>
-                <td><code>.back-white</code></td>
-                <td class="back-white text-black">#FFF</td>
-              </tr>
-            </tbody>
-          </table>
-          <button class="block-right" type="button" name="toggle-dark-mode">Toggle Dark Mode</button>
+    <section id="variables">
+      <h2>Variables</h2>
+      <article id="colour-scheme">
+        <h3>Black, White and Constants</h3>
+        <p>To implement dark mode, I have added constant values for <code>--col-black</code> and <code>--col-white</code>.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Colour</th>
+              <th>Variable</th>
+              <th>Class</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Black (Constant)</td>
+              <td><var>--col-const-black</var></td>
+              <td><code>.back-const-black</code></td>
+              <td class="back-const-black text-const-white">#111</td>
+            </tr>
+            <tr>
+              <td>White (Constant)</td>
+              <td><var>--col-const-white</var></td>
+              <td><code>.back-const-white</code></td>
+              <td class="back-const-white text-const-black">#FFF</td>
+            </tr>
+            <tr>
+              <td>Black</td>
+              <td><var>--col-black</var></td>
+              <td><code>.back-black</code></td>
+              <td class="back-black text-white">#111</td>
+            </tr>
+            <tr>
+              <td>White</td>
+              <td><var>--col-white</var></td>
+              <td><code>.back-white</code></td>
+              <td class="back-white text-black">#FFF</td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="block-right" type="button" name="toggle-dark-mode">Toggle Dark Mode</button>
 
-          <h3>Colour Scheme</h3>
-          <p>I have used a simple black and white colour scheme with a user-defined theme colour set by a hue parameter stored in <code>--col-theme-hue</code>.</p>
-          <table>
-            <thead>
-              <tr>
-                <th>Colour</th>
-                <th>Variable</th>
-                <th>Class</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Theme (Lighter)</td>
-                <td><var>--col-theme-light</var></td>
-                <td><code>.back-theme-light</code></td>
-                <td class="back-theme-light text-white">hsl(<span id="col-theme-output-light"></span>, 70%, 60%)</td>
-              </tr>
-              <tr>
-                <td>Theme</td>
-                <td><var>--col-theme</var></td>
-                <td><code>.back-theme</code></td>
-                <td class="back-theme text-white">hsl(<span id="col-theme-output"></span>, 70%, 50%)</td>
-              </tr>
-              <tr>
-                <td>Theme (Darker)</td>
-                <td><var>--col-theme-dark</var></td>
-                <td><code>.back-theme-dark</code></td>
-                <td class="back-theme-dark text-white">hsl(<span id="col-theme-output-dark"></span>, 70%, 40%)</td>
-              </tr>
-            </tbody>
-          </table>
-          <!--h4>Theme Colour Hue</h4>
+        <h3>Colour Scheme</h3>
+        <p>I have used a simple black and white colour scheme with a user-defined theme colour set by a hue parameter stored in <code>--col-theme-hue</code>.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Colour</th>
+              <th>Variable</th>
+              <th>Class</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Theme (Lighter)</td>
+              <td><var>--col-theme-light</var></td>
+              <td><code>.back-theme-light</code></td>
+              <td class="back-theme-light text-white">hsl(<span id="col-theme-output-light"></span>, 70%, 60%)</td>
+            </tr>
+            <tr>
+              <td>Theme</td>
+              <td><var>--col-theme</var></td>
+              <td><code>.back-theme</code></td>
+              <td class="back-theme text-white">hsl(<span id="col-theme-output"></span>, 70%, 50%)</td>
+            </tr>
+            <tr>
+              <td>Theme (Darker)</td>
+              <td><var>--col-theme-dark</var></td>
+              <td><code>.back-theme-dark</code></td>
+              <td class="back-theme-dark text-white">hsl(<span id="col-theme-output-dark"></span>, 70%, 40%)</td>
+            </tr>
+          </tbody>
+        </table>
+        <!--h4>Theme Colour Hue</h4>
           <form>
-            <div class="inline">
+            <div class="row">
               <label for="theme-colour-picker">Colour</label>
               <input id="theme-colour-picker" class="colour-picker" type="range" min="0" max="359">
             </div>
@@ -192,19 +194,19 @@
             <code>output</code>
           </p>
           <form>
-            <div class="inline-nowrap">
+            <div class="row">
               <input id="checkbox" type="checkbox" name="checkbox" value="on"/>
               <label for="checkbox">Checkbox</label>
             </div>
-            <div class="inline-nowrap">
+            <div class="row">
               <input id="radio-a" type="radio" name="radio" value="a">
               <label for="radio-a">Radio A</label>
             </div>
-            <div class="inline-nowrap">
+            <div class="row">
               <input id="radio-b" type="radio" name="radio" value="b">
               <label for="radio-b">Radio B</label>
             </div>
-            <div class="inline">
+            <div class="row">
               <label for="list">List</label>
               <input id="list" name="list" list="list-items" placeholder="List Item A"/>
             </div>
@@ -213,12 +215,12 @@
               <option value="List Item B"/>
               <option value="List Item C"/>
             </datalist>
-            <div class="inline">
+            <div class="row">
               <label for="password">Password</label>
               <input id="password" type="password" name="password" value="password">
               <input type="button" name="show-password" value="Show">
             </div>
-            <div class="inline">
+            <div class="row">
               <label for="select">Select</label>
               <select id="select" name="select">
                 <optgroup label="A">
@@ -230,15 +232,15 @@
                 </optgroup>
               </select>
             </div>
-            <div class="inline">
+            <div class="row">
               <label for="text">Text</label>
               <input id="text" type="text" name="text"/>
             </div>
-            <div class="inline">
+            <div class="row">
               <label for="textarea">Textarea</label>
               <textarea id="textarea" name="textarea"></textarea>
             </div>
-            <div class="inline">
+            <div class="row">
               <button type="button" name="button">qwerty</button>
             </div>
           </form>
@@ -316,79 +318,104 @@
         <article id="column-classes">
           <h3>Column</h3>
           <p>The column and row classes does not add padding or margin.</p>
-          <div class="row-wrap">
+          <div class="row">
             <div class="col-12">
-              <p class="set-padding-3 set-border text-middle"><code>col-12</code></p>
+              <p class="set-padding-3 set-border text-middle"><code>12</code></p>
             </div>
-            <div class="col-6">
-              <p class="set-padding-3 set-border text-middle"><code>col-6</code></p>
+          </div>
+          <div class="row">
+            <div class="col-11">
+              <p class="set-padding-3 set-border text-middle"><code>11</code></p>
             </div>
-            <div class="col-6">
-              <p class="set-padding-3 set-border text-middle"><code>col-6</code></p>
+            <div class="col-1">
+              <p class="set-padding-3 set-border text-middle"><code>1</code></p>
             </div>
-            <div class="col-4">
-              <p class="set-padding-3 set-border text-middle"><code>col-4</code></p>
-            </div>
-            <div class="col-4">
-              <p class="set-padding-3 set-border text-middle"><code>col-4</code></p>
-            </div>
-            <div class="col-4">
-              <p class="set-padding-3 set-border text-middle"><code>col-4</code></p>
-            </div>
-            <div class="col-7">
-              <p class="set-padding-3 set-border text-middle"><code>col-7</code></p>
-            </div>
-            <div class="col-3">
-              <p class="set-padding-3 set-border text-middle"><code>col-3</code></p>
+          </div>
+          <div class="row">
+            <div class="col-10">
+              <p class="set-padding-3 set-border text-middle"><code>10</code></p>
             </div>
             <div class="col-2">
-              <p class="set-padding-3 set-border back-theme text-middle"><code>col-2</code></p>
+              <p class="set-padding-3 set-border text-middle"><code>2</code></p>
             </div>
           </div>
-        </article>
-
-        <article id="alignment-classes">
-          <h3>Alignment</h3>
-          <div class="box">
-            <p class="text-start">This text is aligned left <code>.text-start</code>.</p>
-            <hr>
-            <p class="text-middle">This text is aligned middle <code>.text-middle</code>.</p>
-            <hr>
-            <p class="text-end">This text is aligned right <code>.text-end</code>.</p>
-          </div>
-        </article>
-
-        <article id="clamp-classes">
-          <h3>Line Clamp</h3>
-          <p>You can line clamp text via <code>.line-clamp</code>.</p>
-          <div class="box">
-            <p class="line-clamp-1"><i>Single-line line clamp</i>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-            <hr>
-            <p class="line-clamp-2"><i>Multi-line line clamp</i>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-          </div>
-        </article>
-
-        <article id="box-class">
-          <h3>Box</h3>
-          <p>
-            <code>.box</code>
-            <code>.row</code>
-          </p>
           <div class="row">
-            <div class="box">
-              <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <div class="col-9">
+              <p class="set-padding-3 set-border text-middle"><code>9</code></p>
             </div>
-            <div class="box back-fill">
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+            <div class="col-3">
+              <p class="set-padding-3 set-border text-middle"><code>3</code></p>
             </div>
           </div>
-        </article>
+          <div class="row">
+            <div class="col-8">
+              <p class="set-padding-3 set-border text-middle"><code>8</code></p>
+            </div>
+            <div class="col-4">
+              <p class="set-padding-3 set-border text-middle"><code>4</code></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-7">
+              <p class="set-padding-3 set-border text-middle"><code>7</code></p>
+            </div>
+            <div class="col-5">
+              <p class="set-padding-3 set-border text-middle"><code>5</code></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <p class="set-padding-3 set-border text-middle"><code>6</code></p>
+            </div>
+            <div class="col-6">
+              <p class="set-padding-3 set-border text-middle"><code>6</code></p>
+            </div>
+          </div>
+        </div>
+      </article>
 
-        <article id="no-classes">
-          <h3>Set/Unset</h3>
-          <p>Set property values to <code>none</code> with none classes prefixed with <code>no-</code> remove properties such as <code>.no-padding</code> or <code>no-border</code>.</p>
-        </article>
-      </section>
-    </main>
-  </body>
+      <article id="alignment-classes">
+        <h3>Alignment</h3>
+        <div class="box">
+          <p class="text-start">This text is aligned left <code>.text-start</code>.</p>
+          <hr>
+          <p class="text-middle">This text is aligned middle <code>.text-middle</code>.</p>
+          <hr>
+          <p class="text-end">This text is aligned right <code>.text-end</code>.</p>
+        </div>
+      </article>
+
+      <article id="clamp-classes">
+        <h3>Line Clamp</h3>
+        <p>You can line clamp text via <code>.line-clamp</code>.</p>
+        <div class="box">
+          <p class="line-clamp-1"><i>Single-line line clamp</i>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+          <hr>
+          <p class="line-clamp-2"><i>Multi-line line clamp</i>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        </div>
+      </article>
+
+      <article id="box-class">
+        <h3>Box</h3>
+        <p>
+          <code>.box</code>
+          <code>.row</code>
+        </p>
+        <div class="row">
+          <div class="box">
+            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+          <div class="box back-fill">
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+          </div>
+        </div>
+      </article>
+
+      <article id="no-classes">
+        <h3>Set/Unset</h3>
+        <p>Set property values to <code>none</code> with none classes prefixed with <code>no-</code> remove properties such as <code>.no-padding</code> or <code>no-border</code>.</p>
+      </article>
+    </section>
+  </main>
+</body>
 </html>
