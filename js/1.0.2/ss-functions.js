@@ -8,8 +8,7 @@ function initScottsFunctions() {
   /* ENABLE drop-list-button TO HIDE OR UNHIDE drop-list-* */
   $$(".drop-down-button").forEach((element) => {
     element.addEventListener("click", function() {
-      this.classList.toggle("active");
-      this.previousElementSibling.classList.toggle("hide");
+      this.parentElement.classList.toggle("active");
     });
   });
 

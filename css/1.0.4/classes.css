@@ -125,14 +125,15 @@
   padding: calc(var(--space-1) + (var(--font-size) * 0.1));
   font-size: 80%;
 }
-.drop-down-button.active::after { transform: rotateZ(180deg); }
+.drop-down.active > .drop-down-button::after { transform: rotateZ(180deg); }
 .drop-down-inside, .drop-down-outside {
   background: #333;
-  display: flex;
+  display: none;
   flex-direction: column;
   font-size: 85%;
   max-height: 100%;
 }
+.drop-down.active :is(.drop-down-inside, .drop-down-outside) { display: flex; }
 .drop-down-outside {
   position: absolute;
   top: 100%;
@@ -143,7 +144,7 @@ side-nav .drop-down-outside {
   left: 100%;
 }
 side-nav .drop-down-outside + .drop-down-button::after { transform: rotateZ(-90deg); /*U+25B6*/ }
-side-nav .drop-down-outside + .drop-down-button.active::after { transform: rotateZ(90deg); /*U+25B6*/ }
+side-nav .drop-down.active > .drop-down-outside + .drop-down-button::after { transform: rotateZ(90deg); /*U+25B6*/ }
 
 /* SET/UNSET */
 .set-padding, .set-padding-1 { padding: var(--space-1); }
