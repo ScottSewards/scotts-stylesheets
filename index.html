@@ -5,49 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scott's Stylesheets</title>
   <link rel="shortcut icon" href="images/swimming-george.png">
-  <link rel="stylesheet" href="css/1.0.4/variables.css">
-  <link rel="stylesheet" href="css/1.0.4/layout.css">
-  <link rel="stylesheet" href="css/1.0.4/content.min.css">
-  <link rel="stylesheet" href="css/1.0.4/classes.css">
-  <link rel="stylesheet" href="css/1.0.4/custom.css">
-  <script type="text/javascript" src="js/1.0.2/ss-functions.js"></script>
-
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/content.min.css">
+  <link rel="stylesheet" href="css/classes.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <script type="text/javascript" src="js/ss-functions.js"></script>
   <script type="text/javascript">
   window.onload = function() {
     initScottsFunctions();
-
     $("[name='toggle-dark-mode']").addEventListener("click", () => $("html").classList.toggle("dark"));
-
     var themeColourHue = getCookie("themeColourHue");
     if(themeColourHue !== null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
-
-    /*
-    $('#theme-colour-picker').value = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
-    $('#theme-colour-picker-output').value = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
-    $('#theme-colour-picker').addEventListener('change', function() {
-    document.documentElement.style.setProperty("--col-theme-hue", this.value);
-    $('#theme-colour-picker-output').value = this.value.toUpperCase();
-    setCookie('themeColourHue', this.value);
   });
-  $('#theme-colour-picker').addEventListener('input', function() {
-  document.documentElement.style.setProperty("--col-theme-hue", this.value);
-  $('#theme-colour-picker-output').value = this.value.toUpperCase();
-});
-*/
 
-var hue = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
-setInterval(function() {
-  hue = hue >= 359 ? 0 : parseInt(hue) + 1;
-  $$("[id^='col-theme-output']").forEach((item, i) =>  item.innerHTML = hue);
-  document.documentElement.style.setProperty('--col-theme-hue', hue + '');
-  setCookie('themeColourHue', hue);
-}, 1000);
-}
-</script>
-
-<style media="screen">
-input[type="range"].colour-picker { background: -webkit-linear-gradient(left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%); }
-</style>
+  var hue = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
+  setInterval(function() {
+    hue = hue >= 359 ? 0 : parseInt(hue) + 1;
+    $$("[id^='col-theme-output']").forEach((item, i) =>  item.innerHTML = hue);
+    document.documentElement.style.setProperty('--col-theme-hue', hue + '');
+    setCookie('themeColourHue', hue);
+  }, 1000);
+  </script>
 </head>
 <body>
   <side-nav>
@@ -67,16 +46,13 @@ input[type="range"].colour-picker { background: -webkit-linear-gradient(left, #F
 
   <main>
     <h1>Scott's Stylesheets</h1>
-
     <section id="about">
       <h2>About</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
     </section>
-
     <section id="layout">
       <h2>Layout</h2>
     </section>
-
     <section id="variables">
       <h2>Variables</h2>
       <article id="colour-scheme">
@@ -119,7 +95,6 @@ input[type="range"].colour-picker { background: -webkit-linear-gradient(left, #F
           </tbody>
         </table>
         <button class="block-right" type="button" name="toggle-dark-mode">Toggle Dark Mode</button>
-
         <h3>Colour Scheme</h3>
         <p>I have used a simple black and white colour scheme with a user-defined theme colour set by a hue parameter stored in <code>--col-theme-hue</code>.</p>
         <table>
@@ -152,228 +127,213 @@ input[type="range"].colour-picker { background: -webkit-linear-gradient(left, #F
             </tr>
           </tbody>
         </table>
-        <!--h4>Theme Colour Hue</h4>
-          <form>
-            <div class="row">
-              <label for="theme-colour-picker">Colour</label>
-              <input id="theme-colour-picker" class="colour-picker" type="range" min="0" max="359">
-            </div>
-          </form-->
-        </article>
-      </section>
-
-      <section id="content">
-        <h2>Content</h2>
-        <article id="images">
-          <h3>Images</h3>
-          <p>
-            <code>picture</code>
-            <code>figure</code>
-            <code>figcaption</code>
-            <code>img</code>
-          </p>
-          <img src="images/splhcb.webp" alt="Placeholder">
-        </article>
-
-        <article id="forms">
-          <h3>Forms</h3>
-          <p>
-            <code>form</code>
-            <code>.less</code>
-            <code>fieldset</code>
-            <code>legend</code>
-            <code>label</code>
-            <code>input</code>
-            <code>button</code>
-            <code>button.centre</code>
-            <code>datalist</code>
-            <code>select</code>
-            <code>optgroup</code>
-            <code>option</code>
-            <code>textarea</code>
-            <code>output</code>
-          </p>
-          <form>
-            <div class="row">
-              <input id="checkbox" type="checkbox" name="checkbox" value="on"/>
-              <label for="checkbox">Checkbox</label>
-            </div>
-            <div class="row">
-              <input id="radio-a" type="radio" name="radio" value="a">
-              <label for="radio-a">Radio A</label>
-            </div>
-            <div class="row">
-              <input id="radio-b" type="radio" name="radio" value="b">
-              <label for="radio-b">Radio B</label>
-            </div>
-            <div class="row">
-              <label for="list">List</label>
-              <input id="list" name="list" list="list-items" placeholder="List Item A"/>
-            </div>
-            <datalist id="list-items">
-              <option value="List Item A"/>
-              <option value="List Item B"/>
-              <option value="List Item C"/>
-            </datalist>
-            <div class="row">
-              <label for="password">Password</label>
-              <input id="password" type="password" name="password" value="password">
-              <input type="button" name="show-password" value="Show">
-            </div>
-            <div class="row">
-              <label for="select">Select</label>
-              <select id="select" name="select">
-                <optgroup label="A">
-                  <option value="1">Option A1</option>
-                  <option value="1">Option A2</option>
-                </optgroup>
-                <optgroup label="B">
-                  <option value="1">Option B1</option>
-                </optgroup>
-              </select>
-            </div>
-            <div class="row">
-              <label for="text">Text</label>
-              <input id="text" type="text" name="text"/>
-            </div>
-            <div class="row">
-              <label for="textarea">Textarea</label>
-              <textarea id="textarea" name="textarea"></textarea>
-            </div>
-            <div class="row">
-              <button type="button" name="button">qwerty</button>
-            </div>
-          </form>
-        </article>
-
-        <article id="lists">
-          <h3>Lists</h3>
-          <p>Lettered list:</p>
-          <ol type="A">
-            <li>List item</li>
-            <li>Another item</li>
-          </ol>
-          <p>Ordered list:</p>
-          <ol>
-            <li>List item</li>
-            <li><data value="1010">This is a data element in a list item.</data></li>
-          </ol>
-          <p>Unordered list:</p>
-          <ul>
-            <li>List item</li>
-            <li>Another item</li>
-          </ul>
-        </article>
-
-        <article id="tables">
-          <h3>Tables</h3>
-          <p>
-            <code>.table-wrapper</code>
-            <code>table</code>
-            <code>caption</code>
-            <code>thead</code>
-            <code>tbody</code>
-            <code>tfoot</code>
-            <code>tr</code>
-            <code>th</code>
-            <code>td</code>
-            <code>:empty-cell</code>
-          </p>
-          <div class="table-wrapper">
-            <table>
-              <caption>Table caption</caption>
-              <thead>
-                <tr>
-                  <th>Table Head</th>
-                  <th>Empty Cell</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Table Data</td>
-                  <td></td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td>Table Foot</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-        </article>
-      </section>
-
-      <section id="classes">
-        <h2>Classes</h2>
-        <article id="row-classes">
-          <h3>Row</h3>
-          <p>The <code>.row</code> uses <code>display: flexbox;</code> to position children elements. Rather than use the <code>margin</code> property to seperate elements, the <code>gap</code> property is utilised.</p>
+      </article>
+    </section>
+    <section id="content">
+      <h2>Content</h2>
+      <article id="images">
+        <h3>Images</h3>
+        <p>
+          <code>picture</code>
+          <code>figure</code>
+          <code>figcaption</code>
+          <code>img</code>
+        </p>
+        <img src="images/splhcb.webp" alt="Placeholder">
+      </article>
+      <article id="forms">
+        <h3>Forms</h3>
+        <p>
+          <code>form</code>
+          <code>.less</code>
+          <code>fieldset</code>
+          <code>legend</code>
+          <code>label</code>
+          <code>input</code>
+          <code>button</code>
+          <code>button.centre</code>
+          <code>datalist</code>
+          <code>select</code>
+          <code>optgroup</code>
+          <code>option</code>
+          <code>textarea</code>
+          <code>output</code>
+        </p>
+        <form>
           <div class="row">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-            <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-          </div>
-        </article>
-
-        <article id="column-classes">
-          <h3>Column</h3>
-          <p>The column and row classes does not add padding or margin.</p>
-          <div class="row">
-            <div class="col-12">
-              <p class="set-padding-3 set-border text-middle"><code>12</code></p>
-            </div>
+            <input id="checkbox" type="checkbox" name="checkbox" value="on"/>
+            <label for="checkbox">Checkbox</label>
           </div>
           <div class="row">
-            <div class="col-11">
-              <p class="set-padding-3 set-border text-middle"><code>11</code></p>
-            </div>
-            <div class="col-1">
-              <p class="set-padding-3 set-border text-middle"><code>1</code></p>
-            </div>
+            <input id="radio-a" type="radio" name="radio" value="a">
+            <label for="radio-a">Radio A</label>
           </div>
           <div class="row">
-            <div class="col-10">
-              <p class="set-padding-3 set-border text-middle"><code>10</code></p>
-            </div>
-            <div class="col-2">
-              <p class="set-padding-3 set-border text-middle"><code>2</code></p>
-            </div>
+            <input id="radio-b" type="radio" name="radio" value="b">
+            <label for="radio-b">Radio B</label>
           </div>
           <div class="row">
-            <div class="col-9">
-              <p class="set-padding-3 set-border text-middle"><code>9</code></p>
-            </div>
-            <div class="col-3">
-              <p class="set-padding-3 set-border text-middle"><code>3</code></p>
-            </div>
+            <label for="list">List</label>
+            <input id="list" name="list" list="list-items" placeholder="List Item A"/>
+          </div>
+          <datalist id="list-items">
+            <option value="List Item A"/>
+            <option value="List Item B"/>
+            <option value="List Item C"/>
+          </datalist>
+          <div class="row">
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" value="password">
+            <input type="button" name="show-password" value="Show">
           </div>
           <div class="row">
-            <div class="col-8">
-              <p class="set-padding-3 set-border text-middle"><code>8</code></p>
-            </div>
-            <div class="col-4">
-              <p class="set-padding-3 set-border text-middle"><code>4</code></p>
-            </div>
+            <label for="select">Select</label>
+            <select id="select" name="select">
+              <optgroup label="A">
+                <option value="1">Option A1</option>
+                <option value="1">Option A2</option>
+              </optgroup>
+              <optgroup label="B">
+                <option value="1">Option B1</option>
+              </optgroup>
+            </select>
           </div>
           <div class="row">
-            <div class="col-7">
-              <p class="set-padding-3 set-border text-middle"><code>7</code></p>
-            </div>
-            <div class="col-5">
-              <p class="set-padding-3 set-border text-middle"><code>5</code></p>
-            </div>
+            <label for="text">Text</label>
+            <input id="text" type="text" name="text"/>
           </div>
           <div class="row">
-            <div class="col-6">
-              <p class="set-padding-3 set-border text-middle"><code>6</code></p>
-            </div>
-            <div class="col-6">
-              <p class="set-padding-3 set-border text-middle"><code>6</code></p>
-            </div>
+            <label for="textarea">Textarea</label>
+            <textarea id="textarea" name="textarea"></textarea>
+          </div>
+          <div class="row">
+            <button type="button" name="button">qwerty</button>
+          </div>
+        </form>
+      </article>
+      <article id="lists">
+        <h3>Lists</h3>
+        <p>Lettered list:</p>
+        <ol type="A">
+          <li>List item</li>
+          <li>Another item</li>
+        </ol>
+        <p>Ordered list:</p>
+        <ol>
+          <li>List item</li>
+          <li><data value="1010">This is a data element in a list item.</data></li>
+        </ol>
+        <p>Unordered list:</p>
+        <ul>
+          <li>List item</li>
+          <li>Another item</li>
+        </ul>
+      </article>
+      <article id="tables">
+        <h3>Tables</h3>
+        <p>
+          <code>.table-wrapper</code>
+          <code>table</code>
+          <code>caption</code>
+          <code>thead</code>
+          <code>tbody</code>
+          <code>tfoot</code>
+          <code>tr</code>
+          <code>th</code>
+          <code>td</code>
+          <code>:empty-cell</code>
+        </p>
+        <div class="table-wrapper">
+          <table>
+            <caption>Table caption</caption>
+            <thead>
+              <tr>
+                <th>Table Head</th>
+                <th>Empty Cell</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Table Data</td>
+                <td></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Table Foot</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </article>
+    </section>
+    <section id="classes">
+      <h2>Classes</h2>
+      <article id="row-classes">
+        <h3>Row</h3>
+        <p>The <code>.row</code> uses <code>display: flexbox;</code> to position children elements. Rather than use the <code>margin</code> property to seperate elements, the <code>gap</code> property is utilised.</p>
+        <div class="row">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+        </div>
+      </article>
+      <article id="column-classes">
+        <h3>Column</h3>
+        <p>The column and row classes does not add padding or margin.</p>
+        <div class="row">
+          <div class="col-12">
+            <p class="set-padding-3 set-border text-middle"><code>12</code></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-11">
+            <p class="set-padding-3 set-border text-middle"><code>11</code></p>
+          </div>
+          <div class="col-1">
+            <p class="set-padding-3 set-border text-middle"><code>1</code></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-10">
+            <p class="set-padding-3 set-border text-middle"><code>10</code></p>
+          </div>
+          <div class="col-2">
+            <p class="set-padding-3 set-border text-middle"><code>2</code></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-9">
+            <p class="set-padding-3 set-border text-middle"><code>9</code></p>
+          </div>
+          <div class="col-3">
+            <p class="set-padding-3 set-border text-middle"><code>3</code></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <p class="set-padding-3 set-border text-middle"><code>8</code></p>
+          </div>
+          <div class="col-4">
+            <p class="set-padding-3 set-border text-middle"><code>4</code></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-7">
+            <p class="set-padding-3 set-border text-middle"><code>7</code></p>
+          </div>
+          <div class="col-5">
+            <p class="set-padding-3 set-border text-middle"><code>5</code></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <p class="set-padding-3 set-border text-middle"><code>6</code></p>
+          </div>
+          <div class="col-6">
+            <p class="set-padding-3 set-border text-middle"><code>6</code></p>
           </div>
         </div>
       </article>
-
       <article id="alignment-classes">
         <h3>Alignment</h3>
         <div class="box">
@@ -384,7 +344,6 @@ input[type="range"].colour-picker { background: -webkit-linear-gradient(left, #F
           <p class="text-end">This text is aligned right <code>.text-end</code>.</p>
         </div>
       </article>
-
       <article id="clamp-classes">
         <h3>Line Clamp</h3>
         <p>You can line clamp text via <code>.line-clamp</code>.</p>
@@ -394,7 +353,6 @@ input[type="range"].colour-picker { background: -webkit-linear-gradient(left, #F
           <p class="line-clamp-2"><i>Multi-line line clamp</i>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
         </div>
       </article>
-
       <article id="box-class">
         <h3>Box</h3>
         <p>
@@ -410,7 +368,6 @@ input[type="range"].colour-picker { background: -webkit-linear-gradient(left, #F
           </div>
         </div>
       </article>
-
       <article id="no-classes">
         <h3>Set/Unset</h3>
         <p>Set property values to <code>none</code> with none classes prefixed with <code>no-</code> remove properties such as <code>.no-padding</code> or <code>no-border</code>.</p>
