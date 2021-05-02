@@ -1,4 +1,5 @@
 *, *::before, *::after { box-sizing: border-box; }
+* { outline-offset: var(--outline-offset); }
 body {
   background: var(--col-white);
   color: var(--col-black);
@@ -12,6 +13,7 @@ body {
 }
 
 nav, side-nav {
+  user-select: none;
   background: var(--col-nav);
   color: var(--col-const-white);
   z-index: 100;

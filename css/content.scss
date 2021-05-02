@@ -28,7 +28,7 @@ source { }
 form {
   color: var(--col-black);
   padding: 0;
-  margin: var(--margin);
+  margin: 0;
   width: 100%;
   max-width: var(--content-limit);
 }
@@ -53,6 +53,7 @@ label, output {
   white-space: nowrap;
 }
 label { padding-bottom: 0; }
+
 button, input:not([type="hidden"]), select, textarea {
   background: var(--col-white);
   color: var(--col-black);
@@ -61,23 +62,25 @@ button, input:not([type="hidden"]), select, textarea {
   border: var(--border);
   border-radius: var(--border-radius);
   outline: 0;
-  margin: 0 0 var(--space-1) 0;
+  margin: var(--margin);
   width: 100%;
   font-family: var(--font);
   font-size: var(--font-size);
   white-space: nowrap;
-  //&:active { background: var(--col-theme); }
-  &:disabled { background: var(--col-disabled); }
-  &:not(:disabled):hover, &:not(:disabled):focus { border-color: var(--col-border-hover); }
+  /*&:active { background: var(--col-theme); }*/
 }
-button, input[type='button'], input[type='reset'], input[type='submit'] {
+:matches(button, input:not([type="hidden"]), select, textarea):disabled { background: var(--col-disabled); }
+:matches(button, input:not([type="hidden"]), select, textarea):not(:disabled):matches(:hover, :focus) { border-color: var(--col-border-hover); }
+
+button, input[type="button"], input[type="reset"], input[type="submit"] {
   cursor: pointer;
   background: var(--col-black);
   color: var(--col-white);
   border-color: var(--col-black);
-  &:hover { background: var(--col-theme-dark); }
-  &:active { background: var(--col-theme-light); }
+  margin-left: 0 !important;
 }
+:matches(button, input[type="button"], input[type="reset"], input[type="submit"]):hover { background: var(--col-theme-dark); }
+:matches(button, input[type="button"], input[type="reset"], input[type="submit"]):active { background: var(--col-theme-light); }
 input[type='checkbox'], input[type='radio'] {
   cursor: pointer;
   appearance: none;
@@ -100,29 +103,29 @@ input[type="date"] {
 input[type='radio'] {
   background: var(--col-white);
   border-radius: 100%;
-  &:not(:checked) { cursor: pointer; }
 }
+input[type='radio']:not(:checked) { cursor: pointer; }
 input[type='color'] {
   cursor: pointer;
   padding: var(--space-2);
   height: 3rem;
-  &::-webkit-color-swatch-wrapper, &::-webkit-color-swatch { border: 0; }
 }
+input[type='color']:matches(::-webkit-color-swatch-wrapper, ::-webkit-color-swatch) { border: 0; }
 input[type="date"], input[type="datetime-local"] { text-transform: uppercase; }
 input[type='range'] {
   appearance: none;
   padding: var(--space-2) 0.1rem;
   border: var(--border);
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    cursor: pointer;
-    background: var(--col-white);
-    border: var(--border);
-    height: 2rem;
-    width: var(--space-1);
-  }
-  &:hover::-webkit-slider-thumb { border-color: var(--col-border-hover); }
 }
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: var(--col-white);
+  border: var(--border);
+  height: 2rem;
+  width: var(--space-1);
+}
+input[type='range']:hover::-webkit-slider-thumb { border-color: var(--col-border-hover); }
 
 optgroup { }
 option:hover { background: var(--col-theme); }
@@ -137,23 +140,7 @@ textarea { //REMOVE COL & ROW ATTRIBUTES FROM HTML
   max-height: 50vh;
 }
 
-@media(max-width: 28rem) {
-  form div.inline {
-    button, input, select {
-      + button, + input { margin-top: var(--space-1); }
-    }
-    label {
-      padding-top: 0;
-      padding-left: 1rem;
-    }
-    * + label { padding-top: 1rem; }
-  }
-}
 @media(min-width: 28rem) {
-  .inline {
-    display: flex;
-    button, input, select { + * { margin-left: var(--space-1); } }
-  }
   button, input[type='button'], input[type='reset'], input[type='submit'] { width: auto; }
 }
 
@@ -221,7 +208,7 @@ address {
 
 article, section {
   display: block;
-  margin: auto;
+  margin: 0;
   width: 100%;
 }
 
@@ -231,18 +218,18 @@ footer { }
 
 header { }
 hgroup { }
-h1, h2, h2, h3, h4, h5, h6, [class^="h-"] {
+h1, h2, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   margin: var(--margin);
   width: 100%;
   font-family: var(--font-family-header);
   font-weight: var(--font-family-header-weight);
 }
-h1, .h-1 { font-size: 130%; }
-h2, .h-2 { font-size: 118.75%; }
-h3, .h-3 { font-size: 111.25%; }
-h4, .h-4 { font-size: 106.25%; }
-h5, .h-5 { font-size: 102.5%; }
-h6, .h-6 { font-size: 100%; }
+h1, .h1 { font-size: 150%; }
+h2, .h2 { font-size: 140%; }
+h3, .h3 { font-size: 130%; }
+h4, .h4 { font-size: 120%; }
+h5, .h5 { font-size: 110%; }
+h6, .h6 { font-size: 100%; }
 
 //nav, side-nav {  }
 
@@ -281,9 +268,8 @@ th, td { padding: var(--space-3); }
 a {
   color: var(--col-link);
   outline: 0;
-  &:focus-visible { background-color: var(--col-marked); }
-  //&:visited { color: var(--col-theme-darker); }
 }
+a:focus-visible { background-color: var(--col-marked); }
 
 abbr, acronym {
   cursor: help;
@@ -296,9 +282,9 @@ blockquote, cite, q {
   width: 100%;
   font-style: italic;
   text-align: center;
-  &::before { content: open-quote; }
-  &::after { content: close-quote; }
 }
+:matches(blockquote, cite, q)::before { content: open-quote; }
+:matches(blockquote, cite, q)::after { content: close-quote; }
 
 code {
   background: var(--col-code);
@@ -316,9 +302,9 @@ data { }
 del {
   background: var(--col-deleted);
   text-decoration: none;
-  &::before { content: "[deletion start] "; }
-  &::after { content: " [deletion end]"; }
 }
+del::before { content: "[deletion start] "; }
+del::after { content: " [deletion end]"; }
 
 details { }
 
@@ -332,10 +318,8 @@ dialog {
   margin: auto;
 }
 
-dl {
-  > dt { font-weight: bold; }
-  > dd { margin: 0 0 var(--space-1) var(--space-2); }
-}
+dl > dt { font-weight: bold; }
+dl > dd { margin: 0 0 var(--space-1) var(--space-2); }
 
 em, i { font-style: italic; }
 
@@ -349,9 +333,9 @@ hr {
 ins {
   background: var(--col-inserted);
   text-decoration: none;
-  &::before { content: "[insertion start] "; }
-  &::after { content: " [insertion end]"; }
 }
+ins::before { content: "[insertion start] "; }
+ins::after { content: " [insertion end]"; }
 
 kbd {
   font-family: "Courier New";
