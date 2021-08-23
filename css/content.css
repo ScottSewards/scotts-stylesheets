@@ -1,6 +1,3 @@
-//////////////
-// EMBEDDED //
-//////////////
 embed { }
 
 iframe {
@@ -22,15 +19,13 @@ picture {
 
 source { }
 
-///////////
-// FORMS //
-///////////
+/* FORMS */
 form {
   color: var(--col-black);
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   width: 100%;
-  max-width: var(--content-limit);
+  max-width: 100%;
 }
 fieldset {
   display: block;
@@ -46,78 +41,71 @@ legend {
   margin-bottom: calc(var(--space-1) * -1);
   white-space: nowrap;
 }
-label, output {
-  display: block;
-  padding: var(--space-1) 0;
-  margin: 0;
-  white-space: nowrap;
-}
-label { padding-bottom: 0; }
+label {}
+output {}
 
 button, input:not([type="hidden"]), select, textarea {
   background: var(--col-white);
   color: var(--col-black);
   display: block;
-  padding: var(--space-1);
+  padding: 0.5rem;
   border: var(--border);
   border-radius: var(--border-radius);
   outline: 0;
-  margin: var(--margin);
   width: 100%;
   font-family: var(--font);
   font-size: var(--font-size);
   white-space: nowrap;
-  /*&:active { background: var(--col-theme); }*/
 }
-:matches(button, input:not([type="hidden"]), select, textarea):disabled { background: var(--col-disabled); }
-:matches(button, input:not([type="hidden"]), select, textarea):not(:disabled):matches(:hover, :focus) { border-color: var(--col-border-hover); }
-
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   cursor: pointer;
   background: var(--col-black);
   color: var(--col-white);
-  border-color: var(--col-black);
   margin-left: 0 !important;
 }
-:matches(button, input[type="button"], input[type="reset"], input[type="submit"]):hover { background: var(--col-theme-dark); }
-:matches(button, input[type="button"], input[type="reset"], input[type="submit"]):active { background: var(--col-theme-light); }
-input[type='checkbox'], input[type='radio'] {
+:is(button, input:not([type="hidden"]), select, textarea):not(:disabled):hover { border-color: var(--col-theme-light); }
+:is(button, input:not([type="hidden"]), select, textarea):not(:disabled):focus { border-color: var(--col-theme-dark); }
+:is(button, input:not([type="hidden"]), select, textarea):disabled, :is(input:not([type="button"], [type="checkbox"], [type="hidden"], [type="radio"], [type="reset"], [type="submit"]), textarea):read-only {
+  cursor: not-allowed !important;
+  background: var(--col-fill);
+}
+:is(button, input[type="button"], input[type="reset"], input[type="submit"]):hover { background: var(--col-theme-light); }
+:is(button, input[type="button"], input[type="reset"], input[type="submit"]):active { background: var(--col-theme-dark); }
+input[type="checkbox"], input[type="radio"] {
   cursor: pointer;
   appearance: none;
   position: relative;
   border: var(--border);
-  padding: 1.5rem;
+  padding: 1rem;
   margin-left: 0 !important;
-  width: 3.1rem;
+  width: 2rem;
 }
-input[type='checkbox']:checked::after, input[type='radio']:checked::after {
+input[type="checkbox"]:checked::after, input[type="radio"]:checked::after {
   position: absolute;
   content: "✓";
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-input[type="date"] {
-  padding-right: 0;
-}
-input[type='radio'] {
+input[type="date"] { padding-right: 0; }
+input[type="radio"] {
   background: var(--col-white);
   border-radius: 100%;
 }
-input[type='radio']:not(:checked) { cursor: pointer; }
-input[type='color'] {
+input[type="radio"]:not(:checked) { cursor: pointer; }
+input[type="color"] {
   cursor: pointer;
   padding: var(--space-2);
   height: 3rem;
 }
-input[type='color']:matches(::-webkit-color-swatch-wrapper, ::-webkit-color-swatch) { border: 0; }
+input[type="color"]:matches(::-webkit-color-swatch-wrapper, ::-webkit-color-swatch) { border: 0; }
 input[type="date"], input[type="datetime-local"] { text-transform: uppercase; }
-input[type='range'] {
+input[type="range"] {
   appearance: none;
   padding: var(--space-2) 0.1rem;
   border: var(--border);
 }
-input[type='range']::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   cursor: pointer;
   background: var(--col-white);
@@ -125,15 +113,16 @@ input[type='range']::-webkit-slider-thumb {
   height: 2rem;
   width: var(--space-1);
 }
-input[type='range']:hover::-webkit-slider-thumb { border-color: var(--col-border-hover); }
+input[type="range"]:hover::-webkit-slider-thumb { border-color: var(--col-border-hover); }
 
 optgroup { }
+option:empty { display: none; }
 option:hover { background: var(--col-theme); }
 datalist { display: none; }
 
 select { }
 
-textarea { //REMOVE COL & ROW ATTRIBUTES FROM HTML
+textarea {
   resize: vertical;
   min-height: 6rem;
   height: 6rem;
@@ -141,7 +130,7 @@ textarea { //REMOVE COL & ROW ATTRIBUTES FROM HTML
 }
 
 @media(min-width: 28rem) {
-  button, input[type='button'], input[type='reset'], input[type='submit'] { width: auto; }
+  button, input[type="button"], input[type="reset"], input[type="submit"] { width: auto; }
 }
 
 /* MEDIA */
@@ -180,6 +169,7 @@ img {
   display: block;
   border-radius: var(--border-radius);
   margin: auto;
+  margin-bottom: 0.5rem;
   width: 100%;
 }
 
@@ -196,13 +186,14 @@ track { }
 video {
   user-select: none;
   display: block;
-  margin: var(--space-1) auto;
+  margin: auto;
+  margin-bottom: 0.5rem;
   width: 100%;
 }
 
 /* SECTIONS */
 address {
-  margin: var(--margin);
+  margin-bottom: 0.5rem;
   width: 100%;
 }
 
@@ -219,7 +210,10 @@ footer { }
 header { }
 hgroup { }
 h1, h2, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  margin: var(--margin);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--col-border);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
   width: 100%;
   font-family: var(--font-family-header);
   font-weight: var(--font-family-header-weight);
@@ -231,11 +225,9 @@ h4, .h4 { font-size: 120%; }
 h5, .h5 { font-size: 110%; }
 h6, .h6 { font-size: 100%; }
 
-//nav, side-nav {  }
+nav, side-nav {  }
 
-////////////
-// TABLES //
-////////////
+/* TABLES */
 table {
   border-collapse: separate;
   border-spacing: 0;
@@ -246,9 +238,9 @@ caption {
   margin-bottom: var(--space-2);
   font-style: italic;
 }
-//colgroup { }
-//col { }
-//thead { }
+colgroup { }
+col { }
+thead { }
 tbody tr:first-child td:first-child { border-top-left-radius: var(--border-radius); }
 tbody tr:first-child td:last-child { border-top-right-radius: var(--border-radius); }
 tbody tr:last-child td:first-child { border-bottom-left-radius: var(--border-radius); }
@@ -259,15 +251,29 @@ tbody td:not(:last-child) { border-right: 0; }
 tbody td:empty { background: var(--col-empty); }
 th {
   font-weight: var(--font-family-header-weight);
-  text-align: left;
+  text-align: center;
   white-space: nowrap;
 }
 th, td { padding: var(--space-3); }
+td:has(input) { padding: 0; }
+td input {
+  background: none;
+  padding: 0.75rem !important;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  min-width: 0%;
+  width: 100%;
+}
 
 /* TEXT */
 a {
   color: var(--col-link);
   outline: 0;
+}
+a:focus-within {
+  background: none !important;
+  outline: var(--space-4) !important;
 }
 a:focus-visible { background-color: var(--col-marked); }
 
@@ -326,7 +332,7 @@ em, i { font-style: italic; }
 hr {
   border: 0;
   border-top: var(--border);
-  margin: var(--margin);
+  margin: 0.5rem 0;
   width: 100%;
 }
 
@@ -374,14 +380,16 @@ progress {
 }
 
 ol, ul {
-  margin: var(--margin);
+  padding-left: 1.75rem;
+  margin-bottom: 0.5rem;
   width: 100%;
 }
-ul li { list-style-type: square; }
-li + li { margin-top: var(--space-4); }
+:matches(ol, ul) :matches(ol, ul) { margin-bottom: 0; }
+li + li { padding: 0.25rem 0; }
 
 p {
-  margin: var(--margin);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
   width: 100%;
 }
 
@@ -426,37 +434,4 @@ slot { }
 
 template { }
 
-/*
-OBSOLETE AND DEPRECATED ELEMENTS, DO NOT USE THESE
-acronym
-applet
-basefont
-bgsound
-big
-blink
-center
-command
-content
-dir
-element
-font
-frame
-frameset
-iamge
-isindex
-keygen
-listing
-marquee
-menuitem
-multicol
-nextid
-nobr
-noembed
-noframes
-plaintext
-shadow
-spacer
-strike
-tt
-xmp
-*/
+/* OBSOLETE AND DEPRECATED ELEMENTS, DO NOT USE THESE: acronym, applet, basefont, bgsound, big, blink, center, command, content, dir, element, font, frame, frameset, iamge, isindex, keygen, listing, marquee, menuitem, multicol, nextid, nobr, noembed, noframes, plaintext, shadow, spacer, strike, tt, xmp */

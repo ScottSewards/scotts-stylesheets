@@ -7,7 +7,7 @@
   <link rel="shortcut icon" href="images/swimming-george.png">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/content.min.css">
+  <link rel="stylesheet" href="css/content.css">
   <link rel="stylesheet" href="css/classes.css">
   <link rel="stylesheet" href="css/custom.css">
   <script type="text/javascript" src="js/ss-functions.js"></script>
@@ -17,8 +17,7 @@
     $("[name='toggle-dark-mode']").addEventListener("click", () => $("html").classList.toggle("dark"));
     var themeColourHue = getCookie("themeColourHue");
     if(themeColourHue !== null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
-  });
-
+  };
   var hue = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
   setInterval(function() {
     hue = hue >= 359 ? 0 : parseInt(hue) + 1;
@@ -34,13 +33,14 @@
     <a href="#variables">Variables</a>
     <a href="#layout">Layout</a>
     <a href="#content">Content</a>
-    <a href="#components">Components</a>
-    <a href="#classes">Classes</a>
     <div class="drop-down">
       <div class="drop-down-outside">
-        <a href="#classes">Classes</a>
+        <a href="#alignment-classes">Alignment</a>
+        <a href="#box-class">Box</a>
+        <a href="#line-clamp-classes">Line Clamp</a>
+        <a href="#row-classes">Row</a>
       </div>
-      <a class="drop-down-button">Dropdown</a>
+      <a class="drop-down-button">Classes</a>
     </div>
   </side-nav>
   <main>
@@ -93,7 +93,7 @@
             </tr>
           </tbody>
         </table>
-        <button class="block-right" type="button" name="toggle-dark-mode">Toggle Dark Mode</button>
+        <button class="mb-3" type="button" name="toggle-dark-mode">Toggle Dark Mode</button>
         <h3>Colour Scheme</h3>
         <p>I have used a simple black and white colour scheme with a user-defined theme colour set by a hue parameter stored in <code>--col-theme-hue</code>.</p>
         <table>
@@ -142,36 +142,24 @@
       </article>
       <article id="forms">
         <h3>Forms</h3>
-        <p>
-          <code>form</code>
-          <code>.less</code>
-          <code>fieldset</code>
-          <code>legend</code>
-          <code>label</code>
-          <code>input</code>
-          <code>button</code>
-          <code>button.centre</code>
-          <code>datalist</code>
-          <code>select</code>
-          <code>optgroup</code>
-          <code>option</code>
-          <code>textarea</code>
-          <code>output</code>
-        </p>
         <form>
-          <div class="row">
+          <div class="flex mb-2">
             <input id="checkbox" type="checkbox" name="checkbox" value="on"/>
             <label for="checkbox">Checkbox</label>
           </div>
-          <div class="row">
+          <div class="flex mb-2">
             <input id="radio-a" type="radio" name="radio" value="a">
             <label for="radio-a">Radio A</label>
           </div>
-          <div class="row">
-            <input id="radio-b" type="radio" name="radio" value="b">
+          <div class="flex mb-2">
+            <input id="radio-b" type="radio" name="radio" value="b" disabled>
             <label for="radio-b">Radio B</label>
           </div>
-          <div class="row">
+          <div class="floating-label mb-2">
+            <label for="radio-b">Radio B</label>
+            <input id="radio-b" type="date" name="radio" value="b">
+          </div>
+          <div class="flex mb-2">
             <label for="list">List</label>
             <input id="list" name="list" list="list-items" placeholder="List Item A"/>
           </div>
@@ -180,12 +168,18 @@
             <option value="List Item B"/>
             <option value="List Item C"/>
           </datalist>
-          <div class="row">
+          <div class="flex mb-2">
             <label for="password">Password</label>
             <input id="password" type="password" name="password" value="password">
             <input type="button" name="show-password" value="Show">
           </div>
-          <div class="row">
+
+          <div class="floating-label mb-2">
+            <input id="password" type="password" name="password" value="password">
+            <label for="password">Password</label>
+          </div>
+
+          <div class="flex mb-2">
             <label for="select">Select</label>
             <select id="select" name="select">
               <optgroup label="A">
@@ -197,16 +191,13 @@
               </optgroup>
             </select>
           </div>
-          <div class="row">
+          <div class="flex mb-2">
             <label for="text">Text</label>
             <input id="text" type="text" name="text"/>
           </div>
-          <div class="row">
+          <div class="mb-2">
             <label for="textarea">Textarea</label>
             <textarea id="textarea" name="textarea"></textarea>
-          </div>
-          <div class="row">
-            <button type="button" name="button">qwerty</button>
           </div>
         </form>
       </article>
@@ -268,71 +259,6 @@
     </section>
     <section id="classes">
       <h2>Classes</h2>
-      <article id="row-classes">
-        <h3>Row</h3>
-        <p>The <code>.row</code> uses <code>display: flexbox;</code> to position children elements. Rather than use the <code>margin</code> property to seperate elements, the <code>gap</code> property is utilised.</p>
-        <div class="row">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-        </div>
-      </article>
-      <article id="column-classes">
-        <h3>Column</h3>
-        <p>The column and row classes does not add padding or margin.</p>
-        <div class="row">
-          <div class="col-12">
-            <p class="set-padding-3 set-border text-middle"><code>12</code></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-11">
-            <p class="set-padding-3 set-border text-middle"><code>11</code></p>
-          </div>
-          <div class="col-1">
-            <p class="set-padding-3 set-border text-middle"><code>1</code></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-10">
-            <p class="set-padding-3 set-border text-middle"><code>10</code></p>
-          </div>
-          <div class="col-2">
-            <p class="set-padding-3 set-border text-middle"><code>2</code></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-9">
-            <p class="set-padding-3 set-border text-middle"><code>9</code></p>
-          </div>
-          <div class="col-3">
-            <p class="set-padding-3 set-border text-middle"><code>3</code></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-8">
-            <p class="set-padding-3 set-border text-middle"><code>8</code></p>
-          </div>
-          <div class="col-4">
-            <p class="set-padding-3 set-border text-middle"><code>4</code></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-7">
-            <p class="set-padding-3 set-border text-middle"><code>7</code></p>
-          </div>
-          <div class="col-5">
-            <p class="set-padding-3 set-border text-middle"><code>5</code></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <p class="set-padding-3 set-border text-middle"><code>6</code></p>
-          </div>
-          <div class="col-6">
-            <p class="set-padding-3 set-border text-middle"><code>6</code></p>
-          </div>
-        </div>
-      </article>
       <article id="alignment-classes">
         <h3>Alignment</h3>
         <div class="box">
@@ -343,7 +269,18 @@
           <p class="text-end">This text is aligned right <code>.text-end</code>.</p>
         </div>
       </article>
-      <article id="clamp-classes">
+      <article id="box-class">
+        <h3>Box</h3>
+        <div class="flex">
+          <div class="box">
+            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+          <div class="box background-theme color-white">
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+          </div>
+        </div>
+      </article>
+      <article id="line-clamp-classes">
         <h3>Line Clamp</h3>
         <p>You can line clamp text via <code>.line-clamp</code>.</p>
         <div class="box">
@@ -352,24 +289,34 @@
           <p class="line-clamp-2"><i>Multi-line line clamp</i>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
         </div>
       </article>
-      <article id="box-class">
-        <h3>Box</h3>
-        <p>
-          <code>.box</code>
-          <code>.row</code>
-        </p>
+      <article id="row-classes">
+        <h3>Row</h3>
+        <p>The <code>.row</code> uses <code>display: flexbox;</code> to position children elements. Rather than use the <code>margin</code> property to seperate elements, the <code>gap</code> property is utilised.</p>
         <div class="row">
-          <div class="box">
-            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="col-12">
+            <div class="p-3 b-1 mb-2 text-middle">
+              <code>col-12</code>
+            </div>
           </div>
-          <div class="box back-fill">
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+          <div class="col-10">
+            <p class="p-2 b-1 text-middle"><code>col-10</code></p>
+          </div>
+          <div class="col-2">
+            <p class="p-2 b-1 text-middle"><code>col-2</code></p>
+          </div>
+          <div class="col-8">
+            <p class="p-2 b-1 text-middle"><code>col-8</code></p>
+          </div>
+          <div class="col-4">
+            <p class="p-2 b-1 text-middle"><code>col-4</code></p>
+          </div>
+          <div class="col-6">
+            <p class="p-2 b-1 text-middle"><code>col-6</code></p>
+          </div>
+          <div class="col-6">
+            <p class="p-2 b-1 text-middle"><code>col-6</code></p>
           </div>
         </div>
-      </article>
-      <article id="no-classes">
-        <h3>Set/Unset</h3>
-        <p>Set property values to <code>none</code> with none classes prefixed with <code>no-</code> remove properties such as <code>.no-padding</code> or <code>no-border</code>.</p>
       </article>
     </section>
   </main>

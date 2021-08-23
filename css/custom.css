@@ -1,8 +1,83 @@
-/* MODIFY FRAMEWORK HERE TO PREVENT STYLES BEING OVERWRITTEN */
+/* OVERRIDE STYLES IN OTHER SHEETS HERE TO PREVENT UNDOING CHANGES IN UPDATES */
 [id] { scroll-margin-top: var(--scroll-offset); }
 
-:root {
-
-}
+:root { }
 
 input[type="range"].colour-picker { background: -webkit-linear-gradient(left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%); }
+
+::-webkit-scrollbar { width: var(--space-1); }
+::-webkit-scrollbar-track { background: none; }
+::-webkit-scrollbar-thumb {
+  background: var(--col-theme);
+  border: 0.25rem solid #fff;
+  border-radius: var(--border-radius);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--col-theme-dark); }
+
+
+/* CUSTOM CLASSES */
+.bg-error { background-color: var(--col-alert); }
+.text-error { color: var(--col-alert); }
+
+
+/* NAVIGATION - DROPDOWN*/
+.drop-down {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+}
+/*.drop-down:focus-within * { background: red; }*/
+.drop-down-button {
+  cursor: pointer;
+  padding-right: 2.75rem;
+}
+.drop-down-button::after {
+  content: "▼"; /*U+25BC*/
+  position: absolute;
+  top: 0;
+  right: calc(var(--font-size) * 0.1);
+  padding: calc(var(--space-1) + (var(--font-size) * 0.1));
+  font-size: 80%;
+}
+.drop-down.active > .drop-down-button::after { transform: rotateZ(180deg); }
+.drop-down-inside, .drop-down-outside {
+  display: none;
+  flex-direction: column;
+  font-size: 85%;
+  max-height: 100%;
+}
+.drop-down-inside > *, .drop-down-outside > * { background: #333; }
+.drop-down.active :is(.drop-down-inside, .drop-down-outside) { display: flex; }
+.drop-down-outside {
+  position: absolute;
+  top: 100%;
+  min-width: 100%;
+}
+side-nav .drop-down-outside {
+  top: 0;
+  left: 100%;
+}
+side-nav .drop-down-outside + .drop-down-button::after { transform: rotateZ(-90deg); /*U+25B6*/ }
+side-nav .drop-down.active > .drop-down-outside + .drop-down-button::after { transform: rotateZ(90deg); /*U+25B6*/ }
+
+/* DARK MODE / OVERRIDES variables.css's prefers-color-scheme */
+.dark {
+  --col-white: var(--col-const-black);
+  --col-black: var(--col-const-white);
+}
+/* .dark ::-webkit-calendar-picker-indicator { filter: invert(1); } */
+
+.floating-label {
+  position: relative;
+}
+.floating-label > input {
+  padding: 0.5rem;
+  padding-top: 1.5rem;
+}
+.floating-label > label {
+  position: absolute;
+  top: 0.3rem;
+  left: 0.5rem;
+  font-size: 85%;
+}
