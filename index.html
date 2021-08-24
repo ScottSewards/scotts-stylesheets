@@ -24,10 +24,10 @@
     $$("[id^='col-theme-output']").forEach((item, i) =>  item.innerHTML = hue);
     document.documentElement.style.setProperty('--col-theme-hue', hue + '');
     setCookie('themeColourHue', hue);
-  }, 1000);
+  }, 2000);
   </script>
 </head>
-<body>
+<body class="background-white">
   <side-nav>
     <a href="#about">About</a>
     <a href="#variables">Variables</a>
@@ -44,15 +44,17 @@
     </div>
   </side-nav>
   <main>
-    <h1>Scott's Stylesheets</h1>
-    <section id="about">
+    <header>
+      <h1>Scott's Stylesheets</h1>
+    </header>
+    <section id="about" class="py-4">
       <h2>About</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
     </section>
-    <section id="layout">
+    <section id="layout" class="py-4">
       <h2>Layout</h2>
     </section>
-    <section id="variables">
+    <section id="variables" class="py-4">
       <h2>Variables</h2>
       <article id="colour-scheme">
         <h3>Black, White and Constants</h3>
@@ -128,9 +130,9 @@
         </table>
       </article>
     </section>
-    <section id="content">
+    <section id="content" class="py-4">
       <h2>Content</h2>
-      <article id="images">
+      <article id="images" class="py-4">
         <h3>Images</h3>
         <p>
           <code>picture</code>
@@ -140,24 +142,92 @@
         </p>
         <img src="images/splhcb.webp" alt="Placeholder">
       </article>
-      <article id="forms">
+      <article id="forms" class="py-4">
         <h3>Forms</h3>
         <form>
-          <div class="flex mb-2">
-            <input id="checkbox" type="checkbox" name="checkbox" value="on"/>
-            <label for="checkbox">Checkbox</label>
+          <h4>Text Inputs</h4>
+          <div id="text-inputs">
+            <div class="floating-label mb-2">
+              <label for="text">Text</label>
+              <input id="text" type="text" name="text"/>
+            </div>
+            <div class="floating-label mb-2">
+              <label for="textarea">Textarea</label>
+              <textarea id="textarea" name="textarea"></textarea>
+            </div>
+            <div class="floating-label mb-2">
+              <label for="password">Password</label>
+              <input id="password" type="password" name="password" value="password">
+            </div>
+            <div class="floating-label mb-2">
+              <label for="url-input">URL</label>
+              <input id="url-input" type="url" name="url">
+            </div>
           </div>
-          <div class="flex mb-2">
-            <input id="radio-a" type="radio" name="radio" value="a">
-            <label for="radio-a">Radio A</label>
+          <h4>Contact Inputs</h4>
+          <div id="contact-inputs">
+            <div class="floating-label mb-2">
+              <label for="email-input">Email</label>
+              <input id="email-input" type="email" name="email">
+            </div>
+            <div class="floating-label mb-2">
+              <label for="tel-input">Telephone</label>
+              <input id="tel-input" type="tel" name="tel">
+            </div>
           </div>
+          <h4>Date Inputs</h4>
+          <div id="date-inputs">
+            <div class="floating-label mb-2">
+              <label for="time-input">Time</label>
+              <input id="time-input" type="time" name="time">
+            </div>
+            <div class="floating-label mb-2">
+              <label for="week-input">Week</label>
+              <input id="week-input" type="week" name="week">
+            </div>
+            <div class="floating-label mb-2">
+              <label for="month-input">Month</label>
+              <input id="month-input" type="month" name="month">
+            </div>
+            <div class="floating-label mb-2">
+              <label for="date-input">Date</label>
+              <input id="date-input" type="date" name="date">
+            </div>
+            <div class="floating-label mb-2">
+              <label for="datetime-local-input">Datetime Local</label>
+              <input id="datetime-local-input" type="datetime-local" name="datetime-local">
+            </div>
+          </div>
+          <h4>Toggle Inputs</h4>
+          <div id="toggle-inputs">
+            <div class="flex mb-2">
+              <input id="checkbox-input" type="checkbox" name="checkbox" value="checkbox"/>
+              <label for="checkbox-input">Checkbox</label>
+            </div>
+            <div class="flex mb-2">
+              <input id="radio-a-input" type="radio" name="radio" value="a">
+              <label for="radio-a-input">Radio A</label>
+              <input id="radio-b-input" type="radio" name="radio" value="b">
+              <label for="radio-b-input">Radio B</label>
+            </div>
+          </div>
+          <h4>Button Inputs</h4>
+          <div id="button-inputs" class="flex mb-2">
+            <input id="button-input" type="button" name="button" value="button">
+            <input id="reset-input" type="reset" name="reset" value="reset">
+          </div>
+          <h4>Other Inputs</h4>
           <div class="flex mb-2">
-            <input id="radio-b" type="radio" name="radio" value="b" disabled>
-            <label for="radio-b">Radio B</label>
+            <label for="range-input">Range</label>
+            <input id="range-input" type="range" name="range"/>
           </div>
           <div class="floating-label mb-2">
-            <label for="radio-b">Radio B</label>
-            <input id="radio-b" type="date" name="radio" value="b">
+            <label for="file-input">File</label>
+            <input id="file-input" type="file" name="file">
+          </div>
+          <div class="floating-label mb-2">
+            <label for="color-input">Colour</label>
+            <input id="color-input" type="color" name="color">
           </div>
           <div class="flex mb-2">
             <label for="list">List</label>
@@ -168,17 +238,6 @@
             <option value="List Item B"/>
             <option value="List Item C"/>
           </datalist>
-          <div class="flex mb-2">
-            <label for="password">Password</label>
-            <input id="password" type="password" name="password" value="password">
-            <input type="button" name="show-password" value="Show">
-          </div>
-
-          <div class="floating-label mb-2">
-            <input id="password" type="password" name="password" value="password">
-            <label for="password">Password</label>
-          </div>
-
           <div class="flex mb-2">
             <label for="select">Select</label>
             <select id="select" name="select">
@@ -191,17 +250,9 @@
               </optgroup>
             </select>
           </div>
-          <div class="flex mb-2">
-            <label for="text">Text</label>
-            <input id="text" type="text" name="text"/>
-          </div>
-          <div class="mb-2">
-            <label for="textarea">Textarea</label>
-            <textarea id="textarea" name="textarea"></textarea>
-          </div>
         </form>
       </article>
-      <article id="lists">
+      <article id="lists" class="py-4">
         <h3>Lists</h3>
         <p>Lettered list:</p>
         <ol type="A">
@@ -219,7 +270,7 @@
           <li>Another item</li>
         </ul>
       </article>
-      <article id="tables">
+      <article id="tables" class="py-4">
         <h3>Tables</h3>
         <p>
           <code>.table-wrapper</code>
@@ -257,7 +308,7 @@
         </div>
       </article>
     </section>
-    <section id="classes">
+    <section id="classes" class="py-4">
       <h2>Classes</h2>
       <article id="alignment-classes">
         <h3>Alignment</h3>
@@ -292,7 +343,7 @@
       <article id="row-classes">
         <h3>Row</h3>
         <p>The <code>.row</code> uses <code>display: flexbox;</code> to position children elements. Rather than use the <code>margin</code> property to seperate elements, the <code>gap</code> property is utilised.</p>
-        <div class="row">
+        <div class="row-fix">
           <div class="col-12">
             <div class="p-3 b-1 mb-2 text-middle">
               <code>col-12</code>

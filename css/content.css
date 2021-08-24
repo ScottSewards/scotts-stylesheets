@@ -44,7 +44,7 @@ legend {
 label {}
 output {}
 
-button, input:not([type="hidden"]), select, textarea {
+button, input, select, textarea {
   background: var(--col-white);
   color: var(--col-black);
   display: block;
@@ -61,11 +61,11 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
   cursor: pointer;
   background: var(--col-black);
   color: var(--col-white);
-  margin-left: 0 !important;
+  width: auto;
 }
-:is(button, input:not([type="hidden"]), select, textarea):not(:disabled):hover { border-color: var(--col-theme-light); }
-:is(button, input:not([type="hidden"]), select, textarea):not(:disabled):focus { border-color: var(--col-theme-dark); }
-:is(button, input:not([type="hidden"]), select, textarea):disabled, :is(input:not([type="button"], [type="checkbox"], [type="hidden"], [type="radio"], [type="reset"], [type="submit"]), textarea):read-only {
+:is(button, input, select, textarea):not(:disabled):hover { border-color: var(--col-theme-light); }
+:is(button, input, select, textarea):not(:disabled):focus { border-color: var(--col-theme-dark); }
+:is(button, input, select, textarea):disabled, :is(input:not([type="button"], [type="checkbox"], [type="color"], [type="file"], [type="hidden"], [type="radio"], [type="range"], [type="reset"], [type="submit"]), textarea):read-only {
   cursor: not-allowed !important;
   background: var(--col-fill);
 }
@@ -100,20 +100,7 @@ input[type="color"] {
 }
 input[type="color"]:matches(::-webkit-color-swatch-wrapper, ::-webkit-color-swatch) { border: 0; }
 input[type="date"], input[type="datetime-local"] { text-transform: uppercase; }
-input[type="range"] {
-  appearance: none;
-  padding: var(--space-2) 0.1rem;
-  border: var(--border);
-}
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  cursor: pointer;
-  background: var(--col-white);
-  border: var(--border);
-  height: 2rem;
-  width: var(--space-1);
-}
-input[type="range"]:hover::-webkit-slider-thumb { border-color: var(--col-border-hover); }
+input[type="range"]::-webkit-slider-thumb { cursor: pointer; }
 
 optgroup { }
 option:empty { display: none; }
@@ -127,10 +114,6 @@ textarea {
   min-height: 6rem;
   height: 6rem;
   max-height: 50vh;
-}
-
-@media(min-width: 28rem) {
-  button, input[type="button"], input[type="reset"], input[type="submit"] { width: auto; }
 }
 
 /* MEDIA */

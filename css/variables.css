@@ -1,11 +1,5 @@
 /*variables.css HANDLES VARIABLES, PREFERENCES AND SETTINGS*/
 :root {
-
-  --col-success: #6BD976;
-  --outline: 2px solid red;
-  --outline-offset: var(--space-4);
-
-
   /* CONSTANTS */
   --col-const-black: #333;
   --col-const-white: #FFF;
@@ -44,6 +38,8 @@
   --col-hover: #CCC;
   --col-inserted: rgba(0, 255, 0, 0.6);
   --col-marked: var(--col-theme);
+  --col-success: #6BD976;
+  --col-error: #FF6666;
 
   /* POSITIVE SPACING */
   --space-1: 1rem;
@@ -57,17 +53,22 @@
   --space--4: -0.25rem;
 
   /* BOX */
-  --padding: var(--space-1) var(--space-3);
   --border: var(--border-width) solid var(--col-border);
-  --border-radius: 3px;
-  --border-width: 1px;
-  --margin: 0 auto var(--space-1) auto;
+  --border-radius: 4px;
+  --outline: 2px solid red;
+  --outline-offset: var(--space-4);
   --scroll-offset: var(--space-1); /* SET TO --margin TOP TO SHOW ALL OF TARGET ELEMENT WITHOUT PREVIOUS SIBLING ELEMENT */
 
   --show-side-nav: 1; /* BOOLEAN / 1 = YES / 0 = NO*/
-  --side-nav-width: 12rem;
+  --side-nav-width: 10rem;
   --content-limit: 82ch;
   --at-duration: 0.1s; /* DEFAULT ANIMATION AND TRANSFORM DURATION*/
+}
+
+/* ADD .dark TO <html> TO CHANGE VARIABLES VALUES */
+.dark {
+  --col-white: var(--col-const-black);
+  --col-black: var(--col-const-white);
 }
 
 ::selection {
@@ -79,7 +80,7 @@
 ::-webkit-outer-spin-button, ::-webkit-inner-spin-button { -webkit-appearance: none; }
 ::-webkit-scrollbar { width: var(--space-1); }
 ::-webkit-scrollbar-track { background: var(--col-nav); }
-::-webkit-scrollbar-thumb { background: var(--col-const-white); }
+::-webkit-scrollbar-thumb { background: var(--col-white); }
 ::-webkit-scrollbar-thumb:hover { background: var(--col-theme); }
 
 /* PREFERENCES */
