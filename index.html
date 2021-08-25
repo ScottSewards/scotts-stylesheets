@@ -13,11 +13,13 @@
   <script type="text/javascript" src="js/ss-functions.js"></script>
   <script type="text/javascript">
   window.onload = function() {
-    initScottsFunctions();
-    $("[name='toggle-dark-mode']").addEventListener("click", () => $("html").classList.toggle("dark"));
-    var themeColourHue = getCookie("themeColourHue");
-    if(themeColourHue !== null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
+    //initScottsFunctions();
+    //$("[name='toggle-dark-mode']").addEventListener("click", () => $("html").classList.toggle("dark"));
+    //var themeColourHue = getCookie("themeColourHue");
+    //if(themeColourHue !== null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
+    addDropDownButtons();
   };
+  /*
   var hue = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
   setInterval(function() {
     hue = hue >= 359 ? 0 : parseInt(hue) + 1;
@@ -25,6 +27,7 @@
     document.documentElement.style.setProperty('--col-theme-hue', hue + '');
     setCookie('themeColourHue', hue);
   }, 2000);
+  */
   </script>
 </head>
 <body class="background-white">
@@ -34,7 +37,7 @@
     <a href="#layout">Layout</a>
     <a href="#content">Content</a>
     <div class="drop-down">
-      <div class="drop-down-outside">
+      <div class="drop-down-inside">
         <a href="#alignment-classes">Alignment</a>
         <a href="#box-class">Box</a>
         <a href="#line-clamp-classes">Line Clamp</a>
@@ -43,7 +46,7 @@
       <a class="drop-down-button">Classes</a>
     </div>
   </side-nav>
-  <main>
+  <main class="container">
     <header>
       <h1>Scott's Stylesheets</h1>
     </header>
@@ -95,7 +98,7 @@
             </tr>
           </tbody>
         </table>
-        <button class="mb-3" type="button" name="toggle-dark-mode">Toggle Dark Mode</button>
+        <button class="mb-3" type="button" name="toggle-dark-mode" disabled>Toggle Dark Mode</button>
         <h3>Colour Scheme</h3>
         <p>I have used a simple black and white colour scheme with a user-defined theme colour set by a hue parameter stored in <code>--col-theme-hue</code>.</p>
         <table>
@@ -177,26 +180,29 @@
           </div>
           <h4>Date Inputs</h4>
           <div id="date-inputs">
-            <div class="floating-label mb-2">
-              <label for="time-input">Time</label>
-              <input id="time-input" type="time" name="time">
-            </div>
-            <div class="floating-label mb-2">
-              <label for="week-input">Week</label>
-              <input id="week-input" type="week" name="week">
-            </div>
-            <div class="floating-label mb-2">
-              <label for="month-input">Month</label>
-              <input id="month-input" type="month" name="month">
-            </div>
-            <div class="floating-label mb-2">
-              <label for="date-input">Date</label>
-              <input id="date-input" type="date" name="date">
-            </div>
-            <div class="floating-label mb-2">
-              <label for="datetime-local-input">Datetime Local</label>
-              <input id="datetime-local-input" type="datetime-local" name="datetime-local">
-            </div>
+            <fieldset>
+              <legend>sdfmks</legend>
+              <div class="floating-label mb-2">
+                <label for="time-input">Time</label>
+                <input id="time-input" type="time" name="time">
+              </div>
+              <div class="floating-label mb-2">
+                <label for="week-input">Week</label>
+                <input id="week-input" type="week" name="week">
+              </div>
+              <div class="floating-label mb-2">
+                <label for="month-input">Month</label>
+                <input id="month-input" type="month" name="month">
+              </div>
+              <div class="floating-label mb-2">
+                <label for="date-input">Date</label>
+                <input id="date-input" type="date" name="date">
+              </div>
+              <div class="floating-label mb-2">
+                <label for="datetime-local-input">Datetime Local</label>
+                <input id="datetime-local-input" type="datetime-local" name="datetime-local">
+              </div>
+            </fieldset>
           </div>
           <h4>Toggle Inputs</h4>
           <div id="toggle-inputs">
@@ -326,7 +332,7 @@
           <div class="box">
             <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
-          <div class="box background-theme color-white">
+          <div class="box background-theme text-white">
             <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
           </div>
         </div>
@@ -343,7 +349,7 @@
       <article id="row-classes">
         <h3>Row</h3>
         <p>The <code>.row</code> uses <code>display: flexbox;</code> to position children elements. Rather than use the <code>margin</code> property to seperate elements, the <code>gap</code> property is utilised.</p>
-        <div class="row-fix">
+        <div class="row">
           <div class="col-12">
             <div class="p-3 b-1 mb-2 text-middle">
               <code>col-12</code>
@@ -371,5 +377,8 @@
       </article>
     </section>
   </main>
+  <footer>
+    <p class="text-middle py-1">Scott Sewards (c) 2021 Copyright Holder All Rights Reserved.</p>
+  </footer>
 </body>
 </html>

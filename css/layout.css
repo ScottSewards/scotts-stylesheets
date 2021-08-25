@@ -8,7 +8,8 @@ body {
   margin-left: calc(var(--show-side-nav) * var(--side-nav-width));
 }
 nav, side-nav {
-  background-color: inherit;
+  background-color: var(--col-nav);
+  color: white;
   font-family: var(--font-family-heading);
   z-index: 1;
   position: relative;
@@ -19,7 +20,7 @@ nav, side-nav {
 :is(nav, side-nav) :is(p, a) {
   color: inherit;
   display: block;
-  padding: var(--space-1);
+  padding: 1rem;
   margin: 0;
   text-decoration: none;
   white-space: nowrap;
@@ -30,16 +31,16 @@ side-nav {
   top: 0;
   left: 0;
   height: 100%;
-  width: var(--side-nav-width) !important;
+  width: var(--side-nav-width);
 }
 side-nav::after {
   content: "👁"; /*U+1F441*/
   opacity: 0.2;
-  position: absolute;
   background: var(--col-nav);
-  bottom: var(--space-1);
+  position: absolute;
+  bottom: 1rem;
   left: var(--side-nav-width);
-  padding: var(--space-1);
+  padding: 1rem;
 }
 side-nav:hover::after { opacity: 1; }
 @media(max-width: 40rem) {
@@ -51,22 +52,7 @@ side-nav:hover::after { opacity: 1; }
   nav { flex-direction: row; }
   side-nav::after { display: none; }
 }
-main {
-  padding: var(--space-1);
-  margin: auto;
-  width: 100%;
-  max-width: var(--content-limit);
-}
-footer {
-  background: var(--col-footer);
+main, footer {
   display: block;
-  padding: 1px var(--space-1);
-  margin: var(--margin);
-  margin-bottom: 0;
   width: 100%;
-}
-#footer-wrapper {
-  padding: 0 var(--space-1);
-  margin: auto;
-  max-width: var(--content-limit);
 }
