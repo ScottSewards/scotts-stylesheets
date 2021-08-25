@@ -514,7 +514,7 @@
 .list-style-type-square > li { list-style-type: square; }
 /* INPUT CLASSES */
 .floating-label { position: relative; }
-.floating-label > :is(input, textarea) {
+.floating-label > :is(input, select, textarea) {
   padding: 0.5rem;
   padding-top: 1.5rem;
 }
