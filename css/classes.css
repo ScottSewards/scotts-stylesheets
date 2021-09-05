@@ -1,5 +1,4 @@
 /* DISPLAY, SHOW AND HIDE */
-.display-none, .hide { display: none; }
 .display-block, .block, .show { display: block; }
 .display-contents, .show-contents { display: contents; }
 .display-flex, .flex, .show-flex {
@@ -10,6 +9,7 @@
 .display-inline, .inline, .show-inline { display: inline; }
 .display-inline-block, .inline-block, .show-inline-block { display: inline-block; }
 .display-table, .table, .show-table { display: table; }
+.display-none, .hide { display: none; }
 
 /* STRUCTURE */
 .container, .container-full {
