@@ -130,8 +130,6 @@ header { }
 hgroup { }
 */
 h1, h2, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--col-border);
   margin-top: 0;
   margin-bottom: 0.5rem;
   width: 100%;
@@ -265,6 +263,7 @@ progress::-webkit-progress-bar { background: var(--col-black); }
 progress::-webkit-progress-value { background: var(--col-theme); }
 ol, ul {
   padding-left: 1.75rem;
+  margin-top: 0;
   margin-bottom: 0.5rem;
   width: 100%;
 }
