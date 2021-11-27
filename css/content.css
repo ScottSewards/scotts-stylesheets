@@ -121,7 +121,10 @@ track { }
 */
 
 /* SECTIONS */
-address { width: 100%; }
+address {
+  font-style: normal;
+  width: 100%;
+}
 
 article, section, aside, footer { display: block; }
 
@@ -149,6 +152,7 @@ h6, .h6 { font-size: 100%; }
 table {
   border-collapse: separate;
   border-spacing: 0;
+  margin-bottom: 0.5rem;
   width: 100%;
 }
 caption {
@@ -203,9 +207,11 @@ code, kbd {
 }
 code {
   border-radius: var(--border-radius);
+  -moz-tab-size: 4;
   tab-size: 4;
   white-space: pre;
 }
+
 /* data { } */
 del, ins { text-decoration: none; }
 del { background: var(--col-deleted); }
@@ -213,16 +219,17 @@ del::before { content: "[deletion start] "; }
 del::after { content: " [deletion end]"; }
 /* details { } */
 dialog {
+  z-index: 999;
   background-color: white;
   position: fixed;
   top: 50%;
   left: 50%;
-  display: block;
-  padding: 0.5rem;
+  padding: 1rem;
   border: var(--border);
   margin: 0;
   transform: translate(-50%, -50%);
 }
+dialog::backdrop {}
 /*
 dl > dt { font-weight: bold; }
 dl > dd { margin: 0 0 1rem 0.5rem; }
