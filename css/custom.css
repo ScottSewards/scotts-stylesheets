@@ -18,7 +18,7 @@ input[type="range"].colour-picker { background: -webkit-linear-gradient(left, #F
   display: flex;
   flex-direction: column-reverse;
 }
-.drop-down:focus-within * { background: red; }
+.drop-down:focus-within { background: var(--col-theme-dark); }
 
 .drop-down-button {
   cursor: pointer;

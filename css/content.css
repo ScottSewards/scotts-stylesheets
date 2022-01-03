@@ -44,8 +44,8 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
 :is(button, input, select, textarea):not(:disabled):hover { border-color: var(--col-theme-light); }
 :is(button, input, select, textarea):not(:disabled):focus { border-color: var(--col-theme-dark); }
 :is(button, input, select, textarea):disabled, :is(input, textarea)[readonly] {
-  cursor: not-allowed !important;
-  background: var(--col-fill) !important;
+  cursor: not-allowed;
+  background: var(--col-fill);
 }
 :is(button, input[type="button"], input[type="reset"], input[type="submit"]):hover { background: var(--col-theme-light); }
 :is(button, input[type="button"], input[type="reset"], input[type="submit"]):active { background: var(--col-theme-dark); }
