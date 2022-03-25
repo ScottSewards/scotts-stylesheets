@@ -1,3 +1,5 @@
+/* Creative Commons Attribution-NonCommercial 4.0 International Public License */
+[id] { scroll-margin-top: var(--scroll-offset); }
 *, *::before, *::after { box-sizing: border-box; }
 body {
   font-family: var(--font-family-content);
@@ -51,8 +53,4 @@ side-nav:hover::after { opacity: 1; }
 @media(min-width: 40rem) {
   nav { flex-direction: row; }
   side-nav::after { display: none; }
-}
-main, footer {
-  display: block;
-  width: 100%;
 }

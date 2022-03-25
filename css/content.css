@@ -1,3 +1,4 @@
+/* Creative Commons Attribution-NonCommercial 4.0 International Public License */
 /*
 embed { }
 object { }
@@ -125,8 +126,7 @@ address {
   font-style: normal;
   width: 100%;
 }
-
-article, section, aside, footer { display: block; }
+main, article, section, aside, footer { display: block; }
 
 /*
 header { }

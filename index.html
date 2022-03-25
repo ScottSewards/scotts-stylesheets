@@ -10,29 +10,25 @@
   <link rel="stylesheet" href="css/content.css">
   <link rel="stylesheet" href="css/classes.css">
   <link rel="stylesheet" href="css/custom.css">
-  <script type="text/javascript" src="js/ss-functions.js"></script>
+  <script type="text/javascript" src="js/functions.js"></script>
   <script type="text/javascript">
   window.onload = function() {
-    //initScottsFunctions();
-    //$("[name='toggle-dark-mode']").addEventListener("click", () => $("html").classList.toggle("dark"));
-    //var themeColourHue = getCookie("themeColourHue");
-    //if(themeColourHue !== null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
     addDropDownButtons();
+    setImageIntrinsicWidth();
+    //document.querySelector("[name='toggle-dark-mode']").addEventListener("click", () => document.querySelector("html").classList.toggle("dark"));
+    var themeColourHue = getCookie("colourThemeHue");
+    if(themeColourHue !== null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
+    else themeColourHue = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
+    setInterval(function() {
+      themeColourHue = themeColourHue >= 359 ? 0 : parseInt(themeColourHue) + 1;
+      document.documentElement.style.setProperty('--col-theme-hue', `${themeColourHue}`);
+      setCookie('colourThemeHue', themeColourHue);
+    }, 1000);
   };
-  /*
-  var hue = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
-  setInterval(function() {
-    hue = hue >= 359 ? 0 : parseInt(hue) + 1;
-    $$("[id^='col-theme-output']").forEach((item, i) =>  item.innerHTML = hue);
-    document.documentElement.style.setProperty('--col-theme-hue', hue + '');
-    setCookie('themeColourHue', hue);
-  }, 2000);
-  */
   </script>
 </head>
-<body class="background-white">
+<body class="bg-white">
   <side-nav>
-    <a href="#about">About</a>
     <a href="#variables">Variables</a>
     <a href="#layout">Layout</a>
     <a href="#content">Content</a>
@@ -45,168 +41,176 @@
       </div>
       <a class="drop-down-button">Classes</a>
     </div>
+    <a href="#functions">Functions</a>
   </side-nav>
+  <div class="bg-theme text-white bbl-r-1 bbr-r-1 mx-4">
+    <p class="text-middle py-2 mb-0">Framework in-development.</p>
+  </div>
   <main class="container">
     <h1>Scott's Stylesheets</h1>
-    <section id="about" class="mb-4">
-      <h2>About</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-    </section>
-    <section id="layout" class="my-4">
-      <h2>Layout</h2>
-    </section>
-    <section id="variables" class="my-4">
+    <section id="variables">
       <h2>Variables</h2>
-      <article id="colour-scheme">
-        <h3>Black, White and Constants</h3>
-        <p>To implement dark mode, I have added constant values for <code>--col-black</code> and <code>--col-white</code>.</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Colour</th>
-              <th>Variable</th>
-              <th>Class</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Black (Constant)</td>
-              <td><var>--col-const-black</var></td>
-              <td><code>.back-const-black</code></td>
-              <td class="back-const-black text-const-white">#111</td>
-            </tr>
-            <tr>
-              <td>White (Constant)</td>
-              <td><var>--col-const-white</var></td>
-              <td><code>.back-const-white</code></td>
-              <td class="back-const-white text-const-black">#FFF</td>
-            </tr>
-            <tr>
-              <td>Black</td>
-              <td><var>--col-black</var></td>
-              <td><code>.back-black</code></td>
-              <td class="back-black text-white">#111</td>
-            </tr>
-            <tr>
-              <td>White</td>
-              <td><var>--col-white</var></td>
-              <td><code>.back-white</code></td>
-              <td class="back-white text-black">#FFF</td>
-            </tr>
-          </tbody>
-        </table>
-        <button class="mb-3" type="button" name="toggle-dark-mode" disabled>Toggle Dark Mode</button>
-        <h3>Colour Scheme</h3>
-        <p>I have used a simple black and white colour scheme with a user-defined theme colour set by a hue parameter stored in <code>--col-theme-hue</code>.</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Colour</th>
-              <th>Variable</th>
-              <th>Class</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Theme (Lighter)</td>
-              <td><var>--col-theme-light</var></td>
-              <td><code>.back-theme-light</code></td>
-              <td class="back-theme-light text-white">hsl(<span id="col-theme-output-light"></span>, 70%, 60%)</td>
-            </tr>
-            <tr>
-              <td>Theme</td>
-              <td><var>--col-theme</var></td>
-              <td><code>.back-theme</code></td>
-              <td class="back-theme text-white">hsl(<span id="col-theme-output"></span>, 70%, 50%)</td>
-            </tr>
-            <tr>
-              <td>Theme (Darker)</td>
-              <td><var>--col-theme-dark</var></td>
-              <td><code>.back-theme-dark</code></td>
-              <td class="back-theme-dark text-white">hsl(<span id="col-theme-output-dark"></span>, 70%, 40%)</td>
-            </tr>
-          </tbody>
-        </table>
-      </article>
+      <p>The <code>variables.css</code> file implements a black, white and constant setup for colours which makes themes such as dark mode easier to add.</p>
+      <button class="mb-4 m-a" type="button" name="toggle-dark-mode" disabled>Toggle Dark Mode</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Colour</th>
+            <th>Property</th>
+            <th>Background Class</th>
+            <th>Color Class</th>
+            <th>Value (HEX)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Black (Const)</td>
+            <td><var>--col-const-black</var></td>
+            <td><code>.bg-const-black</code></td>
+            <td><code>.text-const-black</code></td>
+            <td class="bg-const-black text-const-white">#111</td>
+          </tr>
+          <tr>
+            <td>White (Const)</td>
+            <td><var>--col-const-white</var></td>
+            <td><code>.bg-const-white</code></td>
+            <td><code>.text-const-white</code></td>
+            <td class="bg-const-white text-const-black">#FFF</td>
+          </tr>
+          <tr>
+            <td>Black</td>
+            <td><var>--col-black</var></td>
+            <td><code>.bg-black</code></td>
+            <td><code>.text-black</code></td>
+            <td class="bg-black text-white">#111</td>
+          </tr>
+          <tr>
+            <td>White</td>
+            <td><var>--col-white</var></td>
+            <td><code>.bg-white</code></td>
+            <td><code>.text-white</code></td>
+            <td class="bg-white text-black">#FFF</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Colour Scheme</h3>
+      <p class="mb-4">I use a simple black and white colour scheme with a primary user-defined theme colour set via the <code>--col-theme-hue</code> property located on the <code>:root</code> element. You can see the hue property increment by the second.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Colour</th>
+            <th>Property</th>
+            <th>Background Class</th>
+            <th>Color Class</th>
+            <th>Value (HSL)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-theme-light">
+            <td class="text-white">Theme (Light)</td>
+            <td class="text-white"><var>--col-theme-light</var></td>
+            <td class="text-white"><code>.bg-theme-light</code></td>
+            <td class="text-white"><code>.text-theme-light</code></td>
+            <td class="text-white">n, 75%, 55%</td>
+          </tr>
+          <tr class="bg-theme">
+            <td class="text-white">Theme</td>
+            <td class="text-white"><var>--col-theme</var></td>
+            <td class="text-white"><code>.bg-theme</code></td>
+            <td class="text-white"><code>.text-theme</code></td>
+            <td class="text-white">n, 70%, 50%</td>
+          </tr>
+          <tr class="bg-theme-dark">
+            <td class="text-white">Theme (Dark)</td>
+            <td class="text-white"><var>--col-theme-dark</var></td>
+            <td class="text-white"><code>.bg-theme-dark</code></td>
+            <td class="text-white"><code>.text-theme-dark</code></td>
+            <td class="text-white">n, 65%, 45%</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
-    <section id="content" class="my-4">
+    <hr>
+    <section id="layout">
+      <h2>Layout</h2>
+      <p><code>layout.css</code></p>
+    </section>
+    <hr>
+    <section id="content">
       <h2>Content</h2>
-      <article id="images" class="py-4">
+      <article id="images">
         <h3>Images</h3>
-        <p>
-          <code>picture</code>
-          <code>figure</code>
-          <code>figcaption</code>
-          <code>img</code>
-        </p>
-        <img src="images/splhcb.webp" alt="Placeholder">
+        <img class="mb-2" src="images/splhcb.webp" alt="Placeholder">
       </article>
-      <dialog>This is a dialog.</dialog>
-      <article id="forms" class="py-4">
+      <article id="forms">
         <h3>Forms</h3>
         <form>
           <h4>Text Inputs</h4>
           <div id="text-inputs">
-            <div class="floating-label mb-2">
+            <div class="mb-2">
               <label for="text">Text</label>
-              <input id="text" type="text" name="text"/>
+              <input id="text" type="text" name="text" placeholder="This is placeholder text.">
             </div>
-            <div class="floating-label mb-2">
+            <div class="mb-2">
               <label for="textarea">Textarea</label>
-              <textarea id="textarea" name="textarea"></textarea>
+              <textarea id="textarea" name="textarea" placeholder="This is placeholder text..."></textarea>
             </div>
-            <div class="floating-label mb-2">
+            <div class="mb-2">
               <label for="password">Password</label>
-              <input id="password" type="password" name="password" value="password">
+              <input id="password" type="password" name="password" placeholder="SecurePW2022!;">
             </div>
-            <div class="floating-label mb-2">
+            <div class="mb-2">
               <label for="url-input">URL</label>
-              <input id="url-input" type="url" name="url">
+              <input id="url-input" type="url" name="url" placeholder="https://www.example.com">
             </div>
           </div>
-          <h4>Contact Inputs</h4>
+          <h4>Contact Inputs Featuring Floating Labels</h4>
           <div id="contact-inputs">
             <div class="floating-label mb-2">
               <label for="email-input">Email</label>
-              <input id="email-input" type="email" name="email">
+              <input id="email-input" type="email" name="email" placeholder="example@example.com">
             </div>
             <div class="floating-label mb-2">
               <label for="tel-input">Telephone</label>
-              <input id="tel-input" type="tel" name="tel">
+              <input id="tel-input" type="tel" name="tel" placeholder="+447388933973">
             </div>
           </div>
-          <h4>Date Inputs</h4>
+          <h4>Date Inputs Featuring Flex</h4>
           <div id="date-inputs">
-            <fieldset>
-              <legend>sdfmks</legend>
-              <div class="floating-label mb-2">
+            <fieldset class="mb-2">
+              <legend>This is a fieldset legend.</legend>
+              <div class="flex mb-2">
                 <label for="time-input">Time</label>
                 <input id="time-input" type="time" name="time">
               </div>
-              <div class="floating-label mb-2">
+              <div class="flex mb-2">
                 <label for="week-input">Week</label>
                 <input id="week-input" type="week" name="week">
               </div>
-              <div class="floating-label mb-2">
+              <div class="flex mb-2">
                 <label for="month-input">Month</label>
                 <input id="month-input" type="month" name="month">
               </div>
-              <div class="floating-label mb-2">
+              <div class="flex mb-2">
                 <label for="date-input">Date</label>
                 <input id="date-input" type="date" name="date">
               </div>
-              <div class="floating-label mb-2">
+              <div class="flex">
                 <label for="datetime-local-input">Datetime Local</label>
                 <input id="datetime-local-input" type="datetime-local" name="datetime-local">
               </div>
             </fieldset>
           </div>
+          <h4>Button Inputs</h4>
+          <div id="button-inputs" class="flex mb-2">
+            <input type="button" name="button" value="Button">
+            <input type="reset" name="reset" value="Reset">
+            <input type="submit" name="submit" value="Submit" onclick="return false;">
+          </div>
           <h4>Toggle Inputs</h4>
           <div id="toggle-inputs">
             <div class="flex mb-2">
-              <input id="checkbox-input" type="checkbox" name="checkbox" value="checkbox"/>
+              <input id="checkbox-input" type="checkbox" name="checkbox" value="checkbox">
               <label for="checkbox-input">Checkbox</label>
             </div>
             <div class="flex mb-2">
@@ -216,79 +220,65 @@
               <label for="radio-b-input">Radio B</label>
             </div>
           </div>
-          <h4>Button Inputs</h4>
-          <div id="button-inputs" class="flex mb-2">
-            <input id="button-input" type="button" name="button" value="button">
-            <input id="reset-input" type="reset" name="reset" value="reset">
-          </div>
           <h4>Other Inputs</h4>
-          <div class="flex mb-2">
+          <div class="mb-2">
             <label for="range-input">Range</label>
-            <input id="range-input" type="range" name="range"/>
+            <input id="range-input" type="range" name="range">
           </div>
-          <div class="floating-label mb-2">
+          <div class="mb-2">
             <label for="file-input">File</label>
             <input id="file-input" type="file" name="file">
           </div>
-          <div class="floating-label mb-2">
+          <div class="mb-2">
             <label for="color-input">Colour</label>
             <input id="color-input" type="color" name="color">
           </div>
-          <div class="flex mb-2">
-            <label for="list">List</label>
-            <input id="list" name="list" list="list-items" placeholder="List Item A"/>
+          <div class="mb-2">
+            <label for="list-input">List</label>
+            <input id="list-input" name="list" list="list-items" placeholder="List Item A">
           </div>
           <datalist id="list-items">
             <option value="List Item A"/>
             <option value="List Item B"/>
             <option value="List Item C"/>
           </datalist>
-          <div class="flex mb-2">
-            <label for="select">Select</label>
-            <select id="select" name="select">
-              <optgroup label="A">
-                <option value="1">Option A1</option>
-                <option value="1">Option A2</option>
+          <div class="mb-2">
+            <label for="select-input">Select</label>
+            <select id="select-input" name="select">
+              <optgroup label="Option Group A">
+                <option value="A1" selected>Option A1</option>
+                <option value="A2" disabled>Option A2</option>
               </optgroup>
-              <optgroup label="B">
-                <option value="1">Option B1</option>
+              <optgroup label="Option Group B">
+                <option value="B1">Option B1</option>
               </optgroup>
             </select>
           </div>
         </form>
       </article>
-      <article id="lists" class="py-4">
+      <article id="lists">
         <h3>Lists</h3>
         <p>Lettered list:</p>
         <ol type="A">
           <li>List item</li>
           <li>Another item</li>
+          <li>Last item</li>
         </ol>
         <p>Ordered list:</p>
         <ol>
           <li>List item</li>
-          <li><data value="1010">This is a data element in a list item.</data></li>
+          <li><data value="1010">This is a data element in another item.</data></li>
+          <li>Last item</li>
         </ol>
         <p>Unordered list:</p>
         <ul>
           <li>List item</li>
           <li>Another item</li>
+          <li>Last item</li>
         </ul>
       </article>
-      <article id="tables" class="py-4">
+      <article id="tables">
         <h3>Tables</h3>
-        <p>
-          <code>.table-wrapper</code>
-          <code>table</code>
-          <code>caption</code>
-          <code>thead</code>
-          <code>tbody</code>
-          <code>tfoot</code>
-          <code>tr</code>
-          <code>th</code>
-          <code>td</code>
-          <code>:empty-cell</code>
-        </p>
         <div class="table-wrapper">
           <table>
             <caption>Table caption</caption>
@@ -313,16 +303,16 @@
         </div>
       </article>
     </section>
-    <section id="classes" class="mt-4">
+    <section id="classes">
       <h2>Classes</h2>
       <article id="alignment-classes">
         <h3>Alignment</h3>
         <div class="box">
-          <p class="text-start">This text is aligned left <code>.text-start</code>.</p>
+          <p class="text-start">This text is aligned left via <code>.text-start</code>.</p>
           <hr>
-          <p class="text-middle">This text is aligned middle <code>.text-middle</code>.</p>
+          <p class="text-middle">This text is aligned middle via <code>.text-middle</code>.</p>
           <hr>
-          <p class="text-end">This text is aligned right <code>.text-end</code>.</p>
+          <p class="text-end">This text is aligned right via <code>.text-end</code>.</p>
         </div>
       </article>
       <article id="box-class">
@@ -331,14 +321,14 @@
           <div class="box">
             <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
-          <div class="box background-theme text-white">
+          <div class="box bg-theme text-white">
             <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
           </div>
         </div>
       </article>
       <article id="line-clamp-classes">
         <h3>Line Clamp</h3>
-        <p>You can line clamp text via <code>.line-clamp</code>.</p>
+        <p>You can line clamp text with <code>.line-clamp</code>. The text will append an ellipsis if it overflows. The class itself is set to 3 lines by default, however, you can set the number of lines to clamp with <code>.line-clamp-n</code>, where <code>n</code> is equal to the number of lines to clamp.</p>
         <div class="box">
           <p class="line-clamp-1"><i>Single-line line clamp</i>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
           <hr>
@@ -375,9 +365,14 @@
         </div>
       </article>
     </section>
+    <hr>
+    <section id="functions">
+      <h2>Functions</h2>
+      <p>The <code>functions.js</code> file</p>
+    </section>
   </main>
-  <footer class="background-theme-dark text-white">
-    <p class="text-middle py-4 mb-4">© 2021-2022 Scott Sewards All Rights Reserved</p>
+  <footer class="bg-theme text-white mx-4 btl-r-1 btr-r-1">
+    <p class="text-middle py-2 mb-0">Copyright © 2020-2022 Scott Sewards All Rights Reserved</p>
   </footer>
 </body>
 </html>
