@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-control" content="private">
   <title>Scott's Stylesheets</title>
   <link rel="shortcut icon" href="images/swimming-george.png">
   <link rel="stylesheet" href="css/variables.css">
@@ -13,21 +14,34 @@
   <script type="text/javascript" src="js/functions.js"></script>
   <script type="text/javascript">
   window.onload = function() {
-    addDropDownButtons();
-    setImageIntrinsicWidth();
-    //document.querySelector("[name='toggle-dark-mode']").addEventListener("click", () => document.querySelector("html").classList.toggle("dark"));
-    var themeColourHue = getCookie("colourThemeHue");
-    if(themeColourHue !== null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
-    else themeColourHue = getComputedStyle(document.documentElement).getPropertyValue('--col-theme-hue');
+    defaultCookie("darkMode", 0);
+    defaultCookie("colourThemeHue", 20);
+
+    var darkMode = parseInt(getCookieValue("darkMode")), themeColourHue = parseInt(getCookieValue("colourThemeHue"));
+
+    if(darkMode == 1) document.body.classList.add("dark");
+
+    document.querySelector("[name='toggle-dark-mode']").addEventListener("click", () => {
+      darkMode = !darkMode;
+      document.body.classList.toggle("dark");
+      setCookie("darkMode", darkMode ? 1 : 0);
+    });
+
+    if(themeColourHue != null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
+    else themeColourHue = getComputedStyle(document.documentElement).getPropertyValue("--col-theme-hue");
+
+    setDropDowns();
+    //setAllImgIntrinsicWidth();
+
     setInterval(function() {
       themeColourHue = themeColourHue >= 359 ? 0 : parseInt(themeColourHue) + 1;
-      document.documentElement.style.setProperty('--col-theme-hue', `${themeColourHue}`);
-      setCookie('colourThemeHue', themeColourHue);
-    }, 1000);
+      document.documentElement.style.setProperty("--col-theme-hue", `${themeColourHue}`);
+      setCookie("colourThemeHue", themeColourHue);
+    }, 500);
   };
   </script>
 </head>
-<body class="bg-white">
+<body>
   <side-nav>
     <a href="#variables">Variables</a>
     <a href="#layout">Layout</a>
@@ -38,20 +52,23 @@
         <a href="#box-class">Box</a>
         <a href="#line-clamp-classes">Line Clamp</a>
         <a href="#row-classes">Row</a>
+        <a href="#text-classes">Text</a>
       </div>
       <a class="drop-down-button">Classes</a>
     </div>
     <a href="#functions">Functions</a>
   </side-nav>
-  <div class="bg-theme text-white bbl-r-1 bbr-r-1 mx-4">
-    <p class="text-middle py-2 mb-0">Framework in-development.</p>
+  <div class="bg-theme bbl-r-1 bbr-r-1 mx-2">
+    <p class="text-middle text-white py-1 mb-0">Framework in-development.</p>
   </div>
   <main class="container">
     <h1>Scott's Stylesheets</h1>
     <section id="variables">
-      <h2>Variables</h2>
-      <p>The <code>variables.css</code> file implements a black, white and constant setup for colours which makes themes such as dark mode easier to add.</p>
-      <button class="mb-4 m-a" type="button" name="toggle-dark-mode" disabled>Toggle Dark Mode</button>
+      <div class="flex mb-1">
+        <h2 class="mb-0">Variables</h2>
+        <button class="ml-a" type="button" name="toggle-dark-mode">Toggle Dark Mode</button>
+      </div>
+      <p>The <code>variables.css</code> file declares colours for the theme. The colours are black, white and a customisable colour. You can see the customisable colour changing in real-time. This makes it easier to add themes like dark mode.</p>
       <table>
         <thead>
           <tr>
@@ -59,19 +76,19 @@
             <th>Property</th>
             <th>Background Class</th>
             <th>Color Class</th>
-            <th>Value (HEX)</th>
+            <th>Value</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Black (Const)</td>
+            <td>Black (Constant)</td>
             <td><var>--col-const-black</var></td>
             <td><code>.bg-const-black</code></td>
             <td><code>.text-const-black</code></td>
             <td class="bg-const-black text-const-white">#111</td>
           </tr>
           <tr>
-            <td>White (Const)</td>
+            <td>White (Constant)</td>
             <td><var>--col-const-white</var></td>
             <td><code>.bg-const-white</code></td>
             <td><code>.text-const-white</code></td>
@@ -94,7 +111,7 @@
         </tbody>
       </table>
       <h3>Colour Scheme</h3>
-      <p class="mb-4">I use a simple black and white colour scheme with a primary user-defined theme colour set via the <code>--col-theme-hue</code> property located on the <code>:root</code> element. You can see the hue property increment by the second.</p>
+      <p>I use a simple black and white colour scheme with a primary user-defined theme colour set via the <code>--col-theme-hue</code> property located on the <code>:root</code> element. You can see the hue property increment by the second.</p>
       <table>
         <thead>
           <tr>
@@ -107,30 +124,29 @@
         </thead>
         <tbody>
           <tr class="bg-theme-light">
-            <td class="text-white">Theme (Light)</td>
-            <td class="text-white"><var>--col-theme-light</var></td>
-            <td class="text-white"><code>.bg-theme-light</code></td>
-            <td class="text-white"><code>.text-theme-light</code></td>
-            <td class="text-white">n, 75%, 55%</td>
+            <td class="text-const-white">Theme (Light)</td>
+            <td class="text-const-white"><var>--col-theme-light</var></td>
+            <td class="text-const-white"><code>.bg-theme-light</code></td>
+            <td class="text-const-white"><code>.text-theme-light</code></td>
+            <td class="text-const-white">n, 75%, 55%</td>
           </tr>
           <tr class="bg-theme">
-            <td class="text-white">Theme</td>
-            <td class="text-white"><var>--col-theme</var></td>
-            <td class="text-white"><code>.bg-theme</code></td>
-            <td class="text-white"><code>.text-theme</code></td>
-            <td class="text-white">n, 70%, 50%</td>
+            <td class="text-const-white">Theme</td>
+            <td class="text-const-white"><var>--col-theme</var></td>
+            <td class="text-const-white"><code>.bg-theme</code></td>
+            <td class="text-const-white"><code>.text-theme</code></td>
+            <td class="text-const-white">n, 70%, 50%</td>
           </tr>
           <tr class="bg-theme-dark">
-            <td class="text-white">Theme (Dark)</td>
-            <td class="text-white"><var>--col-theme-dark</var></td>
-            <td class="text-white"><code>.bg-theme-dark</code></td>
-            <td class="text-white"><code>.text-theme-dark</code></td>
-            <td class="text-white">n, 65%, 45%</td>
+            <td class="text-const-white">Theme (Dark)</td>
+            <td class="text-const-white"><var>--col-theme-dark</var></td>
+            <td class="text-const-white"><code>.bg-theme-dark</code></td>
+            <td class="text-const-white"><code>.text-theme-dark</code></td>
+            <td class="text-const-white">n, 65%, 45%</td>
           </tr>
         </tbody>
       </table>
     </section>
-    <hr>
     <section id="layout">
       <h2>Layout</h2>
       <p><code>layout.css</code></p>
@@ -140,7 +156,10 @@
       <h2>Content</h2>
       <article id="images">
         <h3>Images</h3>
-        <img class="mb-2" src="images/splhcb.webp" alt="Placeholder">
+        <figure>
+          <img src="images/splhcb.webp" alt="Placeholder">
+          <figcaption>This is a figure caption.</figcaption>
+        </figure>
       </article>
       <article id="forms">
         <h3>Forms</h3>
@@ -243,14 +262,26 @@
             <option value="List Item C"/>
           </datalist>
           <div class="mb-2">
-            <label for="select-input">Select</label>
-            <select id="select-input" name="select">
+            <label for="select-1-input">Select</label>
+            <select id="select-1-input" name="select-1">
               <optgroup label="Option Group A">
                 <option value="A1" selected>Option A1</option>
                 <option value="A2" disabled>Option A2</option>
               </optgroup>
               <optgroup label="Option Group B">
                 <option value="B1">Option B1</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="select-2-input">Select</label>
+            <select id="select-2-input" name="select-2" multiple>
+              <optgroup label="Option Group A">
+                <option value="A1" selected>Option A1</option>
+                <option value="A2">Option A2</option>
+              </optgroup>
+              <optgroup label="Option Group B">
+                <option value="B1" disabled>Option B1</option>
               </optgroup>
             </select>
           </div>
@@ -307,12 +338,15 @@
       <h2>Classes</h2>
       <article id="alignment-classes">
         <h3>Alignment</h3>
+        <p>You can align text.</p>
         <div class="box">
           <p class="text-start">This text is aligned left via <code>.text-start</code>.</p>
           <hr>
           <p class="text-middle">This text is aligned middle via <code>.text-middle</code>.</p>
           <hr>
           <p class="text-end">This text is aligned right via <code>.text-end</code>.</p>
+          <hr>
+          <p class="text-justify">This text is justified via <code>.text-justify</code> so we need some filler to reach the end of the line to text-wrap.</p>
         </div>
       </article>
       <article id="box-class">
@@ -340,39 +374,77 @@
         <p>The <code>.row</code> uses <code>display: flexbox;</code> to position children elements. Rather than use the <code>margin</code> property to seperate elements, the <code>gap</code> property is utilised.</p>
         <div class="row">
           <div class="col-12">
-            <div class="p-3 b-1 mb-2 text-middle">
+            <div class="p-1 b-1 mb-2 text-middle">
               <code>col-12</code>
             </div>
           </div>
           <div class="col-10">
-            <p class="p-2 b-1 text-middle"><code>col-10</code></p>
+            <p class="p-1 b-1 mb-2 text-middle"><code>col-10</code></p>
           </div>
           <div class="col-2">
-            <p class="p-2 b-1 text-middle"><code>col-2</code></p>
+            <p class="p-1 b-1 mb-2 text-middle"><code>col-2</code></p>
           </div>
           <div class="col-8">
-            <p class="p-2 b-1 text-middle"><code>col-8</code></p>
+            <p class="p-1 b-1 mb-2 text-middle"><code>col-8</code></p>
           </div>
           <div class="col-4">
-            <p class="p-2 b-1 text-middle"><code>col-4</code></p>
+            <p class="p-1 b-1 mb-2 text-middle"><code>col-4</code></p>
           </div>
           <div class="col-6">
-            <p class="p-2 b-1 text-middle"><code>col-6</code></p>
+            <p class="p-1 b-1 mb-2 text-middle"><code>col-6</code></p>
           </div>
           <div class="col-6">
-            <p class="p-2 b-1 text-middle"><code>col-6</code></p>
+            <p class="p-1 b-1 mb-2 text-middle"><code>col-6</code></p>
           </div>
+        </div>
+      </article>
+      <article id="text-classes">
+        <h3>Text</h3>
+        <div class="box">
+          <p class="text-capitalise">This text is capitalised via <code>.text-capitalise</code>.</p>
+          <hr>
+          <p class="text-lowercase">This text is all lowercase via <code>.text-lowercase</code>.</p>
+          <hr>
+          <p class="text-uppercase">This text is all uppercase via <code>.text-uppercase</code>.</p>
         </div>
       </article>
     </section>
     <hr>
     <section id="functions">
       <h2>Functions</h2>
-      <p>The <code>functions.js</code> file</p>
+      <p>The <code>functions.js</code> file does stuff.</p>
+      <h3>Console</h3>
+      <h4>Log</h4>
+      <p><code>log()</code> is a shorthand for <code>console.log()</code>.</p>
+      <h4>Table</h4>
+      <p><code>table()</code> is a shorthand for <code>console.table()</code>.</p>
+      <h4>Warn</h4>
+      <p><code>warn()</code> is a shorthand for <code>console.warn()</code>.</p>
+      <h3>Cookie</h3>
+      <h4>Default Cookie</h4>
+      <p><code>defaultCookie(cookieName, cookieDefaultValue)</code> checks if a cookie is set, if not, the function sets the cookie and value.</p>
+      <h4>Get Cookies</h4>
+      <p><code>getCookies()</code> returns all cookies as an string.</p>
+      <h4>Log Cookies</h4>
+      <p><code>logCookies()</code> prints all cookies in the console.</p>
+      <h4>Get Cookie</h4>
+      <p><code>getCookie(cookieName)</code> returns a cookie as a string.</p>
+      <h4>Get Cookie Split</h4>
+      <p><code>getCookieSplit(cookieName)</code> splits a cookie and returns it as an array.</p>
+      <h4>Set Cookie</h4>
+      <p><code>setCookie(cookieName, cookieValue)</code> sets - or if isset updates - a cookie and value.</p>
+      <h4>Isset Cookie</h4>
+      <p><code>issetCookie(cookieName)</code> returns a Boolean, true if a cookie is set or false if not.</p>
+      <h4>Log Cookie</h4>
+      <p><code>logCookie(cookieName)</code> prints a cookie in the console.</p>
+      <h4>Get Cookie Value</h4>
+      <p><code>getCookieValue(cookieName)</code> returns a cookie value as a string.</p>
+      <h4>Log Cookie Value</h4>
+      <p><code>logCookieValue(cookieName)</code> prints a cookie value in the console.</p>
     </section>
   </main>
-  <footer class="bg-theme text-white mx-4 btl-r-1 btr-r-1">
-    <p class="text-middle py-2 mb-0">Copyright © 2020-2022 Scott Sewards All Rights Reserved</p>
+  <footer class="bg-theme mx-2 btl-r-1 btr-r-1">
+    <p class="text-const-black text-middle py-1 mb-0">Copyright © 2020-2022 Scott Sewards All Rights Reserved</p>
   </footer>
 </body>
 </html>

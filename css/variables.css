@@ -11,50 +11,44 @@
   /* MISC */
   --col-black: var(--col-const-black);
   --col-white: var(--col-const-white);
-  --col-alert: #FF6666;
-  --col-code: #EEE;
+  --col-body: #fff;
+  --col-alert: #ff6666;
+  --col-code: #eee;
   --col-nav: #111;
-  --col-border: #DDD;
+  --col-border: #ccc;
   --col-border-hover: var(--col-theme);
   --col-deleted: rgba(255, 0, 0, 0.6);
-  --col-disabled: #CCC;
-  --col-fill: #DDD;
+  --col-disabled: #ccc;
+  --col-fill: #ddd;
   --col-link: var(--col-theme-dark);
-  --col-focus: #DDD;
-  --col-empty: #EEE;
-  --col-text-code: #414A47;
-  --col-hover: #CCC;
+  --col-focus: #ddd;
+  --col-empty: #eee;
+  --col-text-code: #414a47;
+  --col-hover: #ccc;
   --col-inserted: rgba(0, 255, 0, 0.6);
   --col-marked: var(--col-theme);
-  --col-success: #6BD976;
-  --col-error: #FF6666;
+  --col-success: #6bd976;
+  --col-error: #ff6666;
   /* FONT */
   --font-family-header: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
   --font-family-header-weight: 500;
   --font-family-content: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
   --font-family-code: "Courier New";
-  --font-size: 16px;
+  --font-size: 15px;
   --font-size-script: 70%;
   --font-size-code: 100%;
   /* BOX */
   --border: 1px solid var(--col-border);
-  --border-radius: 8px;
+  --border-radius: 5px;
   --outline: 1px solid var(--col-theme);
   --outline-offset: 0.25rem;
-  --scroll-offset: -0.5rem;
+  --scroll-offset: -1rem;
   /* OTHER */
   --show-side-nav: 1; /* BOOLEAN / 1 = YES / 0 = NO*/
-  --side-nav-width: 10rem;
-  --content-limit: 85ch;
+  --side-nav-width: 12rem;
+  --content-limit: 75ch;
   --at-duration: 0.1s; /* DEFAULT ANIMATION AND TRANSFORM DURATION*/
 }
-
-/* ADD .dark TO <html> TO CHANGE VARIABLES VALUES
-.dark {
-  --col-white: var(--col-const-black);
-  --col-black: var(--col-const-white);
-}
-*/
 
 ::selection {
   background: var(--col-marked);
@@ -72,22 +66,3 @@
 ::-webkit-scrollbar-track { background: none; }
 ::-webkit-scrollbar-thumb { background: var(--col-theme); }
 ::-webkit-scrollbar-thumb:hover { background: var(--col-theme-dark); }
-
-/* PREFERENCES */
-@supports(prefers-color-scheme: dark) {
-  @media(prefers-color-scheme: dark) {
-    :root {
-      --col-white: var(--col-const-black);
-      --col-black: var(--col-const-white);
-    }
-  }
-}
-
-@supports(prefers-reduced-motion: reduce) {
-  @media(prefers-reduced-motion: reduce) {
-    * {
-      animation: none !important;
-      transition: none !important;
-    }
-  }
-}
