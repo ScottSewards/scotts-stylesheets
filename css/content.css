@@ -68,14 +68,13 @@ input:is([type="checkbox"], [type="radio"]):is(:checked, :hover)::after {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-input[type="file"] { color: var(--col-black); }
-input[type="radio"] { border-radius: 100%; }
-/* DATE INPUTS */
-/* input::-webkit-calendar-picker-indicator { filter: invert(0.8); } */
 input[type="color"] {
   background-color: inherit;
   height: 3rem;
 }
+input[type="file"] { color: var(--col-black); }
+input[type="radio"] { border-radius: 100%; }
+/* input::-webkit-calendar-picker-indicator { filter: invert(0.8); } */
 input[type="range"]::-webkit-slider-thumb { cursor: pointer; }
 select[multiple] {
   padding: 0 0.5rem;
@@ -102,7 +101,6 @@ textarea {
   height: 6rem;
   max-height: 50vh;
 }
-
 /* MEDIA */
 area {}
 audio {
@@ -126,7 +124,6 @@ map {}
 svg {}
 g {}
 track {}
-
 /* SECTIONS */
 address {
   font-style: normal;
@@ -149,7 +146,6 @@ h3, .h3 { font-size: 130%; }
 h4, .h4 { font-size: 120%; }
 h5, .h5 { font-size: 110%; }
 h6, .h6 { font-size: 100%; }
-
 /* TABLES */
 table {
   border-collapse: separate;
@@ -182,7 +178,6 @@ th, td {
   color: var(--col-black);
   padding: 0.5rem;
 }
-
 /* TEXT */
 a {
   color: var(--col-link);
@@ -295,7 +290,6 @@ sub, .sub { vertical-align: sub; }
 sup, .sup { vertical-align: super; }
 time { font-weight: bold; }
 var { font-style: italic; }
-
 /* OTHER */
 embed {}
 iframe, picture {

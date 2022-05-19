@@ -477,3 +477,21 @@
 /* WHITE SPACE */
 .white-space-nowrap { white-space: nowrap; }
 .white-space-pre { white-space: pre; }
+/* BUTTONS */
+.button {
+  all: unset;
+  cursor: pointer;
+  background: var(--col-black);
+  color: var(--col-white);
+  display: inline-block;
+  padding: 0.5rem;
+  border: none;
+  border-radius: var(--border-radius);
+  outline: 0;
+  width: auto;
+  font-family: var(--font);
+  font-size: var(--font-size);
+  white-space: nowrap;
+}
+.button:hover { background: var(--col-theme-light); }
+.button:focus { background: var(--col-theme-dark); }
