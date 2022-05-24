@@ -48,7 +48,6 @@ button:active, input:is([type="button"], [type="reset"], [type="submit"]):active
   cursor: not-allowed;
   background: var(--col-fill) !important;
 }
-/* TOGGLE INPUTS */
 input:is([type="checkbox"], [type="radio"]) {
   appearance: none;
   position: relative;
@@ -68,14 +67,44 @@ input:is([type="checkbox"], [type="radio"]):is(:checked, :hover)::after {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+input:is([type="checkbox"], [type="radio"]):not(.:checked):hover::after { opacity: 0.25; }
 input[type="color"] {
-  background-color: inherit;
-  height: 3rem;
+  background: inherit;
+  height: 2.75rem;
 }
-input[type="file"] { color: var(--col-black); }
+input[type="file"] {
+  color: var(--col-black);
+  height: 2.75rem;
+}
 input[type="radio"] { border-radius: 100%; }
 /* input::-webkit-calendar-picker-indicator { filter: invert(0.8); } */
-input[type="range"]::-webkit-slider-thumb { cursor: pointer; }
+input[type="range"] {
+  -webkit-appearance: none;
+  background: transparent;
+  padding: 0;
+  margin: 1.1rem 0;
+  width: 100%;
+}
+input[type="range"]:focus { outline: none; }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; }
+input[type="range"]::-moz-range-thumb {
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  height: 36px;
+  width: 16px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: #ffffff;
+  border: var(--border);
+  border-radius: calc(var(--border-radius) / 2);
+  margin: -1rem 7px;
+  height: 36px;
+  width: 16px;
+}
 select[multiple] {
   padding: 0 0.5rem;
   overflow-x: hidden;
@@ -135,10 +164,9 @@ hgroup {}
 h1, h2, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   color: var(--col-black);
   margin: 0 0 0.5rem 0;
-  margin-bottom: 0.5rem;
   width: 100%;
-  font-family: var(--font-family-header);
-  font-weight: var(--font-family-header-weight);
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-family-heading-weight);
 }
 h1, .h1 { font-size: 150%; }
 h2, .h2 { font-size: 140%; }
@@ -148,14 +176,13 @@ h5, .h5 { font-size: 110%; }
 h6, .h6 { font-size: 100%; }
 /* TABLES */
 table {
+  table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0;
-  margin-bottom: 0.5rem;
   width: 100%;
 }
 caption {
   color: var(--col-black);
-  margin-bottom: 0.5rem;
   font-style: italic;
 }
 colgroup {}
@@ -172,11 +199,11 @@ tbody td:empty { background: var(--col-empty); }
 th {
   font-weight: var(--font-family-header-weight);
   text-align: center;
-  white-space: nowrap;
 }
 th, td {
   color: var(--col-black);
   padding: 0.5rem;
+  white-space: normal;
 }
 /* TEXT */
 a {
@@ -189,23 +216,25 @@ abbr, acronym {
   cursor: help;
   text-decoration: underline dotted;
 }
-blockquote, cite, q {
-  display: block;
+blockquote {
+  color: var(--col-black);
+  margin: 0.5rem auto;
   width: 80%;
-  font-style: italic;
   text-align: center;
 }
-:matches(blockquote, cite, q)::before { content: open-quote; }
-:matches(blockquote, cite, q)::after { content: close-quote; }
+cite, q {}
+:is(blockquote, cite, q)::before { content: open-quote; }
+:is(blockquote, cite, q)::after { content: close-quote; }
 code, kbd {
   background: var(--col-code);
   color: var(--col-black);
   font-family: var(--font-family-code);
   font-size: var(--font-size-code);
-  padding: 0.1rem 0.25rem 0 0.25rem;
+  padding: 0.05rem 0.2rem 0 0.2rem;
+  white-space: normal;
 }
 code {
-  border-radius: var(--border-radius);
+  border-radius: calc(var(--border-radius) / 2);
   -moz-tab-size: 4;
   tab-size: 4;
   white-space: pre;
@@ -301,8 +330,3 @@ object {}
 param {}
 slot {}
 source {}
-
-/*
-STYLELESS: input[type="hidden"], noscript, script, template
-DEPRECATED: acronym, applet, basefont, bgsound, big, blink, center, command, content, dir, element, font, frame, frameset, iamge, isindex, keygen, listing, marquee, menuitem, multicol, nextid, nobr, noembed, noframes, plaintext, shadow, spacer, strike, tt, xmp
-*/

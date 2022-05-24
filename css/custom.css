@@ -1,5 +1,19 @@
-/* OVERRIDE CSS HERE TO STOP UPDATES OVERWRITING CHANGES */
+/* OVERRIDE CSS HERE TO STOP UPDATES OVERWRITING */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+/* VARIABLES */
+:root {
+  --font-family-heading: "Poppins", sans-serif !important;
+  --font-family-heading-weight: 600;
+  --font-family-content: "Poppins", sans-serif !important;
+  --show-side-nav: 1;
+}
+/* THEMES */
+.dark {
+  --col-black: #FFF;
+  --col-white: #222;
+  --col-body: #222;
+  --col-code: #444;
+}
 /* PREFERENCES */
 @supports(prefers-color-scheme: dark) {
   @media(prefers-color-scheme: dark) {}
@@ -12,13 +26,12 @@
     }
   }
 }
-/* VARIABLES */
-:root {
-  --font-family-header: "Poppins", sans-serif !important;
-  --font-family-content: "Poppins", sans-serif !important;
-}
-
 /* ELEMENTS */
+article {
+  border-left: 0.2rem solid var(--col-theme);
+  padding: 0.4rem;
+  margin-bottom: 0.5rem;
+}
 td > input {
   padding: 0.5rem;
   border: 0;
@@ -26,14 +39,5 @@ td > input {
   margin: 0;
   width: 100%;
 }
-
 /* CLASSES */
 .colour-picker { background: -webkit-linear-gradient(left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%); }
-
-/* THEMES */
-.dark {
-  --col-black: #FFF;
-  --col-white: #222;
-  --col-body: #222;
-  --col-code: #444;
-}

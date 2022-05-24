@@ -1,6 +1,7 @@
 /* Creative Commons Attribution-NonCommercial 4.0 International Public License */
-[id] { scroll-margin-top: var(--scroll-offset); }
 *, *::before, *::after { box-sizing: border-box; }
+[id] { scroll-margin-top: var(--scroll-offset); }
+::selection { background-color: var(--col-highlight); }
 body {
   background-color: var(--col-body);
   font-family: var(--font-family-content);
@@ -28,7 +29,7 @@ nav, side-nav {
   text-decoration: none;
   white-space: nowrap;
 }
-:is(nav, side-nav) :is(p, a):hover { background: var(--col-theme-light); }
+:is(nav, side-nav) :is(p.interactive, a):hover { background: var(--col-theme-light); }
 side-nav {
   position: fixed;
   top: 0;
@@ -47,7 +48,7 @@ side-nav::after {
 }
 side-nav:hover::after { opacity: 1; }
 @media(max-width: 40rem) {
-  :root { --show-side-nav: 0; }
+  :root { --show-side-nav: 0 !important; }
   side-nav { transform: translateX(-100%); }
   side-nav:hover, side-nav:hover::after { transform: translateX(0); }
 }
@@ -61,28 +62,31 @@ side-nav:hover::after { opacity: 1; }
   display: flex;
   flex-direction: column-reverse;
 }
-.drop-down:focus-within { background: var(--col-theme-dark); }
+/* .drop-down:focus-within { background: var(--col-theme-dark); } */
 .drop-down-button {
+  position: relative;
+  z-index: 0;
   cursor: pointer;
   padding-right: 2.75rem;
 }
 .drop-down-button::after {
   content: "▼"; /* U+25BC */
-  font-size: 85%;
   position: absolute;
+  z-index: 1;
   top: 0;
   right: calc(var(--font-size) * 0.1);
   padding: calc(1rem + (var(--font-size) * 0.1));
+  font-size: 85%;
   transition: transform 0.1s;
 }
 .drop-down.active > .drop-down-button::after { transform: rotateZ(60deg); }
 .drop-down-inside, .drop-down-outside {
+  background-color: var(--col-nav-drop-down);
   display: none;
   flex-direction: column;
   font-size: 85%;
   max-height: 100%;
 }
-.drop-down-inside > *, .drop-down-outside > * { background-color: var(--col-nav); }
 .drop-down.active :is(.drop-down-inside, .drop-down-outside) { display: flex; }
 .drop-down-outside {
   position: absolute;

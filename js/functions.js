@@ -6,7 +6,8 @@ var log = (v) => console.log(v), table = (v) => console.table(v), warn = (v) => 
 //COOKIE
 var defaultCookie = (n, v) => { if(getCookie(n) == null) document.cookie = `${n}=${v}` },
     getCookies = () => { return document.cookie },
-    logCookies = () => log(getCookies()),
+    getCookiesSplit = () => { return document.cookie.split(";") },
+    logCookies = () => log(document.cookie),
     getCookie = (n) => {
       var c = document.cookie.split("; ").find(r => r.startsWith(`${n}=`));
       return c !== undefined ? c : null;

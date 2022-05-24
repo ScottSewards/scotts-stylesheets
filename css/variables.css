@@ -13,8 +13,9 @@
   --col-white: var(--col-const-white);
   --col-body: #fff;
   --col-alert: #ff6666;
-  --col-code: #eee;
+  --col-code: #ddd;
   --col-nav: #111;
+  --col-nav-drop-down: #222;
   --col-border: #ccc;
   --col-border-hover: var(--col-theme);
   --col-deleted: rgba(255, 0, 0, 0.6);
@@ -29,9 +30,10 @@
   --col-marked: var(--col-theme);
   --col-success: #6bd976;
   --col-error: #ff6666;
+  --col-highlight: var(--col-theme);
   /* FONT */
-  --font-family-header: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
-  --font-family-header-weight: 500;
+  --font-family-heading: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
+  --font-family-heading-weight: 500;
   --font-family-content: "Segoe UI", Segoe, Tahoma, Geneva, sans-serif;
   --font-family-code: "Courier New";
   --font-size: 15px;
@@ -42,17 +44,12 @@
   --border-radius: 5px;
   --outline: 1px solid var(--col-theme);
   --outline-offset: 0.25rem;
-  --scroll-offset: -1rem;
-  /* OTHER */
-  --show-side-nav: 1; /* BOOLEAN / 1 = YES / 0 = NO*/
+  --scroll-offset: 0.4rem;
+  /* MORE */
+  --show-side-nav: 0; /* 1 = SHOW / 0 = HIDE */
   --side-nav-width: 12rem;
   --content-limit: 75ch;
-  --at-duration: 0.1s; /* DEFAULT ANIMATION AND TRANSFORM DURATION*/
-}
-
-::selection {
-  background: var(--col-marked);
-  color: var(--col-const-white);
+  --at-duration: 0.1s; /* ANIMATION / TRANSFORM DURATION*/
 }
 
 /*
@@ -61,7 +58,7 @@
 */
 ::-webkit-scrollbar {
   background: rgba(0, 0, 0, 0.2);
-  width: 1rem;
+  width: 1.05rem;
 }
 ::-webkit-scrollbar-track { background: none; }
 ::-webkit-scrollbar-thumb { background: var(--col-theme); }

@@ -16,23 +16,17 @@
   window.onload = function() {
     defaultCookie("darkMode", 0);
     defaultCookie("colourThemeHue", 20);
-
     var darkMode = parseInt(getCookieValue("darkMode")), themeColourHue = parseInt(getCookieValue("colourThemeHue"));
-
     if(darkMode == 1) document.body.classList.add("dark");
-
     document.querySelector("[name='toggle-dark-mode']").addEventListener("click", () => {
       darkMode = !darkMode;
       document.body.classList.toggle("dark");
       setCookie("darkMode", darkMode ? 1 : 0);
     });
-
     if(themeColourHue != null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
     else themeColourHue = getComputedStyle(document.documentElement).getPropertyValue("--col-theme-hue");
-
     setDropDowns();
     //setAllImgIntrinsicWidth();
-
     setInterval(function() {
       themeColourHue = themeColourHue >= 359 ? 0 : parseInt(themeColourHue) + 1;
       document.documentElement.style.setProperty("--col-theme-hue", `${themeColourHue}`);
@@ -43,32 +37,49 @@
 </head>
 <body>
   <side-nav>
+    <p class="py-1 font-weight-bold text-middle">CSS Files</p>
     <a href="#variables">Variables</a>
     <a href="#layout">Layout</a>
-    <a href="#content">Content</a>
     <div class="drop-down">
       <div class="drop-down-inside">
-        <a href="#alignment-classes">Alignment</a>
-        <a href="#box-class">Box</a>
-        <a href="#line-clamp-classes">Line Clamp</a>
-        <a href="#row-classes">Row</a>
-        <a href="#text-classes">Text</a>
+        <a href="#console">Console</a>
+        <a href="#cookies">Cookies</a>
       </div>
-      <a class="drop-down-button">Classes</a>
+      <a class="drop-down-button" href="#content">Content</a>
     </div>
-    <a href="#functions">Functions</a>
+    <div class="drop-down">
+      <div class="drop-down-inside">
+        <a href="#alignment">Alignment</a>
+        <a href="#box">Box</a>
+        <a href="#line-clamp">Line Clamp</a>
+        <a href="#row">Row</a>
+        <a href="#text">Text</a>
+      </div>
+      <a class="drop-down-button" href="#classes">Classes</a>
+    </div>
+    <a href="#custom">Custom</a>
+    <p class="py-1 font-weight-bold text-middle">JavaScript File</p>
+    <div class="drop-down">
+      <div class="drop-down-inside">
+        <a href="#console">Console</a>
+        <a href="#cookies">Cookies</a>
+        <a href="#images">Images</a>
+      </div>
+      <a class="drop-down-button" href="#functions">Functions</a>
+    </div>
   </side-nav>
-  <div class="bg-theme bbl-r-1 bbr-r-1 mx-2">
-    <p class="text-middle text-white py-1 mb-0">Framework in-development.</p>
-  </div>
   <main class="container">
     <h1>Scott's Stylesheets</h1>
+    <p>The framework is divided into 5 CSS files and 1 JavaScript file (see sidebar).</p>
+    <hr>
     <section id="variables">
       <div class="flex mb-1">
         <h2 class="mb-0">Variables</h2>
         <button class="ml-a" type="button" name="toggle-dark-mode">Toggle Dark Mode</button>
       </div>
-      <p>The <code>variables.css</code> file declares colours for the theme. The colours are black, white and a customisable colour. You can see the customisable colour changing in real-time. This makes it easier to add themes like dark mode.</p>
+      <p>The <code>variables.css</code> file initialises variables and values for the framework; this includes colours for the theme. The base colours are black, white and a chosen colour. For the sake of this demo, you can see the chosen colour changing in real-time. This implementation simplifies adding themes such as dark mode (click toggle dark mode to see effect).</p>
+      <h3>Colour Scheme</h3>
+      <p>I use a simple black and white colour scheme with a primary user-defined theme colour set via the <code>--col-theme-hue</code> property located on the <code>:root</code> element. You can see the hue property increment by the second.</p>
       <table>
         <thead>
           <tr>
@@ -108,21 +119,6 @@
             <td><code>.text-white</code></td>
             <td class="bg-white text-black">#FFF</td>
           </tr>
-        </tbody>
-      </table>
-      <h3>Colour Scheme</h3>
-      <p>I use a simple black and white colour scheme with a primary user-defined theme colour set via the <code>--col-theme-hue</code> property located on the <code>:root</code> element. You can see the hue property increment by the second.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Colour</th>
-            <th>Property</th>
-            <th>Background Class</th>
-            <th>Color Class</th>
-            <th>Value (HSL)</th>
-          </tr>
-        </thead>
-        <tbody>
           <tr class="bg-theme-light">
             <td class="text-const-white">Theme (Light)</td>
             <td class="text-const-white"><var>--col-theme-light</var></td>
@@ -147,197 +143,214 @@
         </tbody>
       </table>
     </section>
+    <hr>
     <section id="layout">
       <h2>Layout</h2>
-      <p><code>layout.css</code></p>
+      <p>The <code>layout.css</code> file determines the page layout, in other words, where elements such as <code>nav</code> and <code>side-nav</code> are positioned.</p>
+      <h3>Side Nav</h3>
+      <article>
+        <p>The <code>side-nav</code> element.</p>
+      </article>
     </section>
     <hr>
     <section id="content">
       <h2>Content</h2>
-      <article id="images">
-        <h3>Images</h3>
+      <p>The <code>content.css</code> file determines how elements look and cascade (padding and margin), not where they are positioned.</p>
+      <h3 id="quotes">Quotes</h3>
+      <article>
+        <p>The <code>blockquote</code> element is for block quotes like so:</p>
+        <blockquote cite="http://">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </blockquote>
+        <p>The <code>q</code> or <i>quote</i> element is for inline quotes like so: <q cite="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</q></p>
+      </article>
+      <h3 id="images">Images</h3>
+      <article>
+        <p>The <code>image</code> element has the JavaScript function <code>setImgIntrinsicWidth</code> to set a maximum image width to its intrinsic width for SEO purposes.</p>
         <figure>
           <img src="images/splhcb.webp" alt="Placeholder">
           <figcaption>This is a figure caption.</figcaption>
         </figure>
       </article>
-      <article id="forms">
-        <h3>Forms</h3>
+      <h3 id="forms">Forms</h3>
+      <article>
         <form>
-          <h4>Text Inputs</h4>
-          <div id="text-inputs">
-            <div class="mb-2">
-              <label for="text">Text</label>
-              <input id="text" type="text" name="text" placeholder="This is placeholder text.">
-            </div>
-            <div class="mb-2">
-              <label for="textarea">Textarea</label>
-              <textarea id="textarea" name="textarea" placeholder="This is placeholder text..."></textarea>
-            </div>
-            <div class="mb-2">
-              <label for="password">Password</label>
-              <input id="password" type="password" name="password" placeholder="SecurePW2022!;">
-            </div>
-            <div class="mb-2">
-              <label for="url-input">URL</label>
-              <input id="url-input" type="url" name="url" placeholder="https://www.example.com">
-            </div>
-          </div>
-          <h4>Contact Inputs Featuring Floating Labels</h4>
-          <div id="contact-inputs">
-            <div class="floating-label mb-2">
-              <label for="email-input">Email</label>
-              <input id="email-input" type="email" name="email" placeholder="example@example.com">
-            </div>
-            <div class="floating-label mb-2">
-              <label for="tel-input">Telephone</label>
-              <input id="tel-input" type="tel" name="tel" placeholder="+447388933973">
-            </div>
-          </div>
-          <h4>Date Inputs Featuring Flex</h4>
-          <div id="date-inputs">
-            <fieldset class="mb-2">
-              <legend>This is a fieldset legend.</legend>
-              <div class="flex mb-2">
-                <label for="time-input">Time</label>
-                <input id="time-input" type="time" name="time">
-              </div>
-              <div class="flex mb-2">
-                <label for="week-input">Week</label>
-                <input id="week-input" type="week" name="week">
-              </div>
-              <div class="flex mb-2">
-                <label for="month-input">Month</label>
-                <input id="month-input" type="month" name="month">
-              </div>
-              <div class="flex mb-2">
-                <label for="date-input">Date</label>
-                <input id="date-input" type="date" name="date">
-              </div>
-              <div class="flex">
-                <label for="datetime-local-input">Datetime Local</label>
-                <input id="datetime-local-input" type="datetime-local" name="datetime-local">
-              </div>
-            </fieldset>
-          </div>
-          <h4>Button Inputs</h4>
-          <div id="button-inputs" class="flex mb-2">
-            <input type="button" name="button" value="Button">
-            <input type="reset" name="reset" value="Reset">
-            <input type="submit" name="submit" value="Submit" onclick="return false;">
-          </div>
-          <h4>Toggle Inputs</h4>
-          <div id="toggle-inputs">
-            <div class="flex mb-2">
+          <fieldset>
+            <legend>Fieldset Legend</legend>
+            <div class="flex mb-1">
               <input id="checkbox-input" type="checkbox" name="checkbox" value="checkbox">
               <label for="checkbox-input">Checkbox</label>
             </div>
-            <div class="flex mb-2">
+            <div class="flex mb-1">
+              <label for="color-input">Colour</label>
+              <input id="color-input" type="color" name="color">
+            </div>
+            <div class="flex mb-1">
+              <label for="date-input">Date</label>
+              <input id="date-input" type="date" name="date">
+            </div>
+            <div class="flex mb-1">
+              <label for="datetime-local-input">Datetime Local</label>
+              <input id="datetime-local-input" type="datetime-local" name="datetime-local">
+            </div>
+            <div class="flex mb-1">
+              <label for="email-input">Email</label>
+              <input id="email-input" type="email" name="email" placeholder="example@example.com">
+            </div>
+            <div class="flex mb-1">
+              <label for="file-input">File</label>
+              <input id="file-input" type="file" name="file">
+            </div>
+            <div id="list-input-div">
+              <div class="flex mb-1">
+                <label for="list-input">List</label>
+                <input id="list-input" name="list" list="list-items" placeholder="List Item A">
+              </div>
+              <datalist id="list-items">
+                <option value="List Item A"/>
+                <option value="List Item B"/>
+                <option value="List Item C"/>
+              </datalist>
+            </div>
+            <div class="flex mb-1">
+              <label for="month-input">Month</label>
+              <input id="month-input" type="month" name="month">
+            </div>
+            <div class="flex mb-1">
+              <label class="mb-1" for="text">Number</label>
+              <input id="number-input" type="number" name="number" placeholder="42">
+              <p class="input-suffix">px</p>
+            </div>
+            <div class="flex mb-1">
+              <label for="password">Password</label>
+              <input id="password" type="password" name="password" placeholder="SecurePW2022!;">
+            </div>
+            <p>Radio:</p>
+            <div class="flex mb-1">
               <input id="radio-a-input" type="radio" name="radio" value="a">
               <label for="radio-a-input">Radio A</label>
               <input id="radio-b-input" type="radio" name="radio" value="b">
               <label for="radio-b-input">Radio B</label>
             </div>
-          </div>
-          <h4>Other Inputs</h4>
-          <div class="mb-2">
-            <label for="range-input">Range</label>
-            <input id="range-input" type="range" name="range">
-          </div>
-          <div class="mb-2">
-            <label for="file-input">File</label>
-            <input id="file-input" type="file" name="file">
-          </div>
-          <div class="mb-2">
-            <label for="color-input">Colour</label>
-            <input id="color-input" type="color" name="color">
-          </div>
-          <div class="mb-2">
-            <label for="list-input">List</label>
-            <input id="list-input" name="list" list="list-items" placeholder="List Item A">
-          </div>
-          <datalist id="list-items">
-            <option value="List Item A"/>
-            <option value="List Item B"/>
-            <option value="List Item C"/>
-          </datalist>
-          <div class="mb-2">
-            <label for="select-1-input">Select</label>
-            <select id="select-1-input" name="select-1">
-              <optgroup label="Option Group A">
-                <option value="A1" selected>Option A1</option>
-                <option value="A2" disabled>Option A2</option>
-              </optgroup>
-              <optgroup label="Option Group B">
-                <option value="B1">Option B1</option>
-              </optgroup>
-            </select>
-          </div>
-          <div class="mb-2">
-            <label for="select-2-input">Select</label>
-            <select id="select-2-input" name="select-2" multiple>
-              <optgroup label="Option Group A">
-                <option value="A1" selected>Option A1</option>
-                <option value="A2">Option A2</option>
-              </optgroup>
-              <optgroup label="Option Group B">
-                <option value="B1" disabled>Option B1</option>
-              </optgroup>
-            </select>
-          </div>
+            <div class="flex mb-1">
+              <label for="range-input">Range</label>
+              <input id="range-input" type="range" name="range">
+            </div>
+            <div class="flex mb-1">
+              <label for="tel-input">Telephone</label>
+              <p class="input-prefix">+(44)</p>
+              <input id="tel-input" type="tel" name="tel" placeholder="7388933973">
+            </div>
+            <div class="flex mb-1">
+              <label for="text">Text</label>
+              <input id="text" type="text" name="text" placeholder="Placeholder...">
+            </div>
+            <div class="flex mb-1">
+              <label for="time-input">Time</label>
+              <input id="time-input" type="time" name="time">
+            </div>
+            <div class="flex mb-1">
+              <label for="url-input">URL</label>
+              <input id="url-input" type="url" name="url" placeholder="https://www.example.com">
+            </div>
+            <div class="flex mb-1">
+              <label for="week-input">Week</label>
+              <input id="week-input" type="week" name="week">
+            </div>
+            <div class="floating-label mb-1">
+              <label class="mb-1" for="textarea">Textarea with floating-label</label>
+              <textarea id="textarea" name="textarea" placeholder="This is placeholder text..."></textarea>
+            </div>
+            <div class="flex mb-1">
+              <label for="select-1-input">Select</label>
+              <select id="select-1-input" name="select-1">
+                <optgroup label="Option Group A">
+                  <option value="A1" selected>Option A1</option>
+                  <option value="A2" disabled>Option A2</option>
+                </optgroup>
+                <optgroup label="Option Group B">
+                  <option value="B1">Option B1</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="mb-1">
+              <label class="mb-1" for="select-2-input">Select (multiple)</label>
+              <select id="select-2-input" name="select-2" multiple>
+                <optgroup label="Option Group A">
+                  <option value="A1" selected>Option A1</option>
+                  <option value="A2">Option A2</option>
+                </optgroup>
+                <optgroup label="Option Group B">
+                  <option value="B1" disabled>Option B1</option>
+                </optgroup>
+              </select>
+            </div>
+            <div id="button-inputs" class="flex">
+              <input type="button" name="button" value="Button">
+              <input type="reset" name="reset" value="Reset">
+              <input type="submit" name="submit" value="Submit" onclick="return false;">
+            </div>
+          </fieldset>
         </form>
       </article>
-      <article id="lists">
-        <h3>Lists</h3>
-        <p>Lettered list:</p>
-        <ol type="A">
-          <li>List item</li>
-          <li>Another item</li>
-          <li>Last item</li>
-        </ol>
-        <p>Ordered list:</p>
-        <ol>
-          <li>List item</li>
-          <li><data value="1010">This is a data element in another item.</data></li>
-          <li>Last item</li>
-        </ol>
-        <p>Unordered list:</p>
-        <ul>
-          <li>List item</li>
-          <li>Another item</li>
-          <li>Last item</li>
-        </ul>
-      </article>
-      <article id="tables">
-        <h3>Tables</h3>
-        <div class="table-wrapper">
-          <table>
-            <caption>Table caption</caption>
-            <thead>
-              <tr>
-                <th>Table Head</th>
-                <th>Empty Cell</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Table Data</td>
-                <td></td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td>Table Foot</td>
-              </tr>
-            </tfoot>
-          </table>
+      <h3 id="lists">Lists</h3>
+      <article>
+        <div class="row">
+          <div class="col-12 md_col-4">
+            <p>Lettered list:</p>
+            <ol type="A">
+              <li>List item</li>
+              <li>Another item</li>
+            </ol>
+          </div>
+          <div class="col-12 md_col-4">
+            <p>Ordered list:</p>
+            <ol>
+              <li>List item</li>
+              <li>Another item</li>
+            </ol>
+          </div>
+          <div class="col-12 md_col-4">
+            <p>Unordered list:</p>
+            <ul>
+              <li>List item</li>
+              <li>Another item</li>
+            </ul>
+          </div>
         </div>
       </article>
+      <h3 id="tables">Tables</h3>
+      <article>
+        <table>
+          <caption>Table caption</caption>
+          <thead>
+            <tr>
+              <th>Table Head</th>
+              <th>Table Head</th>
+              <th>Table Head</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Table Data</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Table Foot</td>
+            </tr>
+          </tfoot>
+        </table>
+      </article>
     </section>
+    <hr>
     <section id="classes">
       <h2>Classes</h2>
-      <article id="alignment-classes">
-        <h3>Alignment</h3>
+      <p>The <code>classes.css</code> file contain classes to affect elements appearance.</p>
+      <h3 id="alignment">Alignment</h3>
+      <article>
         <p>You can align text.</p>
         <div class="box">
           <p class="text-start">This text is aligned left via <code>.text-start</code>.</p>
@@ -349,8 +362,8 @@
           <p class="text-justify">This text is justified via <code>.text-justify</code> so we need some filler to reach the end of the line to text-wrap.</p>
         </div>
       </article>
-      <article id="box-class">
-        <h3>Box</h3>
+      <h3 id="box">Box</h3>
+      <article>
         <div class="flex">
           <div class="box">
             <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -360,8 +373,8 @@
           </div>
         </div>
       </article>
-      <article id="line-clamp-classes">
-        <h3>Line Clamp</h3>
+      <h3 id="line-clamp">Line Clamp</h3>
+      <article>
         <p>You can line clamp text with <code>.line-clamp</code>. The text will append an ellipsis if it overflows. The class itself is set to 3 lines by default, however, you can set the number of lines to clamp with <code>.line-clamp-n</code>, where <code>n</code> is equal to the number of lines to clamp.</p>
         <div class="box">
           <p class="line-clamp-1"><i>Single-line line clamp</i>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
@@ -369,8 +382,8 @@
           <p class="line-clamp-2"><i>Multi-line line clamp</i>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
         </div>
       </article>
-      <article id="row-classes">
-        <h3>Row</h3>
+      <h3 id="row">Row</h3>
+      <article>
         <p>The <code>.row</code> uses <code>display: flexbox;</code> to position children elements. Rather than use the <code>margin</code> property to seperate elements, the <code>gap</code> property is utilised.</p>
         <div class="row">
           <div class="col-12">
@@ -398,53 +411,69 @@
           </div>
         </div>
       </article>
-      <article id="text-classes">
-        <h3>Text</h3>
-        <div class="box">
-          <p class="text-capitalise">This text is capitalised via <code>.text-capitalise</code>.</p>
-          <hr>
-          <p class="text-lowercase">This text is all lowercase via <code>.text-lowercase</code>.</p>
-          <hr>
-          <p class="text-uppercase">This text is all uppercase via <code>.text-uppercase</code>.</p>
-        </div>
+      <h3 id="text">Text Case</h3>
+      <article class="mb-0">
+        <p>The <code class="text-lowercase">.text-capitalise</code> class transforms text into capitalised case like so: <span class="text-capitalise">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span></p>
+        <p>The <code class="text-lowercase">.text-lowercase</code> class transforms text into lowercase like so: <span class="text-lowercase">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span></p>
+        <p>The <code class="text-lowercase">.text-uppercase</code> class transforms text into uppercase like so: <span class="text-uppercase">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span></p>
       </article>
     </section>
     <hr>
-    <section id="functions">
-      <h2>Functions</h2>
-      <p>The <code>functions.js</code> file does stuff.</p>
-      <h3>Console</h3>
-      <h4>Log</h4>
-      <p><code>log()</code> is a shorthand for <code>console.log()</code>.</p>
-      <h4>Table</h4>
-      <p><code>table()</code> is a shorthand for <code>console.table()</code>.</p>
-      <h4>Warn</h4>
-      <p><code>warn()</code> is a shorthand for <code>console.warn()</code>.</p>
-      <h3>Cookie</h3>
-      <h4>Default Cookie</h4>
-      <p><code>defaultCookie(cookieName, cookieDefaultValue)</code> checks if a cookie is set, if not, the function sets the cookie and value.</p>
-      <h4>Get Cookies</h4>
-      <p><code>getCookies()</code> returns all cookies as an string.</p>
-      <h4>Log Cookies</h4>
-      <p><code>logCookies()</code> prints all cookies in the console.</p>
-      <h4>Get Cookie</h4>
-      <p><code>getCookie(cookieName)</code> returns a cookie as a string.</p>
-      <h4>Get Cookie Split</h4>
-      <p><code>getCookieSplit(cookieName)</code> splits a cookie and returns it as an array.</p>
-      <h4>Set Cookie</h4>
-      <p><code>setCookie(cookieName, cookieValue)</code> sets - or if isset updates - a cookie and value.</p>
-      <h4>Isset Cookie</h4>
-      <p><code>issetCookie(cookieName)</code> returns a Boolean, true if a cookie is set or false if not.</p>
-      <h4>Log Cookie</h4>
-      <p><code>logCookie(cookieName)</code> prints a cookie in the console.</p>
-      <h4>Get Cookie Value</h4>
-      <p><code>getCookieValue(cookieName)</code> returns a cookie value as a string.</p>
-      <h4>Log Cookie Value</h4>
-      <p><code>logCookieValue(cookieName)</code> prints a cookie value in the console.</p>
+    <section id="custom">
+      <h2>Custom</h2>
+    </section>
+    <hr>
+    <section>
+      <h2 id="functions">Functions</h2>
+      <p>The <code>functions.js</code> file.</p>
+      <h3 id="console">Console</h3>
+      <article>
+        <p>The console functions are shorthands to remove the console and notation necessary to print.</p>
+        <h4>Log</h4>
+        <p><code>log()</code> is short for <code>console.log()</code>.</p>
+        <h4>Table</h4>
+        <p><code>table()</code> is short for <code>console.table()</code>.</p>
+        <h4>Warn</h4>
+        <p><code>warn()</code> is short for <code>console.warn()</code>.</p>
+      </article>
+      <h3 id="cookies">Cookies</h3>
+      <article>
+        <h4>Default Cookie</h4>
+        <p><code>defaultCookie(cookieName, cookieDefaultValue)</code> checks if a cookie is set, if not, the function sets the cookie and value. The purpose of this function is to not override a set cookie, but to always have a cookie set.</p>
+        <h4>Get Cookies</h4>
+        <p><code>getCookies()</code> returns all cookies as an string.</p>
+        <h4>Get Cookies Split</h4>
+        <p><code>getCookiesSplit()</code> returns all cookies as an array.</p>
+        <h4>Log Cookies</h4>
+        <p><code>logCookies()</code> prints all cookies in the console.</p>
+        <h4>Get Cookie</h4>
+        <p><code>getCookie(cookieName)</code> returns a cookie as a string.</p>
+        <h4>Get Cookie Split</h4>
+        <p><code>getCookieSplit(cookieName)</code> splits a cookie and returns it as an array.</p>
+        <h4>Set Cookie</h4>
+        <p><code>setCookie(cookieName, cookieValue)</code> sets - or if isset updates - a cookie and value.</p>
+        <h4>Isset Cookie</h4>
+        <p><code>issetCookie(cookieName)</code> returns a Boolean, true if a cookie is set or false if not.</p>
+        <h4>Log Cookie</h4>
+        <p><code>logCookie(cookieName)</code> prints a cookie in the console.</p>
+        <h4>Get Cookie Value</h4>
+        <p><code>getCookieValue(cookieName)</code> returns a cookie value as a string.</p>
+        <h4>Log Cookie Value</h4>
+        <p><code>logCookieValue(cookieName)</code> prints a cookie value in the console.</p>
+      </article>
+      <h3 id="images">Images</h3>
+      <article>
+        <h4>Set Image Intrinsic Width</h4>
+        <p><code>setImgIntrinsicWidth(id)</code>.</p>
+        <h4>Set All Image Intrinsic Width</h4>
+        <p><code>setAllImgIntrinsicWidth()</code>.</p>
+      </article>
     </section>
   </main>
-  <footer class="bg-theme mx-2 btl-r-1 btr-r-1">
-    <p class="text-const-black text-middle py-1 mb-0">Copyright © 2020-2022 Scott Sewards All Rights Reserved</p>
+  <footer class="container p-0">
+    <div class="bg-theme btl-r-1 btr-r-1 mx-2">
+      <p class="text-const-white text-middle py-1 mb-0">Copyright © 2020-2022 Scott Sewards All Rights Reserved</p>
+    </div>
   </footer>
 </body>
 </html>
