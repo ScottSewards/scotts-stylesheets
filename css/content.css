@@ -10,20 +10,16 @@ fieldset, legend {
   border: var(--border);
   border-radius: var(--border-radius);
 }
-fieldset { min-width: 0; }
 legend {
   color: var(--col-black);
   margin: auto;
-  white-space: nowrap;
 }
 label, output {
   color: var(--col-black);
-  display: block;
   white-space: nowrap;
 }
-label[for] {}
+label[for] { cursor: pointer; }
 button, input, select, textarea {
-  display: block;
   padding: 0.5rem;
   border: var(--border);
   border-radius: var(--border-radius);
@@ -31,7 +27,6 @@ button, input, select, textarea {
   width: 100%;
   font-family: var(--font);
   font-size: var(--font-size);
-  white-space: nowrap;
 }
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   cursor: pointer;
@@ -40,10 +35,10 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
   border: none;
   width: auto;
 }
-:is(input, select, textarea):not(:disabled):hover { border-color: var(--col-theme-light); }
-:is(button, input, select, textarea):not(:disabled):focus { border-color: var(--col-theme-dark); }
-button:hover, input:is([type="button"], [type="reset"], [type="submit"]):hover { background: var(--col-theme-light); }
-button:active, input:is([type="button"], [type="reset"], [type="submit"]):active { background: var(--col-theme-dark); }
+:is(input, select, textarea):not(:is(:disabled, [readonly])):hover { border-color: var(--col-theme-light); }
+:is(input, select, textarea):not(:is(:disabled, [readonly])):focus { border-color: var(--col-theme-dark); }
+:is(button, input:is([type="button"], [type="reset"], [type="submit"])):not(:disabled):hover { background: var(--col-theme-light); }
+:is(button, input:is([type="button"], [type="reset"], [type="submit"])):not(:disabled):active { background: var(--col-theme-dark); }
 :is(button, input, select, textarea):disabled, :is(input, textarea)[readonly] {
   cursor: not-allowed;
   background: var(--col-fill) !important;
@@ -57,17 +52,17 @@ input:is([type="checkbox"], [type="radio"]) {
   height: 2rem;
   width: 2rem;
 }
-input:is([type="checkbox"], [type="color"], [type="radio"]:not(:checked)) { cursor: pointer; }
+input:is([type="checkbox"], [type="color"], [type="radio"]:not(:checked)):not(:disabled):not([readonly]) { cursor: pointer; }
 input:is([type="checkbox"], [type="radio"]):hover::after { color: var(--col-border); }
-input:is([type="checkbox"], [type="radio"]):checked::after { color: var(--col-black); }
-input:is([type="checkbox"], [type="radio"]):is(:checked, :hover)::after {
+input:is([type="checkbox"], [type="radio"])::after { color: var(--col-black); }
+input:is([type="checkbox"], [type="radio"]):is(:checked, :not(:is(:checked, :disabled, [readonly])):hover)::after {
   position: absolute;
   content: "✓";
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-input:is([type="checkbox"], [type="radio"]):not(.:checked):hover::after { opacity: 0.25; }
+input:is([type="checkbox"], [type="radio"]):not(:is(:checked, :disabled, [readonly])):hover::after { opacity: 0.5; }
 input[type="color"] {
   background: inherit;
   height: 2.75rem;
@@ -90,7 +85,7 @@ input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; }
 input[type="range"]::-moz-range-thumb {
   cursor: pointer;
   background: #ffffff;
-  border: 1px solid #000000;
+  border: var(--border);
   border-radius: 3px;
   height: 36px;
   width: 16px;

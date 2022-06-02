@@ -13,6 +13,10 @@
   <link rel="stylesheet" href="css/custom.css">
   <script type="text/javascript" src="js/functions.js"></script>
   <script type="text/javascript">
+  function readonlyPreventDefault() {
+    
+  }
+
   window.onload = function() {
     defaultCookie("darkMode", 0);
     defaultCookie("colourThemeHue", 20);
@@ -23,6 +27,16 @@
       document.body.classList.toggle("dark");
       setCookie("darkMode", darkMode ? 1 : 0);
     });
+    document.addEventListener("keydown", function(e) {
+      if(e.ctrlKey) {
+        darkMode = !darkMode;
+        document.body.classList.toggle("dark");
+        setCookie("darkMode", darkMode ? 1 : 0);
+      }
+    });
+
+
+
     if(themeColourHue != null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
     else themeColourHue = getComputedStyle(document.documentElement).getPropertyValue("--col-theme-hue");
     setDropDowns();
@@ -42,8 +56,7 @@
     <a href="#layout">Layout</a>
     <div class="drop-down">
       <div class="drop-down-inside">
-        <a href="#console">Console</a>
-        <a href="#cookies">Cookies</a>
+        <a href="#">Null</a>
       </div>
       <a class="drop-down-button" href="#content">Content</a>
     </div>
@@ -178,8 +191,16 @@
           <fieldset>
             <legend>Fieldset Legend</legend>
             <div class="flex mb-1">
-              <input id="checkbox-input" type="checkbox" name="checkbox" value="checkbox">
+              <input id="checkbox-input" type="checkbox" name="checkbox" value="checkbox" checked>
               <label for="checkbox-input">Checkbox</label>
+            </div>
+            <div class="flex mb-1">
+              <input id="checkbox-disabled-input" type="checkbox" name="checkbox-disabled" value="checkbox-disabled" disabled>
+              <label for="checkbox-disabled-input">Checkbox (disabled)</label>
+            </div>
+            <div class="flex mb-1">
+              <input id="checkbox-readonly-input" type="checkbox" name="checkbox-readonly" value="checkbox-readonly" readonly>
+              <label for="checkbox-readonly-input">Checkbox (readonly)</label>
             </div>
             <div class="flex mb-1">
               <label for="color-input">Colour</label>
@@ -187,7 +208,7 @@
             </div>
             <div class="flex mb-1">
               <label for="date-input">Date</label>
-              <input id="date-input" type="date" name="date">
+              <input id="date-input" type="date" name="date" disabled>
             </div>
             <div class="flex mb-1">
               <label for="datetime-local-input">Datetime Local</label>
@@ -426,8 +447,10 @@
     <section>
       <h2 id="functions">Functions</h2>
       <p>The <code>functions.js</code> file.</p>
-      <h3 id="console">Console</h3>
-      <article>
+      <div class="flex">
+        <h3 id="console">Console</h3>
+      </div>
+      <article id="console-article">
         <p>The console functions are shorthands to remove the console and notation necessary to print.</p>
         <h4>Log</h4>
         <p><code>log()</code> is short for <code>console.log()</code>.</p>
@@ -437,7 +460,7 @@
         <p><code>warn()</code> is short for <code>console.warn()</code>.</p>
       </article>
       <h3 id="cookies">Cookies</h3>
-      <article>
+      <article id="cookies-article">
         <h4>Default Cookie</h4>
         <p><code>defaultCookie(cookieName, cookieDefaultValue)</code> checks if a cookie is set, if not, the function sets the cookie and value. The purpose of this function is to not override a set cookie, but to always have a cookie set.</p>
         <h4>Get Cookies</h4>
