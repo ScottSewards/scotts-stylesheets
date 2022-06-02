@@ -13,10 +13,6 @@
   <link rel="stylesheet" href="css/custom.css">
   <script type="text/javascript" src="js/functions.js"></script>
   <script type="text/javascript">
-  function readonlyPreventDefault() {
-    
-  }
-
   window.onload = function() {
     defaultCookie("darkMode", 0);
     defaultCookie("colourThemeHue", 20);
@@ -34,9 +30,6 @@
         setCookie("darkMode", darkMode ? 1 : 0);
       }
     });
-
-
-
     if(themeColourHue != null) document.documentElement.style.setProperty("--col-theme-hue", themeColourHue);
     else themeColourHue = getComputedStyle(document.documentElement).getPropertyValue("--col-theme-hue");
     setDropDowns();

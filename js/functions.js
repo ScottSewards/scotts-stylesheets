@@ -20,3 +20,6 @@ var defaultCookie = (n, v) => { if(getCookie(n) == null) document.cookie = `${n}
     logCookieValue = (n) => log(getCookieValue(n));
     //unsetCookie = (n) => document.cookie = issetCookie(n) === true ? `${n}=; expires=Thu, 01 Jan 1970 00:00:00 GMT` : null,
     //unsetCookies = () => document.cookie = "";
+
+
+function roPreventDefault() {}
