@@ -49,7 +49,11 @@
     <a href="#layout">Layout</a>
     <div class="drop-down">
       <div class="drop-down-inside">
-        <a href="#">Null</a>
+        <a href="#quotes">Quotes</a>
+        <a href="#content-images">Images</a>
+        <a href="#forms">Forms</a>
+        <a href="#lists">Lists</a>
+        <a href="#tables">Tables</a>
       </div>
       <a class="drop-down-button" href="#content">Content</a>
     </div>
@@ -69,7 +73,7 @@
       <div class="drop-down-inside">
         <a href="#console">Console</a>
         <a href="#cookies">Cookies</a>
-        <a href="#images">Images</a>
+        <a href="#functions-images">Images</a>
       </div>
       <a class="drop-down-button" href="#functions">Functions</a>
     </div>
@@ -152,27 +156,32 @@
     <hr>
     <section id="layout">
       <h2>Layout</h2>
-      <p>The <code>layout.css</code> file determines the page layout, in other words, where elements such as <code>nav</code> and <code>side-nav</code> are positioned.</p>
+      <p>The <code>layout.css</code> file determines the position of elements.</p>
       <h3>Side Nav</h3>
       <article>
-        <p>The <code>side-nav</code> element.</p>
+        <p>The <code>side-nav</code> element .</p>
       </article>
     </section>
     <hr>
     <section id="content">
       <h2>Content</h2>
-      <p>The <code>content.css</code> file determines how elements look and cascade (padding and margin), not where they are positioned.</p>
+      <p>The <code>content.css</code> file determines how elements cascade (i.e. padding, margin), not their layout or position.</p>
       <h3 id="quotes">Quotes</h3>
       <article>
+        <h4>Blockquote</h4>
         <p>The <code>blockquote</code> element is for block quotes like so:</p>
         <blockquote cite="http://">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </blockquote>
+        <h4>Q</h4>
         <p>The <code>q</code> or <i>quote</i> element is for inline quotes like so: <q cite="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</q></p>
       </article>
-      <h3 id="images">Images</h3>
+      <div class="flex mb-1">
+        <h3 id="content-images" class="mb-0">Images</h3>
+        <a class="button" href="#functions-images">Go To Image Functions</a>
+      </div>
       <article>
-        <p>The <code>image</code> element has the JavaScript function <code>setImgIntrinsicWidth</code> to set a maximum image width to its intrinsic width for SEO purposes.</p>
+        <p>The <code>image</code> element.</p>
         <figure>
           <img src="images/splhcb.webp" alt="Placeholder">
           <figcaption>This is a figure caption.</figcaption>
@@ -201,7 +210,7 @@
             </div>
             <div class="flex mb-1">
               <label for="date-input">Date</label>
-              <input id="date-input" type="date" name="date" disabled>
+              <input id="date-input" type="date" name="date">
             </div>
             <div class="flex mb-1">
               <label for="datetime-local-input">Datetime Local</label>
@@ -389,11 +398,14 @@
       </article>
       <h3 id="line-clamp">Line Clamp</h3>
       <article>
+        <code>.line-clamp-&lt;n&gt;</code>
         <p>You can line clamp text with <code>.line-clamp</code>. The text will append an ellipsis if it overflows. The class itself is set to 3 lines by default, however, you can set the number of lines to clamp with <code>.line-clamp-n</code>, where <code>n</code> is equal to the number of lines to clamp.</p>
         <div class="box">
-          <p class="line-clamp-1"><i>Single-line line clamp</i>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+          <p class="line-clamp-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           <hr>
-          <p class="line-clamp-2"><i>Multi-line line clamp</i>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+          <p class="line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <hr>
+          <p class="line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
       </article>
       <h3 id="row">Row</h3>
@@ -401,27 +413,25 @@
         <p>The <code>.row</code> uses <code>display: flexbox;</code> to position children elements. Rather than use the <code>margin</code> property to seperate elements, the <code>gap</code> property is utilised.</p>
         <div class="row">
           <div class="col-12">
-            <div class="p-1 b-1 mb-2 text-middle">
-              <code>col-12</code>
-            </div>
+            <p class="p-1 b-1 mb-1 text-middle"><code>col-12</code></p>
           </div>
           <div class="col-10">
-            <p class="p-1 b-1 mb-2 text-middle"><code>col-10</code></p>
+            <p class="p-1 b-1 mb-1 text-middle"><code>col-10</code></p>
           </div>
           <div class="col-2">
-            <p class="p-1 b-1 mb-2 text-middle"><code>col-2</code></p>
+            <p class="p-1 b-1 mb-1 text-middle"><code>col-2</code></p>
           </div>
           <div class="col-8">
-            <p class="p-1 b-1 mb-2 text-middle"><code>col-8</code></p>
+            <p class="p-1 b-1 mb-1 text-middle"><code>col-8</code></p>
           </div>
           <div class="col-4">
-            <p class="p-1 b-1 mb-2 text-middle"><code>col-4</code></p>
+            <p class="p-1 b-1 mb-1 text-middle"><code>col-4</code></p>
           </div>
           <div class="col-6">
-            <p class="p-1 b-1 mb-2 text-middle"><code>col-6</code></p>
+            <p class="p-1 b-1 mb-1 text-middle"><code>col-6</code></p>
           </div>
           <div class="col-6">
-            <p class="p-1 b-1 mb-2 text-middle"><code>col-6</code></p>
+            <p class="p-1 b-1 mb-1 text-middle"><code>col-6</code></p>
           </div>
         </div>
       </article>
@@ -435,22 +445,33 @@
     <hr>
     <section id="custom">
       <h2>Custom</h2>
+      <p>The <code>custom.css</code> file is used to override rules and add themes. In fact, you can apply themes to components like the code block below.</p>
+      <div class="flex">
+        <button class="mb-1 mx-a" type="button" name="toggle-code-block-dark-mode" onclick="document.querySelector('#code-block').classList.toggle('dark');">Toggle Code Block Dark Mode</button>
+      </div>
+      <code id="code-block" class="block dark">
+        <div class="line"><span class="keyword">var</span> x <span class="assignment">=</span> <span class="value">1</span><span>;</span></div>
+        <div class="line"><span class="keyword">var</span> x <span class="assignment">=</span> <span class="value">1</span><span>;</span></div>
+        <div class="line"><span class="keyword">const</span> y <span class="assignment">=</span> <span class="value">2</span><span>;</span></div>
+        <div class="line"><span class="keyword">let</span> z <span class="assignment">=</span> <span class="value">3</span><span>;</span></div>
+        <span class="language">JavaScript</span>
+      </code>
     </section>
     <hr>
     <section>
       <h2 id="functions">Functions</h2>
-      <p>The <code>functions.js</code> file.</p>
-      <div class="flex">
-        <h3 id="console">Console</h3>
-      </div>
+      <p>The <code>functions.js</code> file contains all JavaScript functions for this framework.</p>
+      <h3 id="console">Console</h3>
+      <p>The console functions are shorthands to remove <code>console.</code> notation required to log.</p>
       <article id="console-article">
-        <p>The console functions are shorthands to remove the console and notation necessary to print.</p>
         <h4>Log</h4>
         <p><code>log()</code> is short for <code>console.log()</code>.</p>
         <h4>Table</h4>
         <p><code>table()</code> is short for <code>console.table()</code>.</p>
         <h4>Warn</h4>
         <p><code>warn()</code> is short for <code>console.warn()</code>.</p>
+        <h4>Warn</h4>
+        <p><code>error()</code> is short for <code>console.error()</code>.</p>
       </article>
       <h3 id="cookies">Cookies</h3>
       <article id="cookies-article">
@@ -477,12 +498,14 @@
         <h4>Log Cookie Value</h4>
         <p><code>logCookieValue(cookieName)</code> prints a cookie value in the console.</p>
       </article>
-      <h3 id="images">Images</h3>
+      <h3 id="functions-images">Images</h3>
       <article>
         <h4>Set Image Intrinsic Width</h4>
         <p><code>setImgIntrinsicWidth(id)</code>.</p>
+        <p>This function serves SEO. It sets the selected <code>img</code> maxium width to its intrinsic width.</p>
         <h4>Set All Image Intrinsic Width</h4>
         <p><code>setAllImgIntrinsicWidth()</code>.</p>
+        <p>This function applies the above function to all <code>img</code> elements.</p>
       </article>
     </section>
   </main>

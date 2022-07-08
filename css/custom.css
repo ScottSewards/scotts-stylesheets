@@ -6,6 +6,7 @@
   --font-family-heading-weight: 600;
   --font-family-content: "Poppins", sans-serif !important;
   --show-side-nav: 1;
+  --font-size: 18px;
 }
 /* THEMES */
 .dark {
@@ -41,3 +42,34 @@ td > input {
 }
 /* CLASSES */
 .colour-picker { background: -webkit-linear-gradient(left, #F00 0%, #FF0 16.66%, #0F0 33.33%, #0FF 50%, #00F 66.66%, #F0F 83.33%, #F00 100%); }
+
+code.block {
+  position: relative;
+  padding: 2rem 1rem 0.5rem 2rem;
+  overflow-x: auto;
+}
+code.block span.language {
+  user-select: none;
+  background: var(--col-theme-dark);
+  color: var(--col-const-white);
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.25rem 1rem;
+  border-bottom-right-radius: var(--border-radius);
+  font-size: 75%;
+}
+code.block > div.line::before {
+  content: "1.";
+  margin-left: -1.5rem;
+  position: absolute;
+  counter-increment: 1;
+}
+code.block span.keyword { color: red; }
+code.block span.value { color: orange; }
+code.block span.assignment { color: red; }
+
+code.block span.element { color: red; }
+code.block span.class { color: orange; }
+code.block span.id { color: red; }
+code.block span.property { color: red; }

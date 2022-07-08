@@ -50,8 +50,8 @@
   --side-nav-width: 12rem;
   --content-limit: 75ch;
   --at-duration: 0.1s; /* ANIMATION / TRANSFORM DURATION*/
+  --col-gap: 0.25rem;
 }
-
 /*
 ::-webkit-calendar-picker-indicator { filter: invert(1); }
 ::-webkit-outer-spin-button, ::-webkit-inner-spin-button { -webkit-appearance: none; }

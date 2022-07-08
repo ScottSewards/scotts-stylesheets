@@ -10,6 +10,7 @@ fieldset, legend {
   border: var(--border);
   border-radius: var(--border-radius);
 }
+fieldset { margin: 0; }
 legend {
   color: var(--col-black);
   margin: auto;
@@ -18,7 +19,7 @@ label, output {
   color: var(--col-black);
   white-space: nowrap;
 }
-label[for] { cursor: pointer; }
+/*label[for] { cursor: pointer; }*/
 button, input, select, textarea {
   padding: 0.5rem;
   border: var(--border);
@@ -28,6 +29,7 @@ button, input, select, textarea {
   font-family: var(--font);
   font-size: var(--font-size);
 }
+button, input, select { white-space: nowrap; }
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   cursor: pointer;
   background: var(--col-black);
@@ -228,12 +230,7 @@ code, kbd {
   padding: 0.05rem 0.2rem 0 0.2rem;
   white-space: normal;
 }
-code {
-  border-radius: calc(var(--border-radius) / 2);
-  -moz-tab-size: 4;
-  tab-size: 4;
-  white-space: pre;
-}
+code { border-radius: calc(var(--border-radius) / 2); }
 data {}
 del, ins { text-decoration: none; }
 del { background: var(--col-deleted); }

@@ -181,10 +181,10 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
+  margin-left: calc(var(--col-gap) * -1);
+  margin-right: calc(var(--col-gap) * -1);
 }
-[class*="col-"] { padding: 0 0.5rem; }
+[class*="col-"] { padding: 0 var(--col-gap); }
 .col-1 { width: 8.333333333333333%; }
 .col-2 { width: 16.66666666666667%; }
 .col-3 { width: 25%; }
