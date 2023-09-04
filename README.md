@@ -1,15 +1,15 @@
 Link to licence available at: https://creativecommons.org/licenses/by-nc/4.0/legalcode.
 
-#Scott's Stylesheets
+# Styles and Scripts
 
-##Files
-###classes.css
+## Files
+### classes.css
 
-###content.css
+### content.css
 
-###custom.css
+### custom.css
 The file custom.css or custom.min.css is used to override the framework so your changes are not overwritten when you update the framework.
 
-###layout.css
+### layout.css
 
-###variables.css
+### variables.css
