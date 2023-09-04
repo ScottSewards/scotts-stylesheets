@@ -1,25 +1,52 @@
 var setDropDowns = () => document.querySelectorAll(".drop-down-button").forEach((b) => b.addEventListener("click", () => b.parentElement.classList.toggle("active"))),
     setImgIntrinsicWidth = (e) => document.querySelector(e).setAttribute("style", `max-width: ${e.naturalWidth}px`),
     setAllImgIntrinsicWidth = () => document.querySelectorAll("img").forEach((e) => el.setAttribute("style", `max-width: ${e.naturalWidth}px`));
-//CONSOLE
-var log = (v) => console.log(v), table = (v) => console.table(v), warn = (v) => console.warn(v), error = (v) => console.error(v);
-//COOKIE
-var defaultCookies = (a) => Object.entries(a).forEach((e) => setCookie(e[0], e[1])),
-    defaultCookie = (n, v) => { if(getCookie(n) == null) document.cookie = `${n}=${v}` },
-    getCookies = () => { return document.cookie },
-    getCookiesSplit = () => { return document.cookie.split(";") },
-    logCookies = () => log(document.cookie),
-    getCookie = (n) => {
-      var c = document.cookie.split("; ").find(r => r.startsWith(`${n}=`));
-      return c !== undefined ? c : null;
-    },
-    getCookieSplit = (n) => { return getCookie(n).split("=") },
-    setCookie = (n, v) => document.cookie = `${n}=${v}`,
-    issetCookie = (n) => getCookie(n) != null ? true : false,
-    logCookie = (n) => log(getCookie(n)),
-    getCookieValue = (n) => { return getCookie(n) != null ? getCookie(n).split("=")[1] : null },
-    logCookieValue = (n) => log(getCookieValue(n));
+
+// Console
+var log = (v) => console.log(v), info = (v) => console.log(v), table = (v) => console.table(v), warn = (v) => console.warn(v), error = (v) => console.error(v);
+
+// Cookies
+var getCookies = () => { return document.cookie },
+    splitCookies = () => { return getCookies().split(";") },
+    getCookie = (k) => { return splitCookies().trim().find(r => r.startsWith(`${k}=`)); },
+    splitCookie = (k) => { return getCookie(k).split("=") },
+
+    setCookie = (k, v) => document.cookie = `${k}=${v};`,
+    defaultCookies = (a) => Object.entries(a).forEach((e) => { if(getCookie(e[0]) == undefined) setCookie(e[0], e[1]) }),
+    defaultCookie = (k, v) => { if(getCookie(n) == undefined) setCookie(k, v); },
+
+    logCookies = () => console.log(getCookies()),
+    logCookie = (k) => console.log(getCookie(k)),
+
+    issetCookie = (k) => getCookie(k) != undefined ? true : false, // NEEDS getCookie
+    getCookieValue = (k) => { return issetCookie(k) ? getCookie(k).split("=")[1] : null }, // NEEDS issetCookie
+    logCookieValue = (k) => console.log(getCookieValue(k)) // NEEDS getCookieValue
+    ;
     //unsetCookie = (n) => document.cookie = issetCookie(n) === true ? `${n}=; expires=Thu, 01 Jan 1970 00:00:00 GMT` : null,
     //unsetCookies = () => document.cookie = "";
+    //setCookieExpires()
+    //getCookieExpires
 
-//function roPreventDefault() {}
+// Cookies
+/*
+var setCookie = (k, v) => document.cookie = `${k}=${v};path=;`,
+		getCookies = () => { return document.cookie },
+    splitCookies = () => { return getCookies().split(";"); },
+    getCookie = (k) => { return splitCookies().trim().find(r => r.startsWith(`${k}=`)); },
+		issetCookie = (k) => { return getCookie(k) != undefined ? true : false; },
+		logCookie = (k) => console.log(getCookie(k)),
+    splitCookie = (k) => { return getCookie(k).split("="); },
+		defaultCookie = (k, v) => { if(!issetCookie(k)) setCookie(k, v); },
+		defaultCookies = (a) => Object.entries(a).forEach((e) => { if(issetCookie(e[0])) setCookie(e[0], e[1]) }),
+		unsetCookie = (n) => document.cookie = issetCookie(n) ? `${n}=; Max-Age=-99999999` : null,
+    getCookieValue = (k) => { return issetCookie(k) ? getCookie(k).split("=")[1] : null }, // NEEDS issetCookie
+    logCookieValue = (k) => console.log(getCookieValue(k)) // NEEDS getCookieValue
+		logCookies = () => console.log(getCookies());
+    //unsetCookies = () => document.cookie = "";
+    //setCookieExpires()
+    //getCookieExpires
+
+		unsetCookieDomain = (k) => {
+
+		}
+*/
